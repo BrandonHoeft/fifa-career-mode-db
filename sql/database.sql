@@ -4,6 +4,9 @@
 -- Database Design: Nearly 3NF design to eliminate data redundancy and create data consistency
 -- Ultimately, a CRUD webapp will be built on top to handle write ops, so 3NF is a good approach
 
+-- keys: I thought some tables like leagues and teams should use natural keys (e.g. name) as the PK,
+-- while others were auto-incrementing/surrogate keys (id). mix was confusing, so conformed to surrogates
+
 -- Database name: (fifa) is created in projects ./docker-compose.yaml
 -- schema: will use public default
 -----------------------------------

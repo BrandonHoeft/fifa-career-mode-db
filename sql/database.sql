@@ -7,7 +7,7 @@
 -- keys: I thought some tables like leagues and teams should use natural keys (e.g. name) as the PK,
 -- while others were auto-incrementing/surrogate keys (id). mix was confusing, so conformed to surrogates
 
--- Database name: (fifa) is created in projects ./docker-compose.yaml
+-- Database name: (fifa23) is created in projects ./docker-compose.yaml
 -- schema: will use public default
 -----------------------------------
 

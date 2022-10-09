@@ -146,8 +146,7 @@ create table if not exists player_stats_def (
     air_duels_att int,
     air_duels_won int,
     beaten_by_opp int,
-    fouls_committed int,
-    saves int -- goalie only stat
+    fouls_committed int
 
 );
 

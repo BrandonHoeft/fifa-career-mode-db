@@ -62,7 +62,7 @@ values
     (1, 'Jorge', 'Sáenz', '1996-11-17', 'CB', NULL);
 
 
-insert into games (fk_season_id, game_num, home_or_away, fk_opp_id, opp_goals, opp_xg, opp_poss_pct, opp_shots, opp_shots_on_targ, my_goals, my_xg, my_shots, my_shots_on_targ)
-values (1, 1, 'home', '13', 1, 3.8, 54, 16, 13, 3, 1.8, 9, 4);
+insert into games (fk_season_id, game_num, game_minutes, home_or_away, fk_opp_id, opp_goals, opp_xg, opp_poss_pct, opp_shots, opp_shots_on_targ, my_goals, my_xg, my_shots, my_shots_on_targ)
+values (1, 1, 8,'home', '13', 1, 3.8, 54, 16, 13, 3, 1.8, 9, 4);
 
 

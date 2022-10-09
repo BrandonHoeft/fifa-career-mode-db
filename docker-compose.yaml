@@ -22,5 +22,5 @@ services:
       - "8080:80"
 
 
-# RUNBOOK: be in this file's directory and run `docker-compose up .` to start container services
+# RUNBOOK: be in this file's directory and run `docker compose up .` to start container services
 

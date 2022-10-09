@@ -17,6 +17,7 @@ create table if not exists leagues (
     name text not null
 
 );
+
 comment on table leagues is 'leagues/tournament names such as La Liga, Copa Del Rey, Champions League, ...';
 
 create table if not exists teams (
@@ -25,6 +26,7 @@ create table if not exists teams (
     name text not null
 
 );
+
 comment on table teams is 'team names';
 
 create table if not exists seasons (

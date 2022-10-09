@@ -47,6 +47,7 @@ create table if not exists players (
     fk_team_id int references teams (team_id) not null,
     first_name text not null,
     last_name text not null,
+    full_name text generated always as (first_name || ' ' || last_name) stored, --generated on write of inputs
     birthday date not null,
     primary_pos text,
     second_pos text

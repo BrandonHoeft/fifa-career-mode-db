@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=fifa23
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+    ports:
+      - '15432:5432'
+    volumes:
+      # save the pg filesystem onto my computer after container goes down
+      - "./pg_data:/var/lib/postgresql/data:rw"
+      # image allows place SQL files in /docker-entrypoint-initb.d folder, executes when container starts
+      - "./sql/database.sql:/docker-entrypoint-initdb.d/database.sql"
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    ports:
+      - "8080:80"
+
+
+# RUNBOOK: be in this file's directory and run `docker-compose up .` to start container services
+

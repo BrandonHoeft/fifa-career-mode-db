@@ -65,7 +65,7 @@ create table if not exists games (
     my_goals int not null,
     my_xg numeric(3,2) not null,
     my_poss_pct numeric(4,2) generated always as (100 - opp_poss_pct) stored,
-    my shots int not null
+    my_shots int not null
 
 );
 

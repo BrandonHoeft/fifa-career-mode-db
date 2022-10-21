@@ -11,8 +11,8 @@ services:
     volumes:
       # save the pg filesystem onto my computer after container goes down
       - "./pg_data:/var/lib/postgresql/data:rw"
-      # image allows place SQL files in /docker-entrypoint-initb.d folder, executes when container starts
-      - "./sql/database.sql:/docker-entrypoint-initdb.d/database.sql"
+      # place my database DDL SQL into /docker-entrypoint-initb.d folder, executes when container starts
+      - "./database/database.database:/docker-entrypoint-initdb.d/database.database"
   pgadmin:
     image: dpage/pgadmin4
     environment:
@@ -22,5 +22,5 @@ services:
       - "8080:80"
 
 
-# RUNBOOK: be in this file's directory and run `docker compose up` to start container services
+# RUNBOOK: run `docker compose up` while in its directory, to start/restart services
 

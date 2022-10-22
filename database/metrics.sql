@@ -4,6 +4,7 @@ with offense as (
            off.fk_game_id,
            p.full_name,
            ovr.minutes,
+           ovr.rating,
            possession_pct,
            dribble_att,
            dribble_compl,
@@ -34,11 +35,15 @@ inner join players p
 order by full_name, fk_game_id
 )
 
+2 *5.0 + 15 * 9.0 / 17
+
+145 / 17
 , cum_offense as (
 
     select
         full_name,
         sum(minutes) as total_minutes,
+        sum(minutes * rating) / sum(minutes) as weighted_rating,
         round(sum(minutes::numeric) / 90, 2) as _90s, -- # of 90 minutes completed
         sum(possession_pct) as poss_pct_tot,
         sum(dribble_compl) as dribble_compl_tot,
@@ -63,6 +68,7 @@ select
     full_name,
     total_minutes,
     _90s,
+    weighted_rating,
     --dribbling
     round(poss_pct_tot / _90s, 2) as poss_pct_per90,
     dribble_compl_tot,

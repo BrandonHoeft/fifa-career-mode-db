@@ -1,13 +1,14 @@
-<!-- default html template for our root page app.route('/') -->
-<!doctype html>
+<!-- default html page for our root page app.route('/'). It's an extension of our base.html template -->
 
-<head>
-    <title> FIFA Analytics Logger </title>
-    <link rel="stylesheet" href="static/style.css">
-        <!-- link to pure.css stylesheets instead of our local ones -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
+{% extends 'base.html' %}
+{% include 'header.html' %}
 
-</head>
+{% block title %} Home {% endblock %}
 
-<h1 class = "thick yorange montserrat"> Brandon's FIFA Career Mode Analytics Logger </h1>
+
+{% block body %}
+
+<h1 class="thick yorange montserrat"> From Template Inheritance</h1>
+
+{% endblock %}
 

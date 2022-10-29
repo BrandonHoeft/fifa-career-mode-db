@@ -16,7 +16,7 @@
             <div class="jumbotron p-3">
 
                 <h2>Manage <b>Games </b> <button type="button" class="btn btn-success pull-right"
-                data-toggle="model" data-target="#mymodel"
+                data-toggle="modal" data-target="#mymodal"
                 >Add Match Played</button> </h2>
 
                 <table class="table table-hover table-dark">
@@ -31,12 +31,95 @@
 
                     </tr>
 
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>20</td>
+                        <td>home</td>
+                        <td>14</td>
+
+                        <td>
+                            <a href="" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit">Edit</a>
+                            <a href="" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to delete?')">Delete</a>
+
+                        </td>
+
+
+
+                    </tr>
+
                 </table>
 
+            </div>
+
+
+            <!-- Modal Add Game https://getbootstrap.com/docs/4.0/components/modal/ -->
+            <div id="mymodal" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Add Match Played</h4>
+<!--                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                                <span aria-hidden="true">&times;</span>-->
+<!--                            </button>-->
+                        </div>
+                        <div class="modal-body">
+                            <form action="" method="POST">
+<!--                            <p>Modal body text goes here.</p>-->
+                                <div class="form-group">
+
+                                    <label>fk_season_id</label>
+                                    <input type="number" class="form-control" name="fk_season_id" required="1">
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label>game_num</label>
+                                    <input type="number" class="form-control" name="game_num" required="1">
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label>game_minutes</label>
+                                    <input type="number" class="form-control" name="game_minutes" required="1">
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label>home_or_away</label>
+                                    <input type="text" class="form-control" name="home_or_away" required="1">
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label>fk_opp_id</label>
+                                    <input type="number" class="form-control" name="fk_opp_id" required="1">
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <button class="btn btn-primary" type="submit">Add Match</button>
+
+                                </div>
+
+                            </form>
+                    </div>
+
+                        <div class="modal-footer">
+
+                            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                        </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+</div>
 
 {% endblock %}
-

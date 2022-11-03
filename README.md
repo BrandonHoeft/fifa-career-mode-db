@@ -12,25 +12,25 @@ This ERD describes the physical data model behind the CRUD app, which is third-n
 erDiagram
     LEAGUES }|--|{ SEASONS : have
        LEAGUES {
-           identity league_id
+           identity league_id PK "auto-incrementing"
            string name
     }
     TEAMS }|--|{ SEASONS : compete-in
        TEAMS {
-           identity team_id
+           identity team_id PK "auto-incrementing"
            string team_name
     }
        SEASONS {
-           identity season_id
-           integer fk_league_id
-           integer fk_team_id
+           identity season_id PK "auto-incrementing"
+           integer fk_league_id FK "the competition/cup tournament"
+           integer fk_team_id FK "ref my team playing a season"
            smallint year
     }
     SEASONS }|--|| GAMES : have
         GAMES {
-            identity game_id
-            integer fk_season_id
-            integer fk_opp_id
+            identity game_id PK "auto-incrementing"
+            integer fk_season_id FK "season this game occurred in"
+            integer fk_opp_id FK "the opponet of my team"
             integer game_num
             integer game_minutes
             text home_or_away
@@ -48,8 +48,8 @@ erDiagram
     TEAMS }|--|| GAMES : play
     PLAYERS ||--|{ TEAMS : contracted-to
         PLAYERS {
-            identity player_id
-            integer fk_team_id
+            identity player_id PK "auto-incrementing"
+            integer fk_team_id FK "the team a player plays for"
             text first_name
             text last_name
             text-generated full_name
@@ -60,9 +60,9 @@ erDiagram
     
     GAMES }|--|| PLAYER_STATS_OVERALL : belong-to
         PLAYER_STATS_OVERALL {
-            identity ovr_id
-            integer fk_player_id
-            integer fk_game_id
+            identity ovr_id PK "auto-incrementing"
+            integer fk_player_id FK "player who started/subbed in a game"
+            integer fk_game_id  FK "the game they played in"
             numeric rating
             integer minutes
             numeric total_dist
@@ -73,9 +73,9 @@ erDiagram
  
     GAMES }|--|| PLAYER_STATS_OFF : belong-to
         PLAYER_STATS_OFF {
-            identity off_id
-            integer fk_player_id
-            integer fk_game_id
+            identity off_id PK "auto-incrementing"
+            integer fk_player_id FK "player who started/subbed in a game"
+            integer fk_game_id FK "the game they played in"
             integer possession_pct
             integer dribble_att
             integer dribble_compl
@@ -105,9 +105,9 @@ erDiagram
  
     GAMES }|--|| PLAYER_STATS_DEF : belong-to
         PLAYER_STATS_DEF {
-            identity def_id
-            integer fk_player_id
-            integer fk_game_id
+            identity def_id PK "auto-incrementing"
+            integer fk_player_id FK "player who started/subbed in a game"
+            integer fk_game_id FK  "the game they played in"
             integer stand_tkl_att
             integer stand_tkl_won
             integer slide_tkl_att

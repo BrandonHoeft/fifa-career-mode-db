@@ -4,9 +4,9 @@
  Runs as a container service using `docker-compose`
  
 
-# Entity Relation Diagram
+# Entity Relationship Diagram for Flask CRUD app
 
-This ERD describes the physical data model, which is third-normal form.
+This ERD describes the physical data model behind the CRUD app, which is third-normal form.
 
 <first-entity> <relationship> <second-entity> : <relationship-label>
  

@@ -55,6 +55,7 @@ order by full_name, fk_game_id
         sum(shots) as shots_tot,
         sum(goals) as goals_tot,
         sum(non_pen_xg) as xg_tot,
+        sum(assists) as assist_tot,
         sum(xa) as xa_tot,
         sum(players_beat_by_passes) as pbp_tot,
         sum(through_balls_compl) as thball_compl_tot
@@ -84,6 +85,7 @@ select
     xg_tot,
     round(xg_tot / _90s, 2) as xg_per90,
     --passing
+    assist_tot,
     xa_tot,
     round(xa_tot / _90s, 2) as xa_per90,
     pbp_tot,

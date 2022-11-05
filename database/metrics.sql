@@ -97,7 +97,76 @@ from cum_offense
 
 
 
--- select full_name, sum(non_pen_xg) as total_xg
--- from cum_offense
--- group by full_name
--- order by total_xg desc
+
+
+-- starting pass at defensive rate metrics
+with defense as (
+    select def_id,
+           def.fk_game_id,
+           p.full_name,
+           p.primary_pos,
+           p.second_pos,
+           ovr.minutes,
+           stand_tkl_att,
+           stand_tkl_won,
+           slide_tkl_att,
+           slide_tkl_won,
+           interceptions,
+           blocks,
+           clearances,
+           off_duels_att,
+           off_duels_won,
+           def_duels_att,
+           def_duels_won,
+           air_duels_att,
+           air_duels_won,
+           beaten_by_opp,
+           fouls_committed,
+           total_dist,
+           sprint_dist
+    from player_stats_def def
+         inner join players p on def.fk_player_id = p.player_id
+         inner join player_stats_overall ovr on def.fk_player_id = ovr.fk_player_id
+                and def.fk_game_id = ovr.fk_game_id
+)
+
+, cum_defense as (
+
+    select
+        full_name,
+        primary_pos,
+        second_pos,
+        sum(minutes) as total_minutes,
+        round(sum(minutes::numeric) / 90, 2) as _90s, -- # of 90 minutes completed
+        sum(stand_tkl_att) as stand_tkl_att_tot,
+        sum(stand_tkl_won) as stand_tkl_won_tot,
+        sum(slide_tkl_att) as slide_tkl_att_tot,
+        sum(slide_tkl_won) as slide_tkl_won_tot,
+        sum(def_duels_att) as def_duels_att_tot,
+        sum(def_duels_won) as def_duels_won_tot,
+        sum(air_duels_att) as air_duels_att_tot,
+        sum(air_duels_won) as air_duels_won_tot
+    from defense
+    group by full_name, primary_pos, second_pos
+
+)
+
+select
+    full_name,
+    primary_pos,
+    second_pos,
+    _90s,
+    round((stand_tkl_won_tot + slide_tkl_won_tot) / _90s, 2) as succ_tkl_tot_per90,
+    stand_tkl_att_tot,
+    stand_tkl_won_tot,
+    round(stand_tkl_won_tot::numeric / coalesce(nullif(stand_tkl_att_tot, 0), 1), 2) as stand_tkl_succ_rt,
+    slide_tkl_att_tot,
+    slide_tkl_won_tot,
+    round(slide_tkl_won_tot::numeric / coalesce(nullif(slide_tkl_att_tot, 0), 1), 2) as slide_tkl_succ_rt,
+    def_duels_att_tot,
+    def_duels_won_tot,
+    round(def_duels_won_tot::numeric / coalesce(nullif(def_duels_att_tot, 0), 1), 2) as def_duels_succ_rt,
+    air_duels_att_tot,
+    air_duels_won_tot,
+    round(air_duels_won_tot::numeric / coalesce(nullif(air_duels_att_tot, 0), 1), 2) as air_duels_succ_rt
+from cum_defense

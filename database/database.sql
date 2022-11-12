@@ -85,9 +85,9 @@ create table if not exists player_stats_overall (
     fk_player_id int references players (player_id) not null,
     fk_game_id int references games (game_id) not null,
     rating numeric(3,1) not null, -- 10.0 or 5.7
-    minutes int not null,
-    total_dist numeric(3,1) not null,
-    sprint_dist numeric(3,1) not null
+    minutes int not null
+--     total_dist numeric(3,1) not null,
+--     sprint_dist numeric(3,1) not null
 
 );
 

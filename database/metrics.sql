@@ -93,6 +93,7 @@ select
     thball_compl_tot,
     round(thball_compl_tot / _90s, 2) as thballs_compl_per90
 from cum_offense
+where primary_pos like any (array['%W', '%M', 'ST'])
 
 
 
@@ -121,9 +122,7 @@ with defense as (
            air_duels_att,
            air_duels_won,
            beaten_by_opp,
-           fouls_committed,
-           total_dist,
-           sprint_dist
+           fouls_committed
     from player_stats_def def
          inner join players p on def.fk_player_id = p.player_id
          inner join player_stats_overall ovr on def.fk_player_id = ovr.fk_player_id
@@ -170,3 +169,4 @@ select
     air_duels_won_tot,
     round(air_duels_won_tot::numeric / coalesce(nullif(air_duels_att_tot, 0), 1), 2) as air_duels_succ_rt
 from cum_defense
+where primary_pos like any (array['%B', 'C%M'])

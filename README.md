@@ -69,8 +69,8 @@ erDiagram
             integer fk_game_id  FK "the game they played in"
             numeric rating
             integer minutes
-            numeric total_dist
-            numeric sprint_dist
+            integer possession_won
+            integer possession_lost
         }
     PLAYERS }|--|| PLAYER_STATS_OVERALL : have
  
@@ -81,11 +81,7 @@ erDiagram
             integer fk_player_id FK "player who started/subbed in a game"
             integer fk_game_id FK "the game they played in"
             integer possession_pct
-            integer dribble_att
-            integer dribble_compl
-            numeric dribble_dist
             integer dribble_beat
-            integer dribble_knock_on
             integer goals
             numeric non_pen_xg
             integer shots
@@ -97,6 +93,7 @@ erDiagram
             integer players_beat_by_passes
             integer passes_att
             integer passes_compl
+            integer passes_compl_press
             integer lobs_compl
             integer through_balls_compl
             integer crosses_attempted
@@ -114,15 +111,14 @@ erDiagram
             integer fk_game_id FK  "the game they played in"
             integer stand_tkl_att
             integer stand_tkl_won
-            integer slide_tkl_att
-            integer slide_tkl_won
+            integer tkl_att
+            integer tkl_won
             integer interceptions
             integer blocks
             integer clearances
-            integer off_duels_att
-            integer off_duels_won
-            integer def_duels_att
-            integer def_duels_won
+            integer offsides_caused
+            integer duels_att
+            integer duels_won
             integer air_duels_att
             integer air_duels_won
             integer beaten_by_opp
@@ -130,5 +126,16 @@ erDiagram
         }
  
     PLAYERS }|--|| PLAYER_STATS_DEF : have
+
+    SEASONS }|--|{ STANDINGS_SNAPSHOT: of
+        STANDINGS_SNAPSHOT {
+            identity standing_id PK "auto-incrementing"
+            integer fk_season_id FK  "the season this standings snapshot is of"
+            integer fk_team_id FK "the team in the season of this standings snapshot"
+            date standings_as_of
+            integer points
+        }
+    
+    TEAMS }|--|{ STANDINGS_SNAPSHOT: has
 
 ```

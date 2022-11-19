@@ -10,9 +10,9 @@
 -- Database name: (fifa23) is created in projects ./docker-compose.yaml
 -- schema: will use public default
 -----------------------------------
-create schema coys if not exists
+-- create schema coys if not exists;
 
-set search path to coys, public
+-- set search path to coys, public;
 
 create table if not exists leagues (
 

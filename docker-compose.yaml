@@ -1,3 +1,5 @@
+# RUNBOOK: run `docker-compose up` while in its directory, to start/restart services
+
 version: '3.7'
 services:
   postgres:
@@ -20,7 +22,4 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=root
     ports:
       - "8080:80"
-
-
-# RUNBOOK: run `docker compose up` while in its directory, to start/restart services
 

@@ -133,7 +133,8 @@ erDiagram
             integer fk_season_id FK  "the season this standings snapshot is of"
             integer fk_team_id FK "the team in the season of this standings snapshot"
             date standings_as_of
-            integer points
+            integer points,
+            integer goal_diff
         }
     
     TEAMS }|--|{ STANDINGS_SNAPSHOT: has

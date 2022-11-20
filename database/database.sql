@@ -168,7 +168,8 @@ create table if not exists standings_snapshot (
     fk_season_id int references seasons (season_id) not null,
     fk_team_id int references teams (team_id) not null,
     standings_as_of date not null,
-    points integer
+    points integer,
+    goal_diff integer -- standings tiebreaker #1
 
 );
 

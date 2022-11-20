@@ -75,28 +75,28 @@ values
     (1, 'Harry', 'Winks', '1996-02-02', 'CM', 'CDM');
 
 
-insert into standings_snapshot (fk_season_id, fk_team_id, standings_as_of, points)
+insert into standings_snapshot (fk_season_id, fk_team_id, standings_as_of, points, goal_diff)
 values
-    (1, 1, '2022-08-01', 0), -- Tottenham
-    (1, 2, '2022-08-01', 0), -- Arsenal
-    (1, 3, '2022-08-01', 0), -- Aston Villa
-    (1, 4, '2022-08-01', 0), -- Bournemouth
-    (1, 5, '2022-08-01', 0), -- Brentford
-    (1, 6, '2022-08-01', 0), -- Brighton & Hove Albion
-    (1, 7, '2022-08-01', 0), -- Chelsea
-    (1, 8, '2022-08-01', 0), -- Crystal Palace
-    (1, 9, '2022-08-01', 0), -- Everton
-    (1, 10, '2022-08-01', 0), -- Fulham
-    (1, 11, '2022-08-01', 0), -- Leeds United
-    (1, 12, '2022-08-01', 0), -- Leicester City
-    (1, 13, '2022-08-01', 0), -- Liverpool
-    (1, 14, '2022-08-01', 0), -- Manchester City
-    (1, 15, '2022-08-01', 0), -- Manchester United
-    (1, 16, '2022-08-01', 0), -- Newcastle United
-    (1, 17, '2022-08-01', 0), -- Nottingham Forest
-    (1, 18, '2022-08-01', 0), -- Southampton
-    (1, 19, '2022-08-01', 0), -- West Ham United
-    (1, 20, '2022-08-01', 0); -- Wolverhampton Wanderers
+    (1, 1, '2022-08-21', 6, 4), -- Tottenham
+    (1, 2, '2022-08-21', 6, 4), -- Arsenal
+    (1, 3, '2022-08-21', 6, 4), -- Aston Villa
+    (1, 4, '2022-08-21', 0, -3), -- Bournemouth
+    (1, 5, '2022-08-21', 1, -3), -- Brentford
+    (1, 6, '2022-08-21', 3, 0), -- Brighton & Hove Albion
+    (1, 7, '2022-08-21', 4, 2), -- Chelsea
+    (1, 8, '2022-08-21', 1, -1), -- Crystal Palace
+    (1, 9, '2022-08-21', 0, -5), -- Everton
+    (1, 10, '2022-08-21', 2, 0), -- Fulham
+    (1, 11, '2022-08-21', 1, -2), -- Leeds United
+    (1, 12, '2022-08-21', 1, -2), -- Leicester City
+    (1, 13, '2022-08-21', 3, 1), -- Liverpool
+    (1, 14, '2022-08-21', 6, 4), -- Manchester City
+    (1, 15, '2022-08-21', 3, 0), -- Manchester United
+    (1, 16, '2022-08-21', 1, -1), -- Newcastle United
+    (1, 17, '2022-08-21', 3, -1), -- Nottingham Forest
+    (1, 18, '2022-08-21', 4, 1), -- Southampton
+    (1, 19, '2022-08-21', 3, -1), -- West Ham United
+    (1, 20, '2022-08-21', 1, -1); -- Wolverhampton Wanderers
 
 
 

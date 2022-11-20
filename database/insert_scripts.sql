@@ -101,11 +101,10 @@ values
 
 
 --------------------------------------------------------------------------------
--- game1 log: Away vs. Brighton & Hove Albion
 insert into games (fk_season_id, game_num, game_minutes, home_or_away, fk_opp_id, opp_goals, opp_xg, opp_poss_pct, opp_shots, opp_shots_on_targ, my_goals, my_xg, my_shots, my_shots_on_targ)
-values (1, 1, 20,'away',6,1,3.2,42,17,7,2,2.7,11,7);
+values (1, 2, 20,'home',5,0,2.6,51,15,8,3,2.3,12,10);
 
--- game1 log: Away vs. Brighton & Hove Albion
+-- game2 log: home vs. Brentford
 insert into player_stats_overall (
     fk_player_id,
     fk_game_id,
@@ -114,29 +113,30 @@ insert into player_stats_overall (
     possession_won,
     possession_lost)
 values
-    (10,1,7.8,79,5,1), -- Emerson Royal
-    (4,1,6.3,73,4,1), -- Cristian Romero
-    (5,1,6.6,93,4,2), -- Eric Dier
-    (9,1,6.6,79,2,1), -- Ben Davies
-    (14,1,7.8,93,5,5), -- Ivan Perisic
-    (16,1,7,93,3,4), -- Hojberg
-    (17,1,7.1,93,2,7), -- Bentancur
-    (20,1,6.5,93,1,8), -- Son
-    (24,1,7.4,93,0,8), -- Kane
-    (22,1,6.8,73,0,3), -- Deki
+    (10,2,7.3,94,5,4), -- Emerson Royal
+    (4,2,7.5,94,4,5), -- Cristian Romero
+    (5,2,7.8,90,10,2), -- Eric Dier
+    (9,2,7.6,94,4,3), -- Ben Davies
+    (14,2,7.9,94,6,11), -- Ivan Perisic
+    (16,2,7.1,94,2,6), -- Hojberg
+    (17,2,6.9,94,4,3), -- Bentancur
+    (20,2,6.4,70,0,4), -- Son
+    (24,2,7.8,94,1,5), -- Kane
+    (22,2,7.1,70,3,6), -- Deki
 
-    (6,1,5.8,20,2,1), -- Davinson Sanchez
-    (7,1,6.4,14,1,0), -- Clement Lenglet
-    (11,1,6.8,14,0,1), -- Doherty
+    (6,2,6,4,1,1), -- Davinson Sanchez
+--     (7,), -- Clement Lenglet
+--     (11,), -- Doherty
 --     (12,), -- Djed Spence
 --     (13,), -- Ryan Sessegnon
 --     (15,), -- Skipp
---     (18,), -- Bissouma
+    (18,2,5.8,24,0,1), -- Bissouma
 --     (21,), -- Gil
 --     (23,), -- Lucas Moura
-    (25,1,6.4,20,1,1); -- Richarlison
+    (25,2,5.9,24,0,1); -- Richarlison
 
--- game1 log: Away vs. Brighton & Hove Albion
+
+-- game2 log: home vs. Brentford
 insert into player_stats_off (
     fk_player_id,
     fk_game_id,
@@ -159,30 +159,30 @@ insert into player_stats_off (
     crosses_att,
     crosses_compl)
 values
-    (10,1,5,2,0,0,0,0,0,0.2,0,1,7,18,16,4,0,1,3,1), -- Emerson Royal
-    (4,1,2,0,0,0,0,0,0,0,0,0,1,9,8,1,0,0,0,0), -- Cristian Romero
-    (5,1,3,0,0,0,0,0,0,0,0,0,4,14,12,0,0,0,0,0), -- Eric Dier
-    (9,1,3,0,0,0,0,0,0,0,0,0,3,13,12,1,0,0,1,0), -- Ben Davies
-    (14,1,5,0,0,0,1,1,0,0.1,0,2,14,26,22,2,0,2,1,0), -- Ivan Perisic
-    (16,1,7,0,0,0,0,0,1,0.2,1,2,10,22,19,5,0,2,0,0), -- Hojberg
-    (17,1,9,2,0,0.8,2,1,0,0.5,0,1,12,29,26,4,0,4,0,0), -- Bentancur
-    (20,1,6,1,0,0.2,3,1,0,0,0,1,4,18,16,2,1,3,1,0), -- Son
-    (24,1,5,1,1,1.2,2,2,0,0.3,1,1,8,21,17,4,1,7,0,0), -- Kane
-    (22,1,4,0,1,0.6,3,2,0,0,0,1,6,13,12,5,1,3,0,0), -- Deki
+    (10,2,5,2,0,0,0,0,0,0,0,1,16,17,15,2,0,3,1,0), -- Emerson Royal
+    (4,2,7,5,0,0.01,1,1,0,0,0,0,9,26,21,5,0,2,0,0), -- Cristian Romero
+    (5,2,4,1,0,0,0,0,0,0,1,0,11,19,18,6,0,2,0,0), -- Eric Dier
+    (9,2,4,2,0,0,0,0,0,0,1,0,8,19,17,4,0,1,0,0), -- Ben Davies
+    (14,2,4,2,0,0.1,1,1,1,0.01,0,4,6,23,13,0,1,2,2,0), -- Ivan Perisic
+    (16,2,4,1,0,0,0,0,1,0.4,0,1,7,20,15,7,0,5,0,0), -- Hojberg
+    (17,2,4,0,0,0,0,0,1,0.01,0,2,8,22,19,4,0,2,0,0), -- Bentancur
+    (20,2,1,0,1,0.3,2,1,0,0,0,0,0,4,1,0,0,0,0,0), -- Son
+    (24,2,5,3,2,1.6,5,5,0,0,0,0,2,10,7,2,0,5,0,0), -- Kane
+    (22,2,6,3,0,0.1,2,2,0,1,0,1,14,13,7,4,0,1,3,1), -- Deki
 
-    (6,1,0,0,0,0,0,0,0,0,0,0,3,3,2,1,0,0,0,0), -- Davinson Sanchez
-    (7,1,2,0,0,0,0,0,0,0,0,0,1,3,3,0,0,0,0,0), -- Clement Lenglet
-    (11,1,3,0,0,0,0,0,1,0.7,0,2,4,6,4,2,0,0,1,0), -- Doherty
+    (6,2,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0), -- Davinson Sanchez
+--     (7,), -- Clement Lenglet
+--     (11,), -- Doherty
 --     (12,), -- Djed Spence
 --     (13,), -- Ryan Sessegnon
 --     (15,), -- Skipp
---     (18,), -- Bissouma
+    (18,2,0,1,0,0.2,1,0,0,0,0,0,2,1,1,0,0,0,0,0), -- Bissouma
 --     (21,), -- Gil
 --     (23,), -- Lucas Moura
-    (25,1,1,1,0,0,0,0,0,0,0,0,3,4,3,0,0,1,0,0); -- Richarlison
+    (25,2,1,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0); -- Richarlison
 
 
--- game1 log: Away vs. Brighton & Hove Albion
+-- game2 log: home vs. Brentford
 insert into player_stats_def (
     fk_player_id,
     fk_game_id,
@@ -198,24 +198,24 @@ insert into player_stats_def (
     air_duels_won,
     beaten_by_opp)
 values
-    (10,1,2,2,3,0,0,0,6,2,2,2,0), -- Emerson Royal
-    (4,1,2,0,2,2,0,0,6,2,2,1,1), -- Cristian Romero
-    (5,1,2,1,4,0,0,0,6,3,3,2,3), -- Eric Dier
-    (9,1,1,0,1,0,2,0,7,4,4,3,1), -- Ben Davies
-    (14,1,5,3,2,0,0,0,8,3,1,1,2), -- Ivan Perisic
-    (16,1,6,2,1,0,0,0,11,7,1,0,2), -- Hojberg
-    (17,1,7,1,3,1,0,0,15,5,1,0,2), -- Bentancur
-    (20,1,0,0,1,0,0,0,8,3,2,0,2), -- Son
-    (24,1,2,0,0,0,0,0,9,2,0,0,0), -- Kane
-    (22,1,0,0,0,0,0,0,6,4,1,1,0), -- Deki
+    (10,2,0,0,4,0,1,0,2,1,0,0,1), -- Emerson Royal
+    (4,2,1,1,3,0,0,0,7,6,1,1,0), -- Cristian Romero
+    (5,2,6,4,5,3,1,1,14,11,4,2,1), -- Eric Dier
+    (9,2,3,1,2,0,1,1,10,7,1,1,0), -- Ben Davies
+    (14,2,4,2,4,0,1,0,12,5,1,1,5), -- Ivan Perisic
+    (16,2,8,2,2,0,0,0,14,5,2,0,1), -- Hojberg
+    (17,2,7,3,3,0,0,0,20,8,1,0,1), -- Bentancur
+    (20,2,1,0,0,0,0,0,0,0,0,0,0), -- Son
+    (24,2,3,1,0,0,0,0,7,4,3,1,2), -- Kane
+    (22,2,3,0,1,0,1,0,10,4,1,1,1), -- Deki
 
-    (6,1,1,0,3,0,0,0,2,1,1,1,0), -- Davinson Sanchez
-    (7,1,1,1,0,0,0,1,1,0,0,0,0), -- Clement Lenglet
-    (11,1,1,0,0,0,0,0,3,1,1,1,1), -- Doherty
+    (6,2,0,0,1,0,0,0,0,0,0,0,0), -- Davinson Sanchez
+--     (7,), -- Clement Lenglet
+--     (11,), -- Doherty
 --     (12,), -- Djed Spence
 --     (13,), -- Ryan Sessegnon
 --     (15,), -- Skipp
---     (18,), -- Bissouma
+    (18,2,0,0,0,0,0,0,0,0,0,0,0), -- Bissouma
 --     (21,), -- Gil
 --     (23,), -- Lucas Moura
-    (25,1,1,0,0,0,1,0,1,0,1,1,0); -- Richarlison
+    (25,2,0,0,0,0,0,0,1,1,0,0,0); -- Richarlison

@@ -109,6 +109,7 @@ select
     tkl_att_tot,
     tkl_won_tot,
     round(tkl_won_tot::numeric / nullif(tkl_att_tot, 0), 2) as tkl_win_pct,
-    round(tkl_won_tot / _90s, 2) as tkl_won_per90
+    round(tkl_won_tot / _90s, 2) as tkl_won_per90,
+    round(def_actions_tot / _90s, 2) as def_actions_per90
 from cum_stats
 --where primary_pos like any (array['%B', 'C%M'])

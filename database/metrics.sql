@@ -1,4 +1,3 @@
--- starting pass at  metrics
 with raw_stats as (
     select
         ovr_id,
@@ -52,12 +51,19 @@ order by full_name, fk_game_id
         sum(poss_lost) as poss_lost_tot,
         sum(dribble_beat) as dribble_beat_tot,
         sum(shots) as shots_tot,
+        sum(passes_att) as pass_att_tot, -- new
+        sum(passes_compl) as pass_compl_tot, -- new
+        sum(passes_compl_press) as pass_compl_press_tot, -- new
         sum(goals) as goals_tot,
         sum(non_pen_xg) as npxg_tot,
         sum(assists) as assist_tot,
         sum(xa) as xa_tot,
+        sum(second_assists) as second_assist_tot, -- new
+        sum(key_passes) as key_pass_tot, -- new
         sum(players_beat_passes) as pbp_tot,
         sum(through_balls_compl) as thrgh_ball_tot,
+        sum(crosses_att) as cross_att_tot, -- new
+        sum(crosses_compl) as cross_compl_tot, -- new
     -- defensive cumulative stats
         sum(tackles_att) as tkl_att_tot,
         sum(tackles_won) as tkl_won_tot,
@@ -96,20 +102,31 @@ select
     round(npxg_tot / _90s, 2) as npxg_per90,
     round(goals_tot - npxg_tot, 2) as goals_minus_npxg,
     --passing
+    round(pass_compl_tot * 4.5 / _90s, 2) as pass_compl_per90, --4.5 is extrapolating 20 minutes of real game time
+    round(pass_compl_tot::numeric / nullif(pass_att_tot,0),2) as pass_compl_pct,
     assist_tot,
     xa_tot,
     round(xa_tot / _90s, 2) as xa_per90,
     round((xa_tot + npxg_tot) / _90s, 2) as npxg_plus_xa_per90,
+    second_assist_tot,
+    key_pass_tot,
+    round(key_pass_tot::numeric / _90s, 2) as key_pass_per_90,
     pbp_tot,
     round (pbp_tot / _90s, 2) as pbp_per90, -- players beat by passes
     thrgh_ball_tot,
     round(thrgh_ball_tot / _90s, 2) as thrgh_balls_per90,
-
+    cross_att_tot,
+    cross_compl_tot,
+    round(cross_compl_tot::numeric / nullif(cross_att_tot,0), 2) as cross_succ_pct,
     -- defensive
     tkl_att_tot,
     tkl_won_tot,
     round(tkl_won_tot::numeric / nullif(tkl_att_tot, 0), 2) as tkl_win_pct,
     round(tkl_won_tot / _90s, 2) as tkl_won_per90,
-    round(def_actions_tot / _90s, 2) as def_actions_per90
+    round(def_actions_tot / _90s, 2) as def_actions_per90,
+    duels_won_tot,
+    round(duels_won_tot::numeric / nullif(duels_att_tot, 0), 2) as duel_win_pct,
+    air_duels_won_tot,
+    round(air_duels_won_tot::numeric / nullif(air_duels_att_tot, 0), 2) as air_duel_win_pct
 from cum_stats
 --where primary_pos like any (array['%B', 'C%M'])

@@ -100,6 +100,7 @@ select
     round(goals_tot / _90s, 2) as goals_per90,
     npxg_tot,
     round(npxg_tot / _90s, 2) as npxg_per90,
+    round(npxg_tot / nullif(shots_tot,0), 2) as npxg_per_shot, -- indicator of avg shot quality
     round(goals_tot - npxg_tot, 2) as goals_minus_npxg,
     --passing
     round(pass_compl_tot * 4.5 / _90s, 2) as pass_compl_per90, --4.5 is extrapolating 20 minutes of real game time
@@ -129,4 +130,4 @@ select
     air_duels_won_tot,
     round(air_duels_won_tot::numeric / nullif(air_duels_att_tot, 0), 2) as air_duel_win_pct
 from cum_stats
---where primary_pos like any (array['%B', 'C%M'])
+--where primary_pos like 'CM'--like any (array['%M', 'C%M'])

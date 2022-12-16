@@ -106,14 +106,12 @@ create table if not exists player_stats (
     passes_att int,
     passes_compl int,
     passes_compl_press int, -- passes completed under pressure
-    through_balls_compl int, -- through ball + lobbed through ball
     crosses_att int,
     crosses_compl int,
     -- defensive stats
     tackles_att int, -- slide + standing attempts
     tackles_won int, -- slide + standing won
     intrcpts_blocks_clears int, -- interceptions + blocks + clearances
-    offsides_caused int,
     duels_att int, -- off + def duels attempted
     duels_won int, -- off + def duels won
     air_duels_att int,

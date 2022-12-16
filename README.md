@@ -83,13 +83,11 @@ erDiagram
             integer passes_att
             integer passes_compl
             integer passes_compl_press
-            integer through_balls_compl
             integer crosses_attempted
             integer crosses_compl
             integer tackles_att
             integer tackles_won
             integer intrcpts_blocks_clears
-            integer offsides_caused
             integer duels_att
             integer duels_won
             integer air_duels_att

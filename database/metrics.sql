@@ -21,14 +21,12 @@ with raw_stats as (
         passes_att,
         passes_compl,
         passes_compl_press,
-        through_balls_compl,
         crosses_att,
         crosses_compl,
     -- defensive stats
         tackles_att,
         tackles_won,
         intrcpts_blocks_clears,
-        offsides_caused,
         duels_att,
         duels_won,
         air_duels_att,
@@ -61,14 +59,12 @@ order by full_name, fk_game_id
         sum(second_assists) as second_assist_tot, -- new
         sum(key_passes) as key_pass_tot, -- new
         sum(players_beat_passes) as pbp_tot,
-        sum(through_balls_compl) as thrgh_ball_tot,
         sum(crosses_att) as cross_att_tot, -- new
         sum(crosses_compl) as cross_compl_tot, -- new
     -- defensive cumulative stats
         sum(tackles_att) as tkl_att_tot,
         sum(tackles_won) as tkl_won_tot,
         sum(intrcpts_blocks_clears) as def_actions_tot,
-        sum(offsides_caused) as offsided_caused_tot,
         sum(duels_att) as duels_att_tot,
         sum(duels_won) as duels_won_tot,
         sum(air_duels_att) as air_duels_att_tot,
@@ -114,8 +110,6 @@ select
     round(key_pass_tot::numeric / _90s, 2) as key_pass_per_90,
     pbp_tot,
     round (pbp_tot / _90s, 2) as pbp_per90, -- players beat by passes
-    thrgh_ball_tot,
-    round(thrgh_ball_tot / _90s, 2) as thrgh_balls_per90,
     cross_att_tot,
     cross_compl_tot,
     round(cross_compl_tot::numeric / nullif(cross_att_tot,0), 2) as cross_succ_pct,

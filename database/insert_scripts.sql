@@ -59,7 +59,8 @@ values
     (1, 'Tiago', 'Ribeiro', '2002-03-14', 'CDM', NULL),
     (1, 'Pablo', 'Gozálbez', '2001-04-30', 'CAM', 'CM'),
     (1, 'Vicente', 'Esquerdo', '1999-01-02', 'CM', NULL),
-    (1, 'Jorge', 'Sáenz', '1996-11-17', 'CB', NULL);
+    (1, 'Jorge', 'Sáenz', '1996-11-17', 'CB', NULL),
+    (1, 'Diego', 'López Noguerol', '2002-05-13', 'RW', 'ST');
 
 --------------------------------------------------------------------------------
 -- NOTE: transition script frmo player_stats_{ovr,off,def} to player_stats table 2022-12-17
@@ -118,116 +119,101 @@ insert into player_stats (fk_player_id, fk_game_id, rating, minutes, poss_won, p
 select * from player_stats_cte;
 
 
---------------------------------------------------------------------------------
--- game7 log: home vs. cadiz
-insert into games (fk_season_id, game_num, game_minutes, home_or_away, fk_opp_id, opp_goals, opp_xg, opp_poss_pct, opp_shots, opp_shots_on_targ, my_goals, my_xg, my_shots, my_shots_on_targ)
-values (1, 7, 20,'home',19,1,1.6,36,8,3,2,1.6,12,5);
 
--- game7 log: home vs. cadiz
-insert into player_stats_overall (
+
+--------------------------------------------------------------------------------
+-- Standings
+insert into standings_snapshot (fk_season_id, fk_team_id, standings_as_of, points, goal_diff, games_played)
+values
+    (1, 1, '2022-10-01', 13, 3, 7), -- valencia
+    (1, 2, '2022-10-01', 19, 10, 7), -- Real Madrid
+    (1,3, '2022-10-01', 17, 10, 7), -- Barcelona
+    (1, 4, '2022-10-01', 11, 2, 7), -- Athletic Club Bilbao
+    (1,5, '2022-10-01', 18, 10, 7), -- Atletico Madrid
+    (1,6, '2022-10-01', 10, 3, 7), -- Real Betis
+    (1,7, '2022-10-01', 11, 1, 7), -- Real Sociedad
+    (1,8, '2022-10-01', 12, 1, 7), -- CA Osasuna
+    (1,9, '2022-10-01', 13, 4, 7), -- Villarreal
+    (1, 10, '2022-10-01', 6, -2, 7), -- Rayo Vallecano
+    (1, 11, '2022-10-01', 10, -1, 7), -- RC Celta Vigo
+    (1, 12, '2022-10-01', 3, -8, 7), -- Mallorca
+    (1, 13, '2022-10-01', 2, -11, 7), -- Girona
+    (1, 14, '2022-10-01', 7, -5, 7), -- Almeria
+    (1, 15, '2022-10-01', 4, -7, 7), -- R. Valladolid CF
+    (1, 16, '2022-10-01', 8, -2, 7), -- Getafe
+    (1, 17, '2022-10-01', 8, -1, 7), -- Sevilla
+    (1, 18, '2022-10-01', 7, -2, 7), -- Espanyol
+    (1, 19, '2022-10-01', 4, -3, 7), -- Cadiz CF
+    (1, 20, '2022-10-01', 8 , -2, 7); -- Elche CF
+
+
+--------------------------------------------------------------------------------
+-- game8 log: home vs. Getafe
+insert into games (
+    fk_season_id,
+    game_num,
+    game_minutes,
+    home_or_away,
+    fk_opp_id,
+    opp_goals,
+    opp_xg,
+    opp_poss_pct,
+    opp_shots,
+    my_goals,
+    my_xg,
+    my_shots)
+values (1, 8, 18,'home',16,2,4.1,47,12,1,3.55,17);
+
+insert into player_stats (
     fk_player_id,
     fk_game_id,
     rating,
-    minutes)
-values
-    (2, 7,7.1,92), -- Goalie: Mamardashvili
-    (12,7,6.0,66), -- Correia
-    (4, 7,7.5,92), --Diakhaby
-    (7,7,7.6,92), -- Comert
-    (9, 7,7,92), --gaya
-    (14, 7,7.4,92), -- Guillamon
-    (16, 7,6.8,92), -- Nico Gonzalez
-    (18,7,6.7,92), -- Andre Almeida
-    (20, 7,6.9,92), -- Lino
-    (24,7,6.9,45), -- Cavani
-    (19,7,6.2,66), -- Kluivert
-
-    --(5, 7), -- Paulista
-    --(6,7), --ozkacar
-    --(11, 7), -- Lato
-    --(19,7,), -- Kluivert
-    --(10,7), -- vazquez
-    --(17,7), -- Iliax Moriba
-    --(15,7), -- Musah
-    (13,7,6.1,26), -- Dmitri Foulquier
-    (21,7,6.6,26), -- Castillejo
-    --(22, 7) -- Duro
-    (23, 7,6.2,47) -- Marcos Andre
-
-
-
--- game7 log: home vs. cadiz
-insert into player_stats_off (
-    fk_player_id,
-    fk_game_id,
-    possession_pct,
-    dribble_att,
-    dribble_compl,
-    dribble_dist,
+    minutes,
+    poss_won,
+    poss_lost,
     dribble_beat,
-    dribble_knock_on,
     goals,
     non_pen_xg,
     shots,
-    shots_on_targ,
     assists,
     xa,
     second_assists,
     key_passes,
-    players_beat_by_passes,
+    players_beat_passes,
     passes_att,
     passes_compl,
-    lobs_compl,
-    through_balls_compl,
+    passes_compl_press,
     crosses_att,
-    crosses_compl)
+    crosses_compl,
+    tackles_att,
+    tackles_won,
+    intrcpts_blocks_clears,
+    duels_att,
+    duels_won,
+    air_duels_att,
+    air_duels_won
+)
 values
-    (12,7,4,10,10,0.3,0,3,0,0,0,0,0,0,0,0,3,11,6,0,3,1,1), -- Correia
-    (4, 7,3,9,9,0.2,1,2,1,0.3,1,1,0,0,0,0,2,9,7,1,0,0,0), --Diakhaby
-    (7,7,4,13,13,0.3,1,3,0,0,0,0,0,0,0,0,4,14,12,0,2,0,0), -- Comert
-    (9, 7,7,21,21,0.5,2,6,0,0.2,1,0,0,0,0,1,5,24,17,0,1,4,0), --gaya
-    (14, 7,12,28,26,0.9,4,11,0,0,0,0,0,0,0,0,19,29,24,0,1,1,0), -- Guillamon
-    (16, 7,6,23,22,0.4,0,5,0,0,0,0,0,0.2,1,4,14,25,23,0,6,0,0), -- Nico Gonzalez
-    (18,7,8,22,20,0.6,1,7,0,0,0,0,0,0,0,0,6,23,20,2,3,0,0), -- Andre Almeida
-    (20, 7,4,14,12,0.3,0,8,0,0.3,3,1,1,0.2,0,2,4,11,10,0,5,0,0), -- Lino
-    (24,7,3,10,9,0.2,0,4,1,0.6,2,1,0,0,0,2,0,8,5,0,2,0,0), -- Cavani
-    (19,7,3,9,8,0.2,0,6,0,0.2,2,1,0,0,0,1,6,9,6,0,3,1,0), -- Kluivert
+    (13,8,7.5,92,5,5,2,0,0,0,0,0,0,0,9,19,13,3,2,0,3,2,4,10,6,2,1), -- Dmitri Foulquier
+    (5, 8,7.4,92,9,2,0,0,0,0,0,0,0,0,6,14,13,5,0,0,7,4,3,10,8,4,3), -- Paulista
+    (7,8,6.5,92,5,4,1,0,0,0,0,0,0,0,5,9,7,3,0,0,4,3,6,9,5,1,0), -- Comert
+    (9, 8,7.6,92,6,5,0,0,0.1,1,0,0,1,4,15,22,17,3,3,1,1,0,5,8,3,0,0), --gaya
+    (14, 8,6.4,92,2,3,1,0,0.1,1,0,0,0,0,5,15,13,4,0,0,1,1,1,5,2,3,1), -- Guillamon
+    (17,8,5.8,64,0,2,1,0,0.2,3,0,0,0,1,4,15,15,2,0,0,1,0,0,5,2,1,0), -- Iliax Moriba
+    (15,8,6.4,79,3,1,0,0,0.4,1,0,0,0,0,6,18,16,7,0,0,1,1,1,4,1,4,3), -- Musah
+    (20,8,7.1,92,0,6,0,0,0.3,3,1,1.2,0,3,9,13,10,2,2,2,1,0,0,5,3,1,0), -- Lino
+    (24,8,6.9,38,0,3,0,1,0.75,1,0,0,0,0,2,9,6,1,0,0,0,0,0,2,0,1,0), -- Cavani
+    (19,8,6.7,64,1,8,3,0,0.3,3,0,0.6,0,4,6,13,9,3,3,1,1,0,1,6,3,2,2), -- Kluivert
 
-    --(5, 7), -- Paulista
-    --(6,7), --ozkacar
-    --(11, 7), -- Lato
+    --(12,8,), -- Correia
+    --(4, 8,), --Diakhaby
+    --(6,8,), --ozkacar
+    (11, 8,6.1,28,0,0,0,0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,1,1,0,0), -- Lato
     --(19,7,), -- Kluivert
     --(10,7), -- vazquez
-    --(17,7), -- Iliax Moriba
-    --(15,7), -- Musah
-    (13,7,1,3,3,0,0,0,0,0,0,0,0,0.1,0,1,1,3,2,0,1,0,0), -- Dmitri Foulquier
-    (21,7,4,10,9,0.4,1,8,0,0,2,1,0,0,0,0,2,7,5,0,0,0,0), -- Castillejo
+    (16, 8,5.5,28,2,1,0,0,0,0,0,0,0,0,2,4,4,1,0,0,0,0,1,6,0,0,0), -- Nico Gonzalez
+    --(18, 8,), -- Andre Almeida
+    (21,8,6.0,13,0,1,1,0,0.3,2,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0), -- Castillejo
     --(22, 7) -- Duro
-    (23, 7,3,10,9,0.2,0,4,0,0,1,0,0,0,0,0,5,9,8,0,4,0,0) -- Marcos Andre
-
-
--- game7 log: home vs. cadiz
-insert into player_stats_def (fk_player_id, fk_game_id, stand_tkl_att, stand_tkl_won, slide_tkl_att, slide_tkl_won, interceptions, blocks, clearances, off_duels_att, off_duels_won, def_duels_att, def_duels_won, air_duels_att, air_duels_won, beaten_by_opp, fouls_committed)
-values
-    (12,7,1,0,1,0,2,0,0,2,0,1,0,0,0,1,0), -- Correia
-    (4, 7,2,1,1,0,2,0,0,2,1,8,6,2,1,3,0), --Diakhaby
-    (7,7,3,3,3,1,2,1,0,2,2,4,3,2,0,0,1), -- Comert
-    (9, 7,1,0,2,0,4,0,0,3,2,8,5,0,0,4,0), --gaya
-    (14, 7,7,0,0,0,1,1,1,8,4,11,4,1,1,1,0), -- Guillamon
-    (16, 7,2,0,0,0,3,0,0,4,2,2,0,1,1,1,0), -- Nico Gonzalez
-    (18,7,3,1,0,0,1,0,0,6,1,4,4,1,0,2,0), -- Andre Almeida
-    (20, 7,2,0,0,0,1,0,0,6,3,3,2,2,1,2,0), -- Lino
-    (24,7,0,0,0,0,0,0,0,05,2,2,2,1,0,0,0), -- Cavani
-    (19,7,0,0,2,0,0,0,0,2,2,4,1,1,0,2,0), -- Kluivert
-
-    --(5, 7), -- Paulista
-    --(6,7), --ozkacar
-    --(11, 7), -- Lato
-    --(19,7,), -- Kluivert
-    --(10,7), -- vazquez
-    --(17,7), -- Iliax Moriba
-    --(15,7), -- Musah
-    (13,7,1,0,1,0,0,0,0,1,1,2,0,1,0,1,0), -- Dmitri Foulquier
-    (21,7,1,1,1,0,1,0,0,3,2,1,1,0,0,0,0), -- Castillejo
-    --(22, 7) -- Duro
-    (23, 7,0,0,0,0,0,0,1,6,4,0,0,1,1,0,0) -- Marcos Andre
+    (23,8,6.1,54,1,1,1,0,0.3,2,0,0.05,0,2,4,5,5,1,0,0,0,0,1,2,2,2,0) -- Marcos Andre
+    --(31, 8,) -- Diego Lopez

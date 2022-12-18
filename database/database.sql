@@ -68,13 +68,10 @@ create table if not exists games (
     opp_xg numeric(3,2) not null, -- 0.09
     opp_poss_pct numeric(4,2) not null, -- 45.8 or 45.80 or 46
     opp_shots int not null,
-    opp_shots_on_targ int,
     my_goals int not null,
     my_xg numeric(3,2) not null,
     my_poss_pct numeric(4,2) generated always as (100 - opp_poss_pct) stored, -- auto-generated on any row write
-    my_shots int not null,
-    my_shots_on_targ int
-
+    my_shots int not null
 );
 
 comment on table games is 'each record represents a team summary of a game I played in fifa career mode';
@@ -197,8 +194,8 @@ create table if not exists standings_snapshot (
     fk_team_id int references teams (team_id) not null,
     standings_as_of date not null,
     points integer,
-    goal_diff integer -- standings tiebreaker #1
-
+    goal_diff integer, -- standings tiebreaker #1
+    games_played integer
 );
 
 comment on table standings_snapshot is 'each record represents a teams place in a season as of a date snapshot';

@@ -1,36 +1,36 @@
+-- starting pass at offensive rate metrics
 with player_stats_cte as (
-    select
-        ovr_id,
-        fk_player_id,
-        fk_game_id,
-        p.full_name,
-        p.primary_pos,
-        rating,
-        minutes,
-        poss_won, -- NOTE: new columns not modeled in prior tables
-        poss_lost, -- NOTE: new columns not modeled in prior tables
-        dribble_beat,
-        goals,
-        non_pen_xg,
-        shots,
-        assists,
-        xa,
-        second_assists,
-        key_passes,
-        players_beat_passes,
-        passes_att,
-        passes_compl,
-        passes_compl_press, -- NOTE: new columns not modeled in prior tables
-        crosses_att,
-        crosses_compl,
-        -- DEFENSE
-        tackles_att,
-        tackles_won,
-        intrcpts_blocks_clears,
-        duels_att,
-        duels_won,
-        air_duels_att,
-        air_duels_won
+    select ovr_id,
+           fk_player_id,
+           fk_game_id,
+           p.full_name,
+           p.primary_pos,
+           rating,
+           minutes,
+           poss_won, -- NOTE: new columns not modeled in prior tables
+           poss_lost, -- NOTE: new columns not modeled in prior tables
+           dribble_beat,
+           goals,
+           non_pen_xg,
+           shots,
+           assists,
+           xa,
+           second_assists,
+           key_passes,
+           players_beat_passes,
+           passes_att,
+           passes_compl,
+           passes_compl_press, -- NOTE: new columns not modeled in prior tables
+           crosses_att,
+           crosses_compl,
+           -- DEFENSE
+           tackles_att,
+           tackles_won,
+           intrcpts_blocks_clears,
+           duels_att,
+           duels_won,
+           air_duels_att,
+           air_duels_won
     from player_stats
     inner join players p on player_stats.fk_player_id = p.player_id
 )
@@ -100,10 +100,14 @@ select
     round(pass_compl_tot * 4.5 / _90s, 2) as pass_compl_per90, --4.5 is extrapolating 20 minutes of real game time
     round(pass_compl_tot::numeric / nullif(pass_att_tot,0),2) as pass_compl_pct,
     assist_tot,
+    second_assist_tot,
+    assist_tot + second_assist_tot as goal_creating_actions,
     xa_tot,
+    round(assist_tot - xa_tot, 2) as assist_minus_xa,
     round(xa_tot / _90s, 2) as xa_per90,
     round((xa_tot + npxg_tot) / _90s, 2) as npxg_plus_xa_per90,
-    second_assist_tot,
+    assist_tot + second_assist_tot + goals_tot as goal_involvements_tot,
+    round((assist_tot + second_assist_tot + goals_tot) / _90s, 2)  as goal_involvements_per90,
     key_pass_tot,
     round(key_pass_tot::numeric / _90s, 2) as key_pass_per_90,
     pbp_tot,
@@ -123,4 +127,3 @@ select
     air_duels_won_tot,
     round(air_duels_won_tot::numeric / nullif(air_duels_att_tot, 0), 2) as air_duel_win_pct
 from cum_stats
---where primary_pos like any (array['%B', 'C%M'])

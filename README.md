@@ -62,8 +62,8 @@ erDiagram
             text secondary_pos
         }
     
-    GAMES }|--|| PLAYER_STATS_OVERALL : belong-to
-        PLAYER_STATS_OVERALL {
+    GAMES }|--|| PLAYER_STATS : belong-to
+        PLAYER_STATS {
             identity ovr_id PK "auto-incrementing"
             integer fk_player_id FK "player who started/subbed in a game"
             integer fk_game_id  FK "the game they played in"
@@ -71,21 +71,10 @@ erDiagram
             integer minutes
             integer possession_won
             integer possession_lost
-        }
-    PLAYERS }|--|| PLAYER_STATS_OVERALL : have
- 
- 
-    GAMES }|--|| PLAYER_STATS_OFF : belong-to
-        PLAYER_STATS_OFF {
-            identity off_id PK "auto-incrementing"
-            integer fk_player_id FK "player who started/subbed in a game"
-            integer fk_game_id FK "the game they played in"
-            integer possession_pct
             integer dribble_beat
             integer goals
             numeric non_pen_xg
             integer shots
-            integer shots_on_targ
             integer assists
             numeric xa
             integer second_assists
@@ -94,38 +83,19 @@ erDiagram
             integer passes_att
             integer passes_compl
             integer passes_compl_press
-            integer lobs_compl
-            integer through_balls_compl
             integer crosses_attempted
             integer crosses_compl
-            
-        }
- 
-    PLAYERS }|--|| PLAYER_STATS_OFF : have
- 
- 
-    GAMES }|--|| PLAYER_STATS_DEF : belong-to
-        PLAYER_STATS_DEF {
-            identity def_id PK "auto-incrementing"
-            integer fk_player_id FK "player who started/subbed in a game"
-            integer fk_game_id FK  "the game they played in"
-            integer stand_tkl_att
-            integer stand_tkl_won
-            integer tkl_att
-            integer tkl_won
-            integer interceptions
-            integer blocks
-            integer clearances
-            integer offsides_caused
+            integer tackles_att
+            integer tackles_won
+            integer intrcpts_blocks_clears
             integer duels_att
             integer duels_won
             integer air_duels_att
             integer air_duels_won
-            integer beaten_by_opp
-            integer fouls_committed            
+            
         }
+    PLAYERS }|--|| PLAYER_STATS : have
  
-    PLAYERS }|--|| PLAYER_STATS_DEF : have
 
     SEASONS }|--|{ STANDINGS_SNAPSHOT: of
         STANDINGS_SNAPSHOT {

@@ -12,7 +12,7 @@ services:
       - '15432:5432'
     volumes:
       # save the pg filesystem onto my computer after container goes down
-      - "./pg_data_coys:/var/lib/postgresql/data:rw"
+      - "./pg_data:/var/lib/postgresql/data:rw"
       # place my database DDL SQL into /docker-entrypoint-initb.d folder, executes when container starts
       - "./database/database.sql:/docker-entrypoint-initdb.d/database.sql"
   pgadmin:

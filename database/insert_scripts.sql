@@ -60,7 +60,8 @@ values
     (1, 'Pablo', 'Gozálbez', '2001-04-30', 'CAM', 'CM'),
     (1, 'Vicente', 'Esquerdo', '1999-01-02', 'CM', NULL),
     (1, 'Jorge', 'Sáenz', '1996-11-17', 'CB', NULL),
-    (1, 'Diego', 'López Noguerol', '2002-05-13', 'RW', 'ST');
+    (1, 'Diego', 'López Noguerol', '2002-05-13', 'RW', 'ST'),
+    (1,'Luis', 'Chávez','1996-01-15', 'CM', 'CDM'); -- joined as free agent signing on 2023-01-04
 
 --------------------------------------------------------------------------------
 -- NOTE: transition script frmo player_stats_{ovr,off,def} to player_stats table 2022-12-17

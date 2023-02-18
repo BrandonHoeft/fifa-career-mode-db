@@ -49,7 +49,7 @@ create table if not exists players (
     last_name text not null,
     full_name text generated always as (first_name || ' ' || last_name) stored, -- auto-generated on any new row write
     birth_year int,
-    primary_pos text,
+    primary_pos text
 
 );
 
@@ -99,7 +99,7 @@ create table if not exists player_stats (
     -- defensive stats
     interceptions int,
     duels_att int, -- off + def duels attempted
-    duels_won int, -- off + def duels won
+    duels_won int -- off + def duels won
 );
 
 

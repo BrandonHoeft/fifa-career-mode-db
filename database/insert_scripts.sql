@@ -7,6 +7,11 @@ values
     ('Europa League'),
     ('Europa Conference League');
 
+insert into seasons (fk_league_id, fk_team_id, year)
+values
+    (1, 1, 2022), -- Werder Bremen 1st season Buli 2
+    (2, 1, 2022) -- Werder Bremen 1st season DFB-Pokal
+
 insert into teams (name)
 values ('Werder Bremen'),
         ('1. FC Köln'),
@@ -52,6 +57,7 @@ values
     (1, 'Milos', 'Veljkovic', 1995, 'CB'),
     (1, 'Niklas', 'Stark', 1995, 'CB'),
     (1, 'Fabio', 'Chiarodia', 2005, 'CB'),
+    (1, 'Kim Kee', 'Hee', 1989, 'CB'),
     (1, 'Lee', 'Buchanan', 2001, 'LB'),
     (1, 'Anthony', 'Jung', 1991, 'LB'),
     (1, 'Mitchel', 'Weiser', 1994, 'RB'),
@@ -73,26 +79,24 @@ values
 
 insert into standings_snapshot (fk_season_id, fk_team_id, standings_as_of, points, goal_diff)
 values
-    (1, 1, '2022-08-21', 6, 4), -- Tottenham
-    (1, 2, '2022-08-21', 6, 4), -- Arsenal
-    (1, 3, '2022-08-21', 6, 4), -- Aston Villa
-    (1, 4, '2022-08-21', 0, -3), -- Bournemouth
-    (1, 5, '2022-08-21', 1, -3), -- Brentford
-    (1, 6, '2022-08-21', 3, 0), -- Brighton & Hove Albion
-    (1, 7, '2022-08-21', 4, 2), -- Chelsea
-    (1, 8, '2022-08-21', 1, -1), -- Crystal Palace
-    (1, 9, '2022-08-21', 0, -5), -- Everton
-    (1, 10, '2022-08-21', 2, 0), -- Fulham
-    (1, 11, '2022-08-21', 1, -2), -- Leeds United
-    (1, 12, '2022-08-21', 1, -2), -- Leicester City
-    (1, 13, '2022-08-21', 3, 1), -- Liverpool
-    (1, 14, '2022-08-21', 6, 4), -- Manchester City
-    (1, 15, '2022-08-21', 3, 0), -- Manchester United
-    (1, 16, '2022-08-21', 1, -1), -- Newcastle United
-    (1, 17, '2022-08-21', 3, -1), -- Nottingham Forest
-    (1, 18, '2022-08-21', 4, 1), -- Southampton
-    (1, 19, '2022-08-21', 3, -1), -- West Ham United
-    (1, 20, '2022-08-21', 1, -1); -- Wolverhampton Wanderers
+    (1, 1, '2022-08-01', 0, 0), -- Werder Bremen
+    (1, 19, '2022-08-01', 0, 0), -- Arminia Bielefeld
+    (1, 20, '2022-08-01', 0, 0), -- Eintracht Braunschweig
+    (1, 21, '2022-08-01', 0, 0), -- Darmstadt 98
+    (1, 22, '2022-08-01', 0, 0), -- Fortuna Düsseldorf
+    (1, 24, '2022-08-01', 0, 0), -- Hamburger SV
+    (1, 25, '2022-08-01', 0, 0), -- Hannover 96
+    (1, 26, '2022-08-01', 0, 0), -- 1. FC Heidenheim
+    (1, 27, '2022-08-01', 0, 0), -- 1. FC Kaiserslautern
+    (1, 28, '2022-08-01', 0, 0), -- Karlsruher SC
+    (1, 29, '2022-08-01', 0, 0), -- Holstein Kiel
+    (1, 30, '2022-08-01', 0, 0), -- 1. FC Magdeburg
+    (1, 31, '2022-08-01', 0, 0), -- 1. FC Nürnberg
+    (1, 32, '2022-08-01', 0, 0), -- SC Paderborn
+    (1, 33, '2022-08-01', 0, 0), -- Jahn Regensburg
+    (1, 34, '2022-08-01', 0, 0), -- Hansa Rostock
+    (1, 35, '2022-08-01', 0, 0), -- SV Sandhausen
+    (1, 36, '2022-08-01', 0, 0) -- FC St Pauli
 
 
 --------------------------------------------------------------------------------

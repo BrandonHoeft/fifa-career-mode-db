@@ -116,7 +116,7 @@ insert into games (
     my_shots
 )
 values
-    ();
+    (1, 1, 12, 'home', 25,);
 
 insert into player_stats (
     fk_player_id,
@@ -136,5 +136,36 @@ insert into player_stats (
     passes_compl,
     interceptions,
     duels_att,
-    duels_won,
+    duels_won
 )
+values
+    (8,1,), --Anthony Jung
+    (1,1,), --Marco Friedl
+    (5,1,), -- Fabio Chiarodia
+    (4,1,), --Niklas Stark
+    (9,1,), --Mitchel Weiser
+    (11,1,), --Christian Groß
+    (13,1,), --Jens Stage
+    (17,1,), --Romano Schmid
+    (20,1,), --Niclas Füllkrug
+    (24,1,), --Maximilian Philipp
+
+    (3,1,), --Milos Veljkovic
+    (6,1,), --Kim Kee Hee
+    (7,1,), --Lee Buchanan
+    (10,1,), --Felix Agu
+    (12,1,), --Ilia Gruev
+    (14,1,), --Jean Manuel Mbom
+    (15,1,), --Dikeni Salifou
+    (16,1,), --Tom Berger
+    (19,1,), --Niklas Schmidt
+    (22,1,), --Oliver Burke
+    (23,1,), --Eren Dinkci
+
+    --(2,1,), --Amos Pieper
+    --(18,1,), --Leonardo Bittencourt
+    --(21,1,), --Marvin Ducksch
+
+
+
+

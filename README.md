@@ -55,9 +55,8 @@ erDiagram
             text first_name
             text last_name
             text-generated full_name
-            date birthday
+            date birth_year
             text primary_pos
-            text secondary_pos
         }
     
     GAMES }|--|| PLAYER_STATS : belong-to
@@ -76,21 +75,13 @@ erDiagram
             integer assists
             numeric xa
             integer second_assists
-            integer key_passes
             integer players_beat_by_passes
             integer passes_att
             integer passes_compl
             integer passes_compl_press
-            integer through_balls_compl
-            integer crosses_attempted
-            integer crosses_compl
-            integer tackles_att
-            integer tackles_won
-            integer intrcpts_blocks_clears
+            integer interceptions
             integer duels_att
             integer duels_won
-            integer air_duels_att
-            integer air_duels_won
             
         }
     PLAYERS }|--|| PLAYER_STATS : have

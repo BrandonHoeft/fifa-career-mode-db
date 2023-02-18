@@ -10,9 +10,6 @@
 -- Database name: (fifa23) is created in projects ./docker-compose.yaml
 -- schema: will use public default
 -----------------------------------
--- create schema coys if not exists;
-
--- set search path to coys, public;
 
 create table if not exists leagues (
 
@@ -51,9 +48,8 @@ create table if not exists players (
     first_name text not null,
     last_name text not null,
     full_name text generated always as (first_name || ' ' || last_name) stored, -- auto-generated on any new row write
-    birthday date not null,
+    birth_year int,
     primary_pos text,
-    second_pos text
 
 );
 
@@ -89,7 +85,6 @@ create table if not exists player_stats (
     -- possesion related
     poss_won int,
     poss_lost int,
-    dribble_beat int,
     -- shooting related
     goals int,
     non_pen_xg numeric(3,1),
@@ -98,22 +93,13 @@ create table if not exists player_stats (
     assists int,
     xa numeric(3,1),
     second_assists int,
-    key_passes int,
     players_beat_passes int, -- # of oppo players cut out by your pass
     passes_att int,
     passes_compl int,
-    passes_compl_press int, -- passes completed under pressure
-    through_balls_compl int, -- through ball + lobbed through ball
-    crosses_att int,
-    crosses_compl int,
     -- defensive stats
-    tackles_att int, -- slide + standing attempts
-    tackles_won int, -- slide + standing won
-    intrcpts_blocks_clears int, -- interceptions + blocks + clearances
+    interceptions int,
     duels_att int, -- off + def duels attempted
     duels_won int, -- off + def duels won
-    air_duels_att int,
-    air_duels_won int
 );
 
 

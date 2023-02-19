@@ -116,7 +116,7 @@ insert into games (
     my_shots
 )
 values
-    (1, 1, 12, 'home', 25,);
+    (1, 1, 12, 'home', 25,2,2.4,53,6,0,0.4,4);
 
 insert into player_stats (
     fk_player_id,
@@ -139,28 +139,28 @@ insert into player_stats (
     duels_won
 )
 values
-    (8,1,), --Anthony Jung
-    (1,1,), --Marco Friedl
-    (5,1,), -- Fabio Chiarodia
-    (4,1,), --Niklas Stark
-    (9,1,), --Mitchel Weiser
-    (11,1,), --Christian Groß
-    (13,1,), --Jens Stage
-    (17,1,), --Romano Schmid
-    (20,1,), --Niclas Füllkrug
-    (24,1,), --Maximilian Philipp
+    (8,1,6.6,91,0,2,0,0,0,0,0,0,4,9,7,0,7,4), --Anthony Jung
+    (1,1,6.4,91,5,2,0,0,0,0,0,0,4,8,6,5,7,5), --Marco Friedl
+    (5,1,6.5,91,3,1,0,0,0,0,0,0,3,7,6,3,5,3), -- Fabio Chiarodia
+    (4,1,6.7,91,6,1,0,0,0,0,0,0,4,11,10,2,9,6), --Niklas Stark
+    (9,1,7.1,91,1,2,0,0,0,0,0,0,8,12,10,1,9,4), --Mitchel Weiser
+    (11,1,6.9,71,4,2,0,0,1,0,0,0,5,9,9,0,12,9), --Christian Groß
+    (13,1,5.9,91,3,6,0,0.2,1,0,0,0,2,13,10,2,9,2), --Jens Stage
+    (17,1,5.6,71,0,1,0,0,1,0,0,0,2,7,7,1,5,2), --Romano Schmid
+    (20,1,6.1,91,0,3,0,0,0,0,0,0,0,14,11,0,7,2), --Niclas Füllkrug
+    (24,1,6.3,71,1,6,0,0.1,1,0,0.1,0,7,15,9,2,12,6), --Maximilian Philipp
 
-    (3,1,), --Milos Veljkovic
-    (6,1,), --Kim Kee Hee
-    (7,1,), --Lee Buchanan
-    (10,1,), --Felix Agu
-    (12,1,), --Ilia Gruev
-    (14,1,), --Jean Manuel Mbom
-    (15,1,), --Dikeni Salifou
-    (16,1,), --Tom Berger
-    (19,1,), --Niklas Schmidt
-    (22,1,), --Oliver Burke
-    (23,1,), --Eren Dinkci
+    --(3,1,), --Milos Veljkovic
+    --(6,1,), --Kim Kee Hee
+    --(7,1,), --Lee Buchanan
+    --(10,1,), --Felix Agu
+    (12,1,5.8,20,0,2,0,0,0,0,0,0,2,7,6,0,3,0), --Ilia Gruev
+    --(14,1,), --Jean Manuel Mbom
+    --(15,1,), --Dikeni Salifou
+    --(16,1,), --Tom Berger
+    (19,1,5.6,20,0,1,0,0,0,0,0,0,0,1,0,0,1,0), --Niklas Schmidt
+    (22,1,5.8,20,0,0,0,0,0,0,0,0,0,3,3,0,0,0) --Oliver Burke
+    --(23,1,), --Eren Dinkci
 
     --(2,1,), --Amos Pieper
     --(18,1,), --Leonardo Bittencourt

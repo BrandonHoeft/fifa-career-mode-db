@@ -57,25 +57,23 @@ values
     (1, 'Milos', 'Veljkovic', 1995, 'CB'),
     (1, 'Niklas', 'Stark', 1995, 'CB'),
     (1, 'Fabio', 'Chiarodia', 2005, 'CB'),
-    (1, 'Kim Kee', 'Hee', 1989, 'CB'),
     (1, 'Lee', 'Buchanan', 2001, 'LB'),
     (1, 'Anthony', 'Jung', 1991, 'LB'),
     (1, 'Mitchel', 'Weiser', 1994, 'RB'),
     (1, 'Felix', 'Agu', 1999, 'RB'),
     (1, 'Christian', 'Groß', 1989, 'CM'),
+    (1, 'Naby', 'Keita', 1995, 'CM'),
     (1, 'Ilia', 'Gruev', 2000, 'CM'),
     (1, 'Jens', 'Stage', 1996, 'CM'),
     (1, 'Jean Manuel', 'Mbom', 2000, 'CM'),
     (1, 'Dikeni', 'Salifou', 2003, 'CM'),
     (1, 'Tom', 'Berger', 2001, 'CM'),
-    (1, 'Romano', 'Schmid', 2000, 'CM'),
-    (1, 'Leonardo', 'Bittencourt', 1993, 'CM'),
-    (1, 'Niklas', 'Schmidt', 1998, 'CM'),
+    (1, 'Romano', 'Schmid', 2000, 'CAM'),
+    (1, 'Julian', 'Brandt', 1996, 'CAM'),
+    (1, 'Niklas', 'Schmidt', 1998, 'CAM'),
     (1, 'Niclas', 'Füllkrug', 1993, 'ST'),
-    (1, 'Marvin', 'Ducksch', 1994, 'ST'),
-    (1, 'Oliver', 'Burke', 1997, 'ST'),
+    (1, 'Dawid', 'Kownacki', 1997, 'ST'),
     (1, 'Eren', 'Dinkci', 2001, 'ST'),
-    (1, 'Maximilian', 'Philipp', 1994, 'ST')
 
 insert into standings_snapshot (fk_season_id, fk_team_id, standings_as_of, points, goal_diff)
 values
@@ -100,7 +98,7 @@ values
 
 
 --------------------------------------------------------------------------------
--- game log 7:  vs 1. Kaiserslautern
+-- game log 1:  vs 
 insert into games (
     fk_season_id,
     game_num,

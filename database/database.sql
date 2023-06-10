@@ -93,7 +93,9 @@ create table if not exists player_stats (
     assists int,
     key_passes int,
     passes_att int,
-    passes_compl int
+    passes_compl int,
+    -- defense
+    intrcpts_tkls int
 );
 
 

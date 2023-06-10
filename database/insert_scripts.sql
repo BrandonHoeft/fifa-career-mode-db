@@ -1,7 +1,7 @@
 --  query templates for loading tables
 insert into leagues (name)
 values
-    ('Bundesliga 2'),
+    ('Bundesliga'),
     ('DFB-Pokal'),
     ('Champions League'),
     ('Europa League'),
@@ -9,7 +9,7 @@ values
 
 insert into seasons (fk_league_id, fk_team_id, year)
 values
-    (1, 1, 2022), -- Werder Bremen 1st season Buli 2
+    (1, 1, 2022), -- Werder Bremen 1st season Buli
     (2, 1, 2022) -- Werder Bremen 1st season DFB-Pokal
 
 insert into teams (name)
@@ -78,23 +78,24 @@ values
 insert into standings_snapshot (fk_season_id, fk_team_id, standings_as_of, points, goal_diff)
 values
     (1, 1, '2022-08-01', 0, 0), -- Werder Bremen
-    (1, 19, '2022-08-01', 0, 0), -- Arminia Bielefeld
-    (1, 20, '2022-08-01', 0, 0), -- Eintracht Braunschweig
+    (1, 2, '2022-08-01', 0, 0), -- FC Koln
+    (1, 3, '2022-08-01', 0, 0), -- 1899 Hoffenheim
+    (1, 4, '2022-08-01', 0, 0), -- Bayer Leverkusen
+    (1, 5, '2022-08-01', 0, 0), -- Bayern Munich
+    (1, 6, '2022-08-01', 0, 0), -- Borussia Dortmund
+    (1, 7, '2022-08-01', 0, 0), -- Borussia Mönchengladbach
+    (1, 8, '2022-08-01', 0, 0), -- Eintracht Frankfurt
+    (1, 9, '2022-08-01', 0, 0), -- FC Augsburg
+    (1, 10, '2022-08-01', 0, 0), -- Vfl Bochum
+    (1, 13, '2022-08-01', 0, 0), -- Mainz 05
+    (1, 14, '2022-08-01', 0, 0), -- RB Leipzig
+    (1, 15, '2022-08-01', 0, 0), -- SC Freiburg
+    (1, 17, '2022-08-01', 0, 0), -- VfB Stuttgart
+    (1, 18, '2022-08-01', 0, 0), -- Wolfsburg
     (1, 21, '2022-08-01', 0, 0), -- Darmstadt 98
-    (1, 22, '2022-08-01', 0, 0), -- Fortuna Düsseldorf
     (1, 24, '2022-08-01', 0, 0), -- Hamburger SV
-    (1, 25, '2022-08-01', 0, 0), -- Hannover 96
-    (1, 26, '2022-08-01', 0, 0), -- 1. FC Heidenheim
-    (1, 27, '2022-08-01', 0, 0), -- 1. FC Kaiserslautern
-    (1, 28, '2022-08-01', 0, 0), -- Karlsruher SC
-    (1, 29, '2022-08-01', 0, 0), -- Holstein Kiel
-    (1, 30, '2022-08-01', 0, 0), -- 1. FC Magdeburg
-    (1, 31, '2022-08-01', 0, 0), -- 1. FC Nürnberg
-    (1, 32, '2022-08-01', 0, 0), -- SC Paderborn
-    (1, 33, '2022-08-01', 0, 0), -- Jahn Regensburg
-    (1, 34, '2022-08-01', 0, 0), -- Hansa Rostock
-    (1, 35, '2022-08-01', 0, 0), -- SV Sandhausen
-    (1, 36, '2022-08-01', 0, 0) -- FC St Pauli
+    (1, 37, '2022-08-01', 0, 0), -- Union Berlin
+
 
 
 --------------------------------------------------------------------------------

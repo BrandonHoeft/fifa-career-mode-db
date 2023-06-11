@@ -99,25 +99,7 @@ values
 
 
 --------------------------------------------------------------------------------
--- game log 1:  vs Hamburg
-insert into games (
-    fk_season_id,
-    game_num,
-    game_minutes,
-    home_or_away,
-    fk_opp_id,
-    opp_goals,
-    opp_xg,
-    opp_poss_pct,
-    opp_shots,
-    my_goals,
-    my_xg,
-    my_shots
-)
-values
-    (1, 1, 14, 'away', 24,0,1.6,56,9,0,0.6,5);
-
-
+-- game log 2:  vs RB Leipzig
 INSERT INTO player_stats (
     fk_player_id,
     fk_game_id,
@@ -125,18 +107,27 @@ INSERT INTO player_stats (
     minutes,
     poss_won,
     poss_lost,
-    dribble_compl, goals, shots, assists, key_passes, passes_att, passes_compl, intrcpts_tkls)
+    goals,
+    shots,
+    assists,
+    key_passes,
+    passes_att,
+    passes_compl,
+    intrcpts_tkls,
+    duels_won)
 VALUES
-(1,1,7.7,91,5,0,11,0,0,0,1,15,13,4),  -- Marco Friedl
-(2,1,6.8,91,3,3,10,0,0,0,0,11,8,5),  -- Amos Pieper
-(4,1,6.3,91,2,0,6,0,0,0,0,10,10,2),  -- Niklas Stark
-(7,1,7.1,91,1,2,8,0,1,0,0,12,7,1),  -- Anthony Jung
-(8,1,6.4,91,4,4,7,0,0,0,2,12,9,4),  -- Mitchel Weiser
-(11,1,6.8,91,4,3,8,0,0,0,0,11,8,5),  -- Naby Keita
-(13,1,5.6,60,1,7,9,0,2,0,0,8,4,2),  -- Jens Stage
-(17,1,5.7,31,0,0,1,0,0,0,0,1,1,0),  -- Romano Schmid
-(18,1,5.8,60,0,2,7,0,0,0,0,8,6,1),  -- Julian Brandt
-(19,1,5.6,31,0,3,0,0,0,0,0,2,0,0),  -- Niklas Schmidt
-(20,1,5.9,91,0,2,4,0,1,0,0,6,5,0),  -- Niclas Füllkrug
-(21,1,6,76,0,2,6,0,1,0,1,5,4,0),  -- Dawid Kownacki
-(22,1,6,15,1,1,1,0,0,0,0,1,0,0)  -- Eren Dinkci
+(1,2,6.9,91,2,2,0,0,0,0,16,14,3,6),  -- Marco Friedl
+(2,2,6.7,71,4,2,0,0,0,0,9,6,4,5),  -- Amos Pieper
+(3,2,7.4,91,8,4,0,0,0,0,20,14,5,8),  -- Milos Veljkovic
+(7,2,6.4,54,0,3,0,1,0,1,8,6,0,4),  -- Anthony Jung
+(8,2,6.5,91,2,3,0,0,0,0,12,10,2,4),  -- Mitchel Weiser
+(11,2,6.3,91,1,7,0,0,1,3,18,12,1,2),  -- Naby Keita
+(12,2,7.1,91,2,1,0,0,0,0,16,14,2,7),  -- Ilia Gruev
+(17,2,5.6,54,1,2,0,1,0,0,5,4,0,2),  -- Romano Schmid
+(18,2,5.9,91,0,6,0,1,0,0,13,8,1,4),  -- Julian Brandt
+(20,2,7,91,0,1,1,1,0,0,9,8,0,0),  -- Niclas Füllkrug
+(6,2,5.7,37,1,2,0,0,0,0,3,2,1,1),  -- Lee Buchanan
+(19,2,5.8,37,0,0,0,0,0,0,2,2,0,1), -- Niklas Schmidt
+(10,2,5.9,20,3,1,0,0,0,0,5,4,1,2)  -- Christian Groß
+
+

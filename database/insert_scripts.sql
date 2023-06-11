@@ -99,7 +99,7 @@ values
 
 
 --------------------------------------------------------------------------------
--- game log 1:  vs 
+-- game log 1:  vs Hamburg
 insert into games (
     fk_season_id,
     game_num,
@@ -115,52 +115,28 @@ insert into games (
     my_shots
 )
 values
-    (1, 7, 12, 'home', 27,0,1,46,4,0,2.8,11);
+    (1, 1, 14, 'away', 24,0,1.6,56,9,0,0.6,5);
 
-insert into player_stats (
+
+INSERT INTO player_stats (
     fk_player_id,
     fk_game_id,
     rating,
     minutes,
     poss_won,
     poss_lost,
-    goals,
-    non_pen_xg,
-    shots,
-    assists,
-    xa,
-    second_assists,
-    players_beat_passes,
-    passes_att,
-    passes_compl,
-    interceptions,
-    duels_att,
-    duels_won
-)
-values
-    (8,7,7.7,91,2,2,0,0.5,2,0,1.2,0,6,11,10,2,6,3), --Anthony Jung
-    (5,7,7.1,91,3,3,0,0,1,0,0,0,4,16,14,3,9,5), -- Fabio Chiarodia
-    (3,7,6.6,91,4,2,0,0,0,0,0,0,3,10,5,3,7,6), --Milos Veljkovic
-    (4,7,7.1,91,5,2,0,0,0,0,0,0,6,12,10,3,2,1), --Niklas Stark
-    (9,7,7,61,0,4,0,0,0,0,0.2,0,8,12,8,0,3,1), --Mitchel Weiser
-    (11,7,6.8,91,9,1,0,0,0,0,0,0,6,11,10,4,11,5), --Christian Groß
-    (19,7,6.8,45,2,3,0,0.2,1,0,0.5,0,9,11,9,1,4,1), --Niklas Schmidt
-    (17,7,6.5,91,1,6,0,0.4,1,0,0,0,6,13,9,0,6,4), --Romano Schmid
-    (20,7,6.7,91,0,1,0,0.4,2,0,0.4,0,4,10,9,0,3,3), --Niclas Füllkrug
-    (24,7,6.8,61,0,2,0,0.6,2,0,0.5,0,3,12,9,0,3,2), --Maximilian Philipp
-
-    --(7,6,7.1,93,2,2,0,0,0,0,0,0,8,14,10,1,6,4), --Lee Buchanan
-    --(1,7,), --Marco Friedl
-    --(6,6,6,28,1,1,0,0,0,0,0,0,0,2,1,0,1,0), --Georg Margreitter
-    --(10,1,), --Felix Agu
-    --(12,7,), --Ilia Gruev
-    (14,7,6.3,30,1,0,0,0,0,0,0,0,0,2,2,0,3,2), --Jean Manuel Mbom
-    (13,7,6.1,46,0,2,0,0.8,2,0,0,0,2,4,3,0,4,2), --Jens Stage
-    --(15,6,5.8,28,1,2,0,0,1,0,0,0,0,1,1,1,3,1), --Dikeni Salifou
-    --(16,6,7,33,0,2,0,0.8,2,1,0.5,1,4,6,5,0,6,4), --Zidan Sertdemir
-    --(22,6,8.8,48,2,1,2,1,3,1,0.5,0,4,6,6,1,5,3), --Oliver Burke
-    (23,7,6,30,0,2,0,0,0,0,0,0,1,4,2,0,1,0) --Eren Dinkci
-
-    --(2,1,), --Amos Pieper
-    --(18,1,), --Leonardo Bittencourt
-    --(21,1,), --Marvin Ducksch
+    dribble_compl, goals, shots, assists, key_passes, passes_att, passes_compl, intrcpts_tkls)
+VALUES
+(1,1,7.7,91,5,0,11,0,0,0,1,15,13,4),  -- Marco Friedl
+(2,1,6.8,91,3,3,10,0,0,0,0,11,8,5),  -- Amos Pieper
+(4,1,6.3,91,2,0,6,0,0,0,0,10,10,2),  -- Niklas Stark
+(7,1,7.1,91,1,2,8,0,1,0,0,12,7,1),  -- Anthony Jung
+(8,1,6.4,91,4,4,7,0,0,0,2,12,9,4),  -- Mitchel Weiser
+(11,1,6.8,91,4,3,8,0,0,0,0,11,8,5),  -- Naby Keita
+(13,1,5.6,60,1,7,9,0,2,0,0,8,4,2),  -- Jens Stage
+(17,1,5.7,31,0,0,1,0,0,0,0,1,1,0),  -- Romano Schmid
+(18,1,5.8,60,0,2,7,0,0,0,0,8,6,1),  -- Julian Brandt
+(19,1,5.6,31,0,3,0,0,0,0,0,2,0,0),  -- Niklas Schmidt
+(20,1,5.9,91,0,2,4,0,1,0,0,6,5,0),  -- Niclas Füllkrug
+(21,1,6,76,0,2,6,0,1,0,1,5,4,0),  -- Dawid Kownacki
+(22,1,6,15,1,1,1,0,0,0,0,1,0,0)  -- Eren Dinkci

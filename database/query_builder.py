@@ -4,8 +4,7 @@ import argparse
 import pandas as pd
 import psycopg2
 
-def main(hostname, port, database, user, password):
-
+def connect(hostname, port, database, user, password):
     # Database connection details
     hostname = hostname
     port = port
@@ -14,17 +13,28 @@ def main(hostname, port, database, user, password):
     password = password
 
     # Connect to the database
-    conn = psycopg2.connect(host=hostname, port=port, database=database, user=user, password=password)
+    return psycopg2.connect(host=hostname, port=port, database=database,
+                            user=user, password=password)
 
+def gen_game_sql_template(conn, fk_season_id, game_num, game_min, home_or_away, fk_opp_id):
+    games_cols = pd.read_sql("select column_name from information_schema.columns where table_name = 'games' and column_name != 'game_id'", conn).column_name.tolist()
+    sql_skeleton = f"INSERT INTO games {tuple(games_cols)}\nVALUES\n\t"
+    values = f"({fk_season_id},{game_num},{game_min},{home_or_away},{fk_opp_id},,,,,,,)"
+    sql_skeleton += values
+    sql_skeleton = sql_skeleton.replace("'", "")  # remove quotes from field names for SQL insert
+    sql_skeleton = sql_skeleton.replace(home_or_away, f"'{home_or_away}'")  # preserve single quote
+    print(sql_skeleton)
+    return sql_skeleton
+
+def gen_player_stats_sql_template(conn):
     # Prompt for a list of names
     # Milos Veljkovic,Niklas Stark,Marco Friedl,Anthony Jung,Mitchel Weiser,Jens Stage,Naby Keita,Julian Brandt,Dawid Kownacki,Niclas Füllkrug,Romano Schmid,Niklas Schmidt,Eren Dinkci
-    names = input("Enter a list of names (comma-separated): ").split(",")
-    fk_game_id = input("Enter the game number that will represent the FK game_id:")
+    player_names = pd.read_sql("select * from public.players", conn).full_name.to_list()
+    names = input(f"Enter a list of names (comma-separated,no space b/w names) from:\n{player_names}").split(",")
     player_stats_cols = pd.read_sql("select column_name from information_schema.columns where table_name = 'player_stats' and column_name != 'player_game_id'", conn).column_name.tolist()
-
+    fk_game_id = pd.read_sql("select max(game_id) from public.games", conn).iloc[0,0]
     try:
         # Construct the SELECT query
-
         query = "SELECT player_id, full_name FROM public.players WHERE full_name IN %s"
 
         # Execute the query with the provided names
@@ -38,11 +48,12 @@ def main(hostname, port, database, user, password):
 
         for fk_player_id, full_name in player_dict.items():
             comment = f"  -- {full_name}"
-            #values = f"({fk_player_id}" + (f",{''}" * (num_fields - 1)) + f"),{comment}"
             values = f"({fk_player_id},{fk_game_id},{',' * (len(player_stats_cols) - 3)})," + comment
             sql_skeleton += values + "\n"
+            sql_skeleton = sql_skeleton.replace("'", "")
 
         print(sql_skeleton)
+        return sql_skeleton
 
     except Exception as e:
         print("Error:", e)
@@ -61,4 +72,17 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    main(args.host, args.port, args.database, args.user, args.password)
+    season_id = input("Enter the season number that will represent the season_id:")
+    game_number = input("Enter the game number of the season in question:")
+    game_minutes = input("Enter the game length in minutes played:")
+    home_or_away = input("enter home or away:")
+    pg_conn = connect(args.host, args.port, args.database, args.user, args.password)
+    my_opponent_id = input(f"Enter my opponent_id from this table:\n{pd.read_sql('select * from public.teams', pg_conn)}")
+
+    game_sql_string = gen_game_sql_template(pg_conn, fk_season_id=season_id, game_num=game_number, game_min=game_minutes, home_or_away=home_or_away, fk_opp_id=my_opponent_id)
+
+    # TODO: before generating this, run the game SQL query to gen proper fk_game_id that gets queried below
+    # FIXME: the fk_game_id might return the wrong one. Look into transactions.
+    player_stats_sql_string = gen_player_stats_sql_template(pg_conn)
+
+    print("Finished")

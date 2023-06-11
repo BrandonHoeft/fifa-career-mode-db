@@ -96,6 +96,7 @@ create table if not exists player_stats (
     passes_compl int,
     -- defense
     intrcpts_tkls int
+    duels_won int
 );
 
 

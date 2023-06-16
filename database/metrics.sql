@@ -7,16 +7,12 @@ with raw_stats as (
            poss_won,
            poss_lost,
            goals,
-           non_pen_xg,
            shots,
            assists,
-           xa,
-           second_assists,
-           players_beat_passes,
+           key_passes,
            passes_att,
            passes_compl,
-           interceptions,
-           duels_att,
+           intrcpts_tkls,
            duels_won
     from player_stats
              inner join players p on player_stats.fk_player_id = p.player_id
@@ -37,14 +33,10 @@ with raw_stats as (
         sum(passes_att) as pass_att_tot, -- new
         sum(passes_compl) as pass_compl_tot, -- new
         sum(goals) as goals_tot,
-        sum(non_pen_xg) as npxg_tot,
         sum(assists) as assist_tot,
-        sum(xa) as xa_tot,
-        sum(second_assists) as second_assist_tot, -- new
-        sum(players_beat_passes) as pbp_tot,
+        sum(key_passes) as key_pass_tot,
     -- defensive cumulative stats
-        sum(interceptions) as interceptions_tot,
-        sum(duels_att) as duels_att_tot,
+        sum(intrcpts_tkls) as intrcpts_tkls_tot,
         sum(duels_won) as duels_won_tot
     from raw_stats
     group by full_name, primary_pos
@@ -70,23 +62,15 @@ select
     round(shots_tot / _90s, 2) as shots_per90,
     goals_tot,
     round(goals_tot / _90s, 2) as goals_per90,
-    npxg_tot,
-    round(npxg_tot / _90s, 2) as npxg_per90,
-    round(npxg_tot / nullif(shots_tot,0), 2) as npxg_per_shot, -- indicator of avg shot quality
-    round(goals_tot - npxg_tot, 2) as goals_minus_npxg,
     --passing
     round(pass_compl_tot * 4.5 / _90s, 2) as pass_compl_per90, --4.5 is extrapolating 20 minutes of real game time
     round(pass_compl_tot::numeric / nullif(pass_att_tot,0),2) as pass_compl_pct,
     assist_tot,
-    xa_tot,
-    round(xa_tot / _90s, 2) as xa_per90,
-    round((xa_tot + npxg_tot) / _90s, 2) as npxg_plus_xa_per90,
-    second_assist_tot,
-    pbp_tot,
-    round (pbp_tot / _90s, 2) as pbp_per90, -- players beat by passes
+    round(assist_tot / _90s, 2) as assists_per90,
+    key_pass_tot,
+    round(key_pass_tot / _90s, 2) as key_passes_per90,
     -- defensive
-    round(interceptions_tot / _90s, 2) as intercepts_per90,
-    duels_won_tot,
-    round(duels_won_tot::numeric / nullif(duels_att_tot, 0), 2) as duel_win_pct
+    round(intrcpts_tkls_tot / _90s, 2) as intrcpts_tkls_per90,
+    round(duels_won_tot / _90s, 2) as duels_won_per90
 from cum_stats
 --where primary_pos like any (array['%B', 'C%M'])

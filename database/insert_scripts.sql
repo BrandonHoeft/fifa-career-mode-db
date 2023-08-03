@@ -64,7 +64,8 @@ values
     (1, 'Francisco', 'Evanilson', '1999-10-06', 'ST', NULL),
     (1, 'Mehdi', 'Taremi', '1992-07-18', 'ST', 'LW'),
     (1, 'Toni', 'Martínez', '1997-06-30', 'ST', NULL),
-    (1, 'Daniel', 'Namaso Loader', '2000-08-28', 'ST', 'CAM');
+    (1, 'Daniel', 'Namaso Loader', '2000-08-28', 'ST', 'CAM'),
+    (1, 'Nico', 'González', '2022-01-03', 'CM', 'CDM');
 
 
 insert into standings_snapshot (fk_season_id, fk_team_id, standings_as_of, points, goal_diff)

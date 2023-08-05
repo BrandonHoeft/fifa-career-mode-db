@@ -7,8 +7,12 @@ with raw_stats as (
            poss_won,
            poss_lost,
            goals,
-           -- re-calc the xG
-           round(non_pen_xg * 0.65, 2) as non_pen_xg, -- downweight the FIFA engine's xG with a haircut of __% of game's calculated xG
+           /* Giving FIFA's xG a haircut
+            real world non-penalty xG per shot = 0.10.
+            sample FIFA non-penalty xG per shot = 0.22. Derived from player_stats table: round(non_pen_xg / nullif(shots, 0), 2)
+            ratio of 0.10 / 0.22 = 45% haircut to get more realistic FIFA xG outputs
+            */
+           round(non_pen_xg * 0.45, 2) as non_pen_xg, -- downweight the FIFA engine's xG
            shots,
            assists,
            key_passes,
@@ -76,7 +80,7 @@ select
     round(assist_tot / _90s, 2) as assists_per90,
     key_pass_tot,
     round(key_pass_tot / _90s, 2) as key_passes_per90,
-    round((assist_tot + key_pass_tot)::numeric / nullif(pass_compl_tot,0), 2) as chance_created_per_pass,
+    100 * round((assist_tot + key_pass_tot)::numeric / nullif(pass_att_tot, 0), 2) as SCA_per_100_passes,
     -- recovery/challenges
     round(duels_att_tot / _90s, 2) as duels_att_per90,
     round(duels_won_tot / _90s, 2) as duels_won_per90,

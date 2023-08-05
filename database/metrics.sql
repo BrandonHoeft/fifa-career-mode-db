@@ -1,3 +1,50 @@
+-- game metrics
+select
+    seasons.year,
+    l.name as league_name,
+    g.game_id,
+    -- generic game info
+    g.game_minutes,
+    g.home_or_away as venue,
+    g.my_goals,
+    g.opp_goals,
+    case
+        when g.my_goals > g.opp_goals then 'Win'
+        when g.opp_goals > g.my_goals then 'Loss'
+        else 'Draw'
+        end as result,
+    case
+        when g.my_goals > g.opp_goals then 3
+        when g.opp_goals > g.my_goals then 0
+        else 1
+        end as points,
+    -- my team's info
+    my_team.name as my_team,
+    g.my_xg,
+    g.my_shots,
+    g.my_poss_pct,
+    -- opponent info
+    opp_team.name as opponent,
+    g.opp_xg,
+    g.opp_shots
+from games g
+inner join seasons
+    on g.fk_season_id = seasons.season_id
+inner join leagues l on
+    seasons.fk_league_id = l.league_id
+inner join teams my_team
+    on seasons.fk_team_id = my_team.team_id
+inner join teams opp_team
+    on g.fk_opp_id = opp_team.team_id
+
+
+
+
+
+
+
+
+-- player metrics
 with raw_stats as (
     select full_name,
            primary_pos,

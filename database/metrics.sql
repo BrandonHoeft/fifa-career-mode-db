@@ -59,11 +59,7 @@ select
     -- possession
     round(poss_won_tot / _90s, 2) as poss_won_per_90,
     round(poss_lost_tot / _90s, 2) as poss_lost_per_90,
-    case
-        when poss_lost_tot = 0
-            then null
-        else round(poss_won_tot::numeric / poss_lost_tot, 2)
-    end as poss_won_ratio,
+    round(poss_won_tot / _90s, 2) - round(poss_lost_tot / _90s, 2) as net_poss_per90,
     --shooting
     shots_tot,
     round(shots_tot / _90s, 2) as shots_per90,

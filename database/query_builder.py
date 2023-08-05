@@ -18,7 +18,7 @@ def connect(hostname, port, database, user, password):
                             user=user, password=password)
 
 def gen_game_sql_template(conn, fk_season_id, game_num, game_min, home_or_away, fk_opp_id):
-    games_cols = pd.read_sql("select column_name from information_schema.columns where table_name = 'games' and column_name != 'game_id'", conn).column_name.tolist()
+    games_cols = pd.read_sql("select column_name from information_schema.columns where table_name = 'games' and column_name not in ('game_id', 'my_poss_pct')", conn).column_name.tolist()
     sql_skeleton = f"INSERT INTO games {tuple(games_cols)}\nVALUES\n\t"
     values = f"({fk_season_id},{game_num},{game_min},{home_or_away},{fk_opp_id},,,,,,,)"
     sql_skeleton += values

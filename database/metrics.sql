@@ -7,7 +7,8 @@ with raw_stats as (
            poss_won,
            poss_lost,
            goals,
-           non_pen_xg,
+           -- re-calc the xG
+           round(non_pen_xg * 0.65, 2) as non_pen_xg, -- downweight the FIFA engine's xG with a haircut of __% of game's calculated xG
            shots,
            assists,
            key_passes,
@@ -67,13 +68,15 @@ select
     npxg_tot,
     round(npxg_tot / _90s, 2) as npxg_per90,
     round(npxg_tot / nullif(shots_tot,0), 2) as npxg_per_shot, -- indicator of shot quality
-    --passing
+    round(goals_tot - npxg_tot, 2) as goals_minus_npxg, -- luck/skill relative to goals
+    --passing / chance creation
     round(pass_compl_tot * 4.5 / _90s, 2) as pass_compl_per90, --4.5 is extrapolating 20 minutes of real game time
     round(pass_compl_tot::numeric / nullif(pass_att_tot,0),2) as pass_compl_pct,
     assist_tot,
     round(assist_tot / _90s, 2) as assists_per90,
     key_pass_tot,
     round(key_pass_tot / _90s, 2) as key_passes_per90,
+    round((assist_tot + key_pass_tot)::numeric / nullif(pass_compl_tot,0), 2) as chance_created_per_pass,
     -- recovery/challenges
     round(duels_att_tot / _90s, 2) as duels_att_per90,
     round(duels_won_tot / _90s, 2) as duels_won_per90,

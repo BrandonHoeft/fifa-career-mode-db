@@ -65,7 +65,9 @@ values
     (1, 'Mehdi', 'Taremi', '1992-07-18', 'ST', 'LW'),
     (1, 'Toni', 'Martínez', '1997-06-30', 'ST', NULL),
     (1, 'Daniel', 'Namaso Loader', '2000-08-28', 'ST', 'CAM'),
-    (1, 'Nico', 'González', '2022-01-03', 'CM', 'CDM');
+    (1, 'Nico', 'González', '2022-01-03', 'CM', 'CDM'),
+    (1, 'Vasco', 'Sousa', '2003-04-03', 'CAM', 'CM'),
+    (1, 'Bernardo', 'Folha', '2002-03-22', 'CM', NULL);
 
 
 insert into standings_snapshot (fk_season_id, fk_team_id, standings_as_of, points, goal_diff)
@@ -92,36 +94,40 @@ values
 
 
 --------------------------------------------------------------------------------
--- game log 11: taca port. home vs sporting cp
-INSERT INTO games (fk_season_id, game_num, game_minutes, home_or_away, fk_opp_id, opp_goals, opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots)
+-- game log 12: taca port. away vs portimonense
+INSERT INTO games (fk_season_id, game_num, game_minutes, home_or_away, fk_opp_id, opp_goals,
+                   opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots)
 VALUES
-	(2,11,16,'home',16,1,1.3,42,9,1,3.8,18)
+	(2,12,16,'away',3,1,3.5,47,15,4,5.3,14);
 
 
 INSERT INTO player_stats (fk_player_id, fk_game_id, rating, minutes, poss_won, poss_lost, goals,
-                          non_pen_xg, shots, assists, key_passes, passes_att, passes_compl, duels_att, duels_won)
+                          non_pen_xg, shots, assists, key_passes, passes_att, passes_compl,
+                          duels_att, duels_won)
 VALUES
--- (4,11,,,,,,,,,,,,,),  -- Carmo David
--- (5,11,,,,,,,,,,,,,),  -- Fábio Cardoso
-(6,11,6.9,122,6,3,0,0.1,1,0,0,8,7,17,7),  -- Pepe Laveran Lima Ferreira
-(7,11,6.9,113,6,0,0,0,0,0,0,11,10,14,7),  -- Iván Marcano
-(8,11,7.5,90,8,5,0,0,0,0,0,18,13,19,9),  -- Zaidu Sanusi
--- (9,11,,,,,,,,,,,,,),  -- Wendell Nascimento Borges
-(10,11,8,122,7,4,0,0.1,1,0,1,21,15,16,11),  -- João Mário
--- (11,11,,,,,,,,,,,,,),  -- Wilson Manafá
--- (12,11,,,,,,,,,,,,,),  -- Rodrigo Conceição
-(13,11,8,122,8,9,0,0.9,2,1,4,32,24,16,10),  -- Mateus Uribe
-(14,11,6.4,42,2,4,0,0,1,0,0,10,6,8,5),  -- Marko Grujić
--- (15,11,,,,,,,,,,,,,),  -- Stephen Eustaquio
--- (16,11,,,,,,,,,,,,,),  -- Bruno Costa
-(17,11,7.1,122,1,6,0,0,1,0,1,20,14,16,8),  -- Otávio Edmilson da Silva Monteiro
-(18,11,6.3,42,1,6,0,0,0,0,1,12,7,5,1),  -- Pepê Gabriel Aquino Cossa
-(19,11,5.8,32,2,3,0,0.6,1,0,0,7,5,1,1),  -- André Franco
--- (20,11,,,,,,,,,,,,,),  -- Wenderson Galeno
-(21,11,6.3,80,1,7,0,0.3,1,0,1,8,5,8,2),  -- Gabriel Veron
--- (22,11,,,,,,,,,,,,,),  -- Gonçalo Borges
-(23,11,7.8,70,0,2,1,1,3,0,1,11,10,7,4),  -- Francisco Evanilson
-(24,11,7.7,122,1,3,0,0.6,3,0,2,23,18,10,9),  -- Mehdi Taremi
-(25,11,6.5,52,1,3,0,0,0,0,1,9,7,8,3),  -- Toni Martínez
-(26,11,5.8,9,0,0,0,0,2,0,0,0,0,2,0),  -- Daniel Namaso Loader
-(27,11,6.4,80,3,4,0,0,2,0,0,10,6,12,8)  -- Nico González
+(4,12,6.3,65,4,1,0,0,0,0,0,5,3,7,3),  -- Carmo David
+(5,12,7.2,92,9,1,0,0,0,0,0,11,8,16,9),  -- Fábio Cardoso
+-- (6,12,,,,,,,,,,,,,),  -- Pepe Laveran Lima Ferreira
+(7,12,6.2,27,1,0,0,0,0,0,0,3,3,4,3),  -- Iván Marcano
+-- (8,12,,,,,,,,,,,,,),  -- Zaidu Sanusi
+(9,12,7.8,92,3,3,0,0,0,1,1,10,8,11,7),  -- Wendell Nascimento Borges
+-- (10,12,,,,,,,,,,,,,),  -- João Mário
+(11,12,6.9,92,3,2,0,0.2,1,0,1,11,8,10,5),  -- Wilson Manafá
+-- (12,12,,,,,,,,,,,,,),  -- Rodrigo Conceição
+(13,12,6,45,0,2,0,0.1,1,0,0,6,6,8,3),  -- Mateus Uribe
+(14,12,6.1,32,1,0,0,0,0,0,1,4,4,5,1),  -- Marko Grujić
+-- (15,12,,,,,,,,,,,,,),  -- Stephen Eustaquio
+--(16,12,,,,,,,,,,,,,),  -- Bruno Costa
+(17,12,7.1,45,0,2,1,0.6,1,0,1,4,2,9,3),  -- Otávio Edmilson da Silva Monteiro
+-- (18,12,,,,,,,,,,,,,),  -- Pepê Gabriel Aquino Cossa
+-- (19,12,,,,,,,,,,,,,),  -- André Franco
+(20,12,6.9,92,1,5,0,1,3,0,3,9,7,8,5),  -- Wenderson Galeno
+-- (21,12,,,,,,,,,,,,,),  -- Gabriel Veron
+(22,12,7.1,47,1,3,1,2.1,5,0,1,9,9,5,4),  -- Gonçalo Borges
+-- (23,12,,,,,,,,,,,,,),  -- Francisco Evanilson
+-- (24,12,,,,,,,,,,,,,),  -- Mehdi Taremi
+(25,12,8.4,92,2,2,1,0.9,2,2,2,10,8,8,5),  -- Toni Martínez
+(26,12,7.5,92,1,3,1,0.4,1,1,4,15,11,10,4),  -- Daniel Namaso Loader
+(27,12,5.9,45,3,3,0,0,0,0,0,8,4,7,2),  -- Nico González
+(28,12,5.7,47,0,2,0,0,0,0,0,7,7,8,3)  -- Vasco Sousa
+-- (29,12,,,,,,,,,,,,,)  -- Bernardo Folha

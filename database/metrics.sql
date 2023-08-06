@@ -68,7 +68,12 @@ with raw_stats as (
            duels_att,
            duels_won
     from player_stats
-             inner join players p on player_stats.fk_player_id = p.player_id
+    inner join players p on player_stats.fk_player_id = p.player_id
+    /* below is if I want to pre-filter to a particular tournament */
+    -- inner join games g on player_stats.fk_game_id = g.game_id
+    -- inner join seasons s on g.fk_season_id = s.season_id
+    -- inner join leagues l on s.fk_league_id = l.league_id
+    -- where l.name = 'Champions League'
     order by full_name, fk_game_id
 )
 

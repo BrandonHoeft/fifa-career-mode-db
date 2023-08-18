@@ -67,7 +67,8 @@ values
     (1, 'Daniel', 'Namaso Loader', '2000-08-28', 'ST', 'CAM'),
     (1, 'Nico', 'González', '2022-01-03', 'CM', 'CDM'),
     (1, 'Vasco', 'Sousa', '2003-04-03', 'CAM', 'CM'),
-    (1, 'Bernardo', 'Folha', '2002-03-22', 'CM', NULL);
+    (1, 'Bernardo', 'Folha', '2002-03-22', 'CM', NULL),
+    (1, 'Baró', 'Romário', '2000-01-25', 'CM', 'RM');
 
 
 insert into standings_snapshot (fk_season_id, fk_team_id, standings_as_of, points, goal_diff)
@@ -94,41 +95,40 @@ values
 
 
 --------------------------------------------------------------------------------
--- game log 15: Liga away vs estoril
+-- game 16: CL home vs Leverkusen
 INSERT INTO games (fk_season_id, game_num, game_minutes, home_or_away, fk_opp_id,
                    opp_goals, opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots)
 VALUES
-	(1,15,16,'away',8,5,5.1,50,14,1,1.7,6)
+	(3,16,16,'home',20,3,3.3,47,11,2,3,13)
 
-
-INSERT INTO player_stats (fk_player_id, fk_game_id, rating, minutes, poss_won,
-                          poss_lost, goals, non_pen_xg, shots, assists, key_passes,
-                          passes_att, passes_compl, duels_att, duels_won)
+INSERT INTO player_stats (fk_player_id, fk_game_id, rating, minutes, poss_won, poss_lost,
+                          goals, non_pen_xg, shots, assists, key_passes, passes_att,
+                          passes_compl, duels_att, duels_won)
 VALUES
--- (4,15,,,,,,,,,,,,,),  -- Carmo David
-(5,15,7.3,92,5,3,0,0,0,0,1,11,9,13,6),  -- Fábio Cardoso
--- (6,15,,,,,,,,,,,,,),  -- Pepe Laveran Lima Ferreira
-(7,15,7.1,92,11,2,0,0,0,0,0,13,11,17,9),  -- Iván Marcano
-(8,15,5.9,28,1,0,0,0,0,0,0,4,3,4,2),  -- Zaidu Sanusi
-(9,15,6.3,92,5,2,0,0,0,0,0,12,10,10,4),  -- Wendell Nascimento Borges
--- (10,15,,,,,,,,,,,,,),  -- João Mário
--- (11,15,,,,,,,,,,,,,),  -- Wilson Manafá
--- (12,15,,,,,,,,,,,,,),  -- Rodrigo Conceição
--- (13,15,,,,,,,,,,,,,),  -- Mateus Uribe
--- (14,15,,,,,,,,,,,,,),  -- Marko Grujić
-(15,15,6,92,1,5,0,0,0,0,0,15,9,2,0),  -- Stephen Eustaquio
--- (16,15,,,,,,,,,,,,,),  -- Bruno Costa
--- (17,15,,,,,,,,,,,,,),  -- Otávio Edmilson da Silva Monteiro
-(18,15,7.2,92,1,0,0,0,0,1,1,8,8,7,4),  -- Pepê Gabriel Aquino Cossa
-(19,15,6.9,73,1,4,1,0.2,1,0,0,17,13,6,4),  -- André Franco
-(20,15,5.8,36,1,3,0,0,0,0,0,3,1,7,2),  -- Wenderson Galeno
-(21,15,6.3,92,0,4,0,0.2,1,0,1,12,9,6,3),  -- Gabriel Veron
-(22,15,6.1,56,0,3,0,0,0,0,1,6,4,5,4),  -- Gonçalo Borges
--- (23,15,,,,,,,,,,,,,),  -- Francisco Evanilson
-(24,15,5.9,73,0,5,0,0.8,2,0,1,18,16,3,2),  -- Mehdi Taremi
-(25,15,5.9,19,0,1,0,0,0,0,0,2,1,1,1),  -- Toni Martínez
--- (26,15,,,,,,,,,,,,,),  -- Daniel Namaso Loader
-(27,15,6.3,64,3,3,0,0,1,0,0,8,6,11,6),  -- Nico González
-(28,15,5.9,19,1,3,0,0.5,1,0,0,3,3,6,4)  -- Vasco Sousa
--- (29,15,,,,,,,,,,,,,),  -- Bernardo Folha
+(4,16,6,62,4,2,0,0,0,0,0,9,5,3,2),  -- Carmo David
+(5,16,5.8,30,0,0,0,0,0,0,0,0,0,2,1),  -- Fábio Cardoso
+(6,16,7.3,92,3,3,0,0,1,0,0,7,4,14,9),  -- Pepe Laveran Lima Ferreira
+-- (7,16,,,,,,,,,,,,,),  -- Iván Marcano
+-- (8,16,,,,,,,,,,,,,),  -- Zaidu Sanusi
+(9,16,7.3,92,1,1,0,0,0,0,1,8,7,13,4),  -- Wendell Nascimento Borges
+(10,16,6.8,62,4,1,0,0,0,0,1,11,8,6,3),  -- João Mário
+-- (11,16,,,,,,,,,,,,,),  -- Wilson Manafá
+(13,16,6.1,82,2,4,0,0,0,0,0,16,12,13,6),  -- Mateus Uribe
+-- (14,16,,,,,,,,,,,,,),  -- Marko Grujić
+(15,16,5.5,45,0,4,0,0,0,0,1,10,4,6,2),  -- Stephen Eustaquio
+-- (16,16,,,,,,,,,,,,,),  -- Bruno Costa
+(17,16,6.7,92,2,2,0,0,0,1,2,15,11,8,4),  -- Otávio Edmilson da Silva Monteiro
+(18,16,6.9,92,3,3,0,0,1,0,1,15,12,8,6),  -- Pepê Gabriel Aquino Cossa
+-- (19,16,,,,,,,,,,,,,),  -- André Franco
+(20,16,7.1,92,0,6,2,0.9,7,0,0,5,2,11,4),  -- Wenderson Galeno
+-- (21,16,,,,,,,,,,,,,),  -- Gabriel Veron
+-- (22,16,,,,,,,,,,,,,),  -- Gonçalo Borges
+(23,16,5.9,30,0,2,0,0,0,0,2,5,3,3,2),  -- Francisco Evanilson
+(24,16,6.5,82,2,3,0,0.6,1,0,1,9,8,6,3),  -- Mehdi Taremi
+(25,16,6,10,0,0,0,1,1,0,0,2,2,1,0),  -- Toni Martínez
+-- (26,16,,,,,,,,,,,,,),  -- Daniel Namaso Loader
+(27,16,6.3,47,2,2,0,0.6,2,0,1,9,8,12,8),  -- Nico González
+-- (28,16,,,,,,,,,,,,,),  -- Vasco Sousa
+-- (29,16,,,,,,,,,,,,,),  -- Bernardo Folha
+(30,16,5.7,10,0,0,0,0,0,0,0,1,1,0,0)  -- Romário Baró
 

@@ -128,6 +128,7 @@ select
     round(assist_tot / _90s, 2) as assists_per90,
     key_pass_tot,
     round(key_pass_tot / _90s, 2) as key_passes_per90,
+    round((goals_tot + assist_tot) / _90s, 2) as goals_plus_assists_per90,
     100 * round((assist_tot + key_pass_tot)::numeric / nullif(pass_att_tot, 0), 2) as SCA_per_100_passes,
     -- recovery/challenges
     round(duels_att_tot / _90s, 2) as duels_att_per90,

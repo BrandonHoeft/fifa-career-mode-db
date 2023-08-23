@@ -95,7 +95,7 @@ values
 
 
 --------------------------------------------------------------------------------
--- game 16: CL home vs Leverkusen
+-- game 17: home vs Vitoria
 INSERT INTO games (fk_season_id, game_num, game_minutes, home_or_away, fk_opp_id,
                    opp_goals, opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots)
 VALUES

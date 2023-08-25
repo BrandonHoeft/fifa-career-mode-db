@@ -95,34 +95,40 @@ values
 
 
 --------------------------------------------------------------------------------
--- game 19: CL vs Atleti Madrid
+-- game 20: Away vs Arouca
 INSERT INTO games (fk_season_id, game_num, game_minutes, home_or_away, fk_opp_id, opp_goals,
                    opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots)
 VALUES
-	(3,19,16,'away',21,6,6.8,57,20,2,1.7,7)
+	(1,20,18,'away',2,0,3.5,38,10,4,3.3,9)
+
+
 
 INSERT INTO player_stats (fk_player_id, fk_game_id, rating, minutes, poss_won,
                           poss_lost, goals, non_pen_xg, shots, assists, key_passes,
                           passes_att, passes_compl, duels_att, duels_won)
 VALUES
--- (4,19,,,,,,,,,,,,,),  -- Carmo David
--- (5,19,,,,,,,,,,,,,),  -- Fábio Cardoso
-(6,19,7.6,93,4,1,0,0,0,0,0,13,11,13,7),  -- Pepe Laveran Lima Ferreira
-(7,19,5.9,93,2,2,0,0,0,0,0,5,2,5,1),  -- Iván Marcano
--- (8,19,,,,,,,,,,,,,),  -- Zaidu Sanusi
-(9,19,7,68,2,2,0,0,0,0,2,8,5,6,5),  -- Wendell Nascimento Borges
-(10,19,5.8,33,0,1,0,0,0,0,0,2,2,3,1),  -- João Mário
-(13,19,6.5,72,2,2,0,0.3,2,1,1,6,6,8,6),  -- Mateus Uribe
--- (14,19,,,,,,,,,,,,,),  -- Marko Grujić
--- (15,19,,,,,,,,,,,,,),  -- Stephen Eustaquio
-(17,19,5.7,60,0,4,0,0,0,0,0,6,3,9,4),  -- Otávio Edmilson da Silva Monteiro
-(18,19,6.1,93,2,2,0,0,0,0,0,6,4,11,6),  -- Pepê Gabriel Aquino Cossa
-(19,19,6.5,93,2,1,0,0,0,0,1,11,9,6,4),  -- André Franco
-(20,19,6.6,93,2,4,0,0.1,1,0,2,9,8,12,6),  -- Wenderson Galeno
--- (21,19,,,,,,,,,,,,,),  -- Gabriel Veron
-(22,19,7.6,25,1,3,1,0.3,1,0,0,5,3,5,3),  -- Gonçalo Borges
-(23,19,6.3,33,0,3,0,0.5,1,0,1,8,6,4,3),  -- Francisco Evanilson
-(24,19,7,93,0,4,1,0.5,2,0,0,12,11,7,1),  -- Mehdi Taremi
--- (25,19,,,,,,,,,,,,,),  -- Toni Martínez
-(26,19,6.6,60,1,2,0,0,0,0,1,12,11,10,6),  -- Daniel Namaso Loader
-(27,19,6.5,21,2,1,0,0,0,1,1,4,3,7,2)  -- Nico González
+(4,20,7.5,92,5,2,0,0,0,0,0,15,12,8,5),  -- Carmo David
+(5,20,5.6,42,4,0,0,0,0,0,1,7,6,6,3),  -- Fábio Cardoso
+-- (6,20,,,,,,,,,,,,,),  -- Pepe Laveran Lima Ferreira
+-- (7,20,,,,,,,,,,,,,),  -- Iván Marcano
+(8,20,7.3,92,8,2,0,0,0,0,0,18,16,10,7),  -- Zaidu Sanusi
+(9,20,5.8,24,2,2,0,0,0,0,0,4,2,1,1),  -- Wendell Nascimento Borges
+(10,20,6,43,1,2,0,0,1,0,0,5,5,5,3),  -- João Mário
+-- (11,20,,,,,,,,,,,,,),  -- Wilson Manafá
+(13,20,7.4,49,3,3,0,0,0,1,2,13,10,4,2),  -- Mateus Uribe
+-- (14,20,,,,,,,,,,,,,),  -- Marko Grujić
+-- (15,20,,,,,,,,,,,,,),  -- Stephen Eustaquio
+(17,20,6.6,92,2,4,0,0.4,1,0,2,17,13,4,1),  -- Otávio Edmilson da Silva Monteiro
+-- (18,20,,,,,,,,,,,,,),  -- Pepê Gabriel Aquino Cossa
+-- (19,20,,,,,,,,,,,,,),  -- André Franco
+-- (20,20,,,,,,,,,,,,,),  -- Wenderson Galeno
+(21,20,8.2,92,1,8,1,0.8,1,1,1,12,7,11,6),  -- Gabriel Veron
+(22,20,6.1,38,1,3,0,0.3,1,0,0,4,3,5,1),  -- Gonçalo Borges
+-- (23,20,,,,,,,,,,,,,),  -- Francisco Evanilson
+(24,20,5.9,54,0,6,0,0,0,0,0,9,4,3,1),  -- Mehdi Taremi
+(25,20,7.4,38,1,3,1,0.6,1,0,1,5,4,7,4),  -- Toni Martínez
+(26,20,7.2,54,1,4,1,0,1,0,0,5,3,4,2),  -- Daniel Namaso Loader
+(27,20,7.2,68,3,2,0,0,1,1,1,21,19,5,4),  -- Nico González
+-- (28,20,,,,,,,,,,,,,),  -- Vasco Sousa
+(29,20,5.9,24,0,1,0,0.5,1,0,0,3,3,3,2),  -- Bernardo Folha
+(30,20,7.4,68,7,5,1,0.8,1,0,1,15,13,12,7)  -- Romário Baró

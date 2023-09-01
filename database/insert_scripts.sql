@@ -68,7 +68,9 @@ values
     (1, 'Nico', 'González', '2022-01-03', 'CM', 'CDM'),
     (1, 'Vasco', 'Sousa', '2003-04-03', 'CAM', 'CM'),
     (1, 'Bernardo', 'Folha', '2002-03-22', 'CM', NULL),
-    (1, 'Baró', 'Romário', '2000-01-25', 'CM', 'RM');
+    (1, 'Romário', 'Baró', '2000-01-25', 'CM', 'RM'),
+    (1, 'Alan', 'Varela', '2001-07-04', 'CM', 'CDM'),
+    (1, 'Jorge', 'Sánchez', '1997-12-10', 'RB', 'LB');
 
 
 insert into standings_snapshot (fk_season_id, fk_team_id, standings_as_of, points, goal_diff)

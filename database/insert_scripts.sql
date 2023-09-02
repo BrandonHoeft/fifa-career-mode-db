@@ -97,36 +97,32 @@ values
 
 
 --------------------------------------------------------------------------------
--- game log 26: home vs boavista
-INSERT INTO games (fk_season_id, game_num, game_minutes, home_or_away, fk_opp_id,
-                   opp_goals, opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots)
+-- game log 27: home vs casa pia
+INSERT INTO games (fk_season_id, game_num, game_minutes, home_or_away, fk_opp_id, opp_goals,
+                   opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots)
 VALUES
-	(1,26,16,'home',7,1,0.6,42,7,4,7.4,18)
+	(1,27,16,'home',18,0,4,40,12,1,3.1,15)
 
 INSERT INTO player_stats (fk_player_id, fk_game_id, rating, minutes, poss_won, poss_lost,
-                          goals, non_pen_xg, shots, assists, key_passes,
-                          passes_att, passes_compl, duels_att, duels_won)
+                          goals, non_pen_xg, shots, assists, key_passes, passes_att, passes_compl,
+                          duels_att, duels_won)
 VALUES
--- (4,26,,,,,,,,,,,,,),  -- Carmo David
--- (5,26,,,,,,,,,,,,,),  -- Fábio Cardoso
-(6,26,6.4,93,5,4,0,0,0,0,0,10,6,14,5),  -- Pepe Laveran Lima Ferreira
-(7,26,7.5,93,7,2,0,0.9,2,0,1,6,5,10,9),  -- Iván Marcano
--- (8,26,,,,,,,,,,,,,),  -- Zaidu Sanusi
-(9,26,7.3,93,5,2,0,0,0,1,2,11,10,5,2),  -- Wendell Nascimento Borges
-(10,26,7.3,93,4,1,0,0,0,0,1,12,8,5,2),  -- João Mário
--- (14,26,,,,,,,,,,,,,),  -- Marko Grujić
--- (15,26,,,,,,,,,,,,,),  -- Stephen Eustaquio
--- (17,26,,,,,,,,,,,,,),  -- Otávio Edmilson da Silva Monteiro
-(18,26,7.6,93,1,5,1,0.6,2,0,1,14,11,11,7),  -- Pepê Gabriel Aquino Cossa
-(19,26,6.4,22,0,0,0,0,0,0,3,5,5,2,1),  -- André Franco
-(20,26,8.1,71,0,3,1,1.4,3,2,2,8,4,4,3),  -- Wenderson Galeno
-(21,26,6,3,0,0,0,0,0,0,1,1,1,0,0),  -- Gabriel Veron
--- (22,26,,,,,,,,,,,,,),  -- Gonçalo Borges
-(23,26,6.4,58,1,3,0,0,0,0,0,10,9,12,4),  -- Francisco Evanilson
-(24,26,7.7,93,0,7,2,1.5,4,0,2,15,11,18,6),  -- Mehdi Taremi
--- (25,26,,,,,,,,,,,,,),  -- Toni Martínez
-(26,26,6.6,35,1,1,0,1.6,2,0,0,4,4,1,1),  -- Daniel Namaso Loader
-(27,26,7.8,90,7,4,0,0.4,2,1,6,28,24,12,11),  -- Nico González
-(30,26,6.6,22,2,2,0,1,2,0,2,8,6,4,4),  -- Romário Baró
--- (32,26,,,,,,,,,,,,,),  -- Jorge Sánchez
-(31,26,6,71,4,4,0,0,1,0,0,15,12,13,4)   -- Alan Varela
+-- (4,27,,,,,,,,,,,,,),  -- Carmo David
+(5,27,6.5,91,3,2,0,0,1,0,0,13,9,8,5),  -- Fábio Cardoso
+-- (6,27,,,,,,,,,,,,,),  -- Pepe Laveran Lima Ferreira
+(7,27,7.1,91,6,1,0,0,0,0,0,13,12,9,5),  -- Iván Marcano
+(8,27,6,3,0,0,0,0,0,0,0,0,0,0,0),  -- Zaidu Sanusi
+(9,27,7.3,88,3,4,0,0.3,2,0,3,17,14,9,5),  -- Wendell Nascimento Borges
+(10,27,7.1,91,4,2,0,0.2,1,0,2,14,12,10,5),  -- João Mário
+(14,27,5.7,33,0,1,0,0,0,0,0,4,4,4,3),  -- Marko Grujić
+(18,27,6.2,91,0,3,0,0,0,0,1,11,8,4,3),  -- Pepê Gabriel Aquino Cossa
+-- (19,27,,,,,,,,,,,,,),  -- André Franco
+(20,27,5.9,58,0,3,0,0.3,2,0,2,8,6,6,1),  -- Wenderson Galeno
+-- (21,27,,,,,,,,,,,,,),  -- Gabriel Veron
+(22,27,5.6,33,0,4,0,0,0,0,0,3,1,3,1),  -- Gonçalo Borges
+(23,27,6.1,33,0,0,0,0,0,0,1,2,2,3,3),  -- Francisco Evanilson
+(24,27,6.9,91,3,4,0,1.5,5,0,1,12,9,17,9),  -- Mehdi Taremi
+(25,27,6.4,58,1,3,0,0.3,2,0,1,7,6,7,4),  -- Toni Martínez
+-- (26,27,,,,,,,,,,,,,),  -- Daniel Namaso Loader
+(27,27,6.7,91,2,2,0,0.2,1,0,0,18,13,12,7),  -- Nico González
+(30,27,6.2,58,0,4,0,0.3,1,0,2,15,11,7,4);  -- Romário Baró

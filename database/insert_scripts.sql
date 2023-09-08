@@ -97,29 +97,29 @@ values
 
 
 --------------------------------------------------------------------------------
--- Game Log 30: away vs Portimonense
+-- Game Log 31: home vs Rio Ave
 INSERT INTO games (fk_season_id, game_num, game_minutes, home_or_away, fk_opp_id,
                    opp_goals, opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots)
 VALUES
-	(1,30,16,'away',3,0,2.6,43,9,1,2.2,13)
+	(1,31,18,'home',11,1,2.3,42,13,2,4.6,10)
+
 
 INSERT INTO player_stats (fk_player_id, fk_game_id, rating, minutes, poss_won, poss_lost,
                           goals, non_pen_xg, shots, assists, key_passes, passes_att, passes_compl,
                           duels_att, duels_won)
 VALUES
-(4,30,6.6,85,7,3,0,0,0,0,0,10,7,11,9),  -- Carmo David
-(5,30,6,7,1,0,0,0,0,0,0,1,1,1,1),  -- Fábio Cardoso
-(6,30,7.5,92,6,3,0,0,1,0,1,14,11,13,6),  -- Pepe Laveran Lima Ferreira
-(8,30,7.7,74,5,0,0,0,0,0,0,19,18,12,8),  -- Zaidu Sanusi
--- (10,30,,,,,,,,,,,,,),  -- João Mário
-(14,30,7.2,92,3,6,0,0.3,2,0,2,19,14,13,6),  -- Marko Grujić
-(18,30,5.8,92,0,3,0,0,0,0,0,7,2,6,1),  -- Pepê Gabriel Aquino Cossa
-(19,30,8.4,92,5,7,1,0.4,3,0,1,32,21,17,10),  -- André Franco
-(20,30,5.6,39,1,3,0,0,0,0,0,4,1,4,1),  -- Wenderson Galeno
-(21,30,6.6,53,1,2,0,0.2,1,0,1,20,18,5,3),  -- Gabriel Veron
-(22,30,5.9,18,0,0,0,0,0,0,1,5,5,2,2),  -- Gonçalo Borges
-(23,30,7.1,92,1,4,0,0.8,3,0,0,16,16,12,7),  -- Francisco Evanilson
-(24,30,6.5,85,1,6,0,0.5,3,0,1,17,13,13,4),  -- Mehdi Taremi
-(25,30,6,7,0,0,0,0,0,0,0,0,0,0,0),  -- Toni Martínez
-(30,30,5.9,18,1,1,0,0,0,0,0,5,3,4,3),  -- Romário Baró
-(31,30,7.3,74,6,0,0,0,0,0,1,13,13,12,7)  -- Alan Varela
+(4,31,6,5,0,0,0,0,0,0,1,1,1,0,0),  -- Carmo David
+(6,31,6.8,92,7,3,0,0,0,0,0,13,11,16,5),  -- Pepe Laveran Lima Ferreira
+(7,31,8,87,7,2,0,0,0,1,1,19,16,9,6),  -- Iván Marcano
+(10,31,7.2,92,0,2,0,0,0,0,1,17,14,13,5),  -- João Mário
+(14,31,6.2,38,0,1,0,0.7,1,0,0,6,5,7,3),  -- Marko Grujić
+(15,31,6,5,0,0,0,0,0,0,0,1,1,0,0),  -- Stephen Eustaquio
+(18,31,7.3,92,3,6,0,0.5,2,0,1,12,8,16,6),  -- Pepê Gabriel Aquino Cossa
+(19,31,7.4,87,2,2,1,1.3,2,0,2,20,15,10,3),  -- André Franco
+(20,31,8.1,75,1,2,1,0.7,2,0,1,12,10,6,4),  -- Wenderson Galeno
+(22,31,6.5,54,2,6,0,0.5,1,0,0,9,7,13,7),  -- Gonçalo Borges
+(23,31,6.7,92,2,4,0,0.9,2,1,2,16,13,11,5),  -- Francisco Evanilson
+(24,31,6.3,87,0,7,0,0,0,0,1,18,11,12,6),  -- Mehdi Taremi
+(25,31,6,5,0,0,0,0,0,0,0,0,0,1,0),  -- Toni Martínez
+(28,31,6.3,17,0,0,0,0,0,0,1,2,2,1,1),  -- Vasco Sousa
+(31,31,7,92,5,2,0,0,0,0,0,16,13,12,8)  -- Alan Varela

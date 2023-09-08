@@ -97,28 +97,29 @@ values
 
 
 --------------------------------------------------------------------------------
--- Game Log 29: Home vs Santa Clara
+-- Game Log 30: away vs Portimonense
 INSERT INTO games (fk_season_id, game_num, game_minutes, home_or_away, fk_opp_id,
                    opp_goals, opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots)
 VALUES
-	(1,29,18,'home',15,2,1.9,35,9,2,3.5,14)
-
+	(1,30,16,'away',3,0,2.6,43,9,1,2.2,13)
 
 INSERT INTO player_stats (fk_player_id, fk_game_id, rating, minutes, poss_won, poss_lost,
-                          goals, non_pen_xg, shots, assists, key_passes, passes_att, passes_compl, duels_att, duels_won)
+                          goals, non_pen_xg, shots, assists, key_passes, passes_att, passes_compl,
+                          duels_att, duels_won)
 VALUES
-(6,29,6.9,93,5,1,0,0,0,0,0,13,12,8,7),  -- Pepe Laveran Lima Ferreira
-(7,29,7.1,93,7,1,0,0,0,0,0,20,18,13,6),  -- Iván Marcano
-(8,29,7.6,93,6,4,0,0,0,0,1,21,15,6,5),  -- Zaidu Sanusi
-(14,29,7.3,82,6,5,0,0.1,1,0,2,20,18,14,8),  -- Marko Grujić
-(18,29,7,93,2,3,0,0,0,0,1,14,11,9,6),  -- Pepê Gabriel Aquino Cossa
-(20,29,6.7,64,0,5,0,0.5,1,0,1,15,9,7,3),  -- Wenderson Galeno
-(21,29,7.7,93,3,4,1,0.4,2,0,0,10,6,12,6),  -- Gabriel Veron
-(22,29,6.2,29,2,7,0,1.3,4,0,0,5,1,10,4),  -- Gonçalo Borges
-(23,29,6.3,29,0,1,0,0,0,0,2,6,6,5,2),  -- Francisco Evanilson
-(24,29,6.5,64,1,6,0,0.1,2,0,1,11,8,8,3),  -- Mehdi Taremi
-(25,29,6.7,80,1,1,0,0.6,2,0,1,8,8,9,5),  -- Toni Martínez
-(26,29,5.9,13,0,0,0,0,0,0,0,1,1,1,0),  -- Daniel Namaso Loader
-(27,29,7.8,82,3,4,1,0.4,2,1,2,20,17,21,13),  -- Nico González
-(29,29,5.9,11,0,0,0,0,0,0,0,2,2,0,0),  -- Bernardo Folha
-(30,29,5.7,11,0,1,0,0,0,0,0,2,1,0,0)  -- Romário Baró
+(4,30,6.6,85,7,3,0,0,0,0,0,10,7,11,9),  -- Carmo David
+(5,30,6,7,1,0,0,0,0,0,0,1,1,1,1),  -- Fábio Cardoso
+(6,30,7.5,92,6,3,0,0,1,0,1,14,11,13,6),  -- Pepe Laveran Lima Ferreira
+(8,30,7.7,74,5,0,0,0,0,0,0,19,18,12,8),  -- Zaidu Sanusi
+-- (10,30,,,,,,,,,,,,,),  -- João Mário
+(14,30,7.2,92,3,6,0,0.3,2,0,2,19,14,13,6),  -- Marko Grujić
+(18,30,5.8,92,0,3,0,0,0,0,0,7,2,6,1),  -- Pepê Gabriel Aquino Cossa
+(19,30,8.4,92,5,7,1,0.4,3,0,1,32,21,17,10),  -- André Franco
+(20,30,5.6,39,1,3,0,0,0,0,0,4,1,4,1),  -- Wenderson Galeno
+(21,30,6.6,53,1,2,0,0.2,1,0,1,20,18,5,3),  -- Gabriel Veron
+(22,30,5.9,18,0,0,0,0,0,0,1,5,5,2,2),  -- Gonçalo Borges
+(23,30,7.1,92,1,4,0,0.8,3,0,0,16,16,12,7),  -- Francisco Evanilson
+(24,30,6.5,85,1,6,0,0.5,3,0,1,17,13,13,4),  -- Mehdi Taremi
+(25,30,6,7,0,0,0,0,0,0,0,0,0,0,0),  -- Toni Martínez
+(30,30,5.9,18,1,1,0,0,0,0,0,5,3,4,3),  -- Romário Baró
+(31,30,7.3,74,6,0,0,0,0,0,1,13,13,12,7)  -- Alan Varela

@@ -14,12 +14,12 @@ I used `mermaid.js`, a javascript based diagramming tool to mock up below. Resou
  
 ```mermaid
 erDiagram
-    LEAGUES }|--|{ SEASONS : have
+    LEAGUES ||--|{ SEASONS : have
        LEAGUES {
            identity league_id PK "auto-incrementing"
            string name
     }
-    TEAMS }|--|{ SEASONS : compete-in
+    TEAMS ||--|{ SEASONS : compete-in
        TEAMS {
            identity team_id PK "auto-incrementing"
            string team_name
@@ -30,7 +30,7 @@ erDiagram
            integer fk_team_id FK "ref my team playing a season"
            smallint year
     }
-    SEASONS }|--|| GAMES : have
+    SEASONS ||--|{ GAMES : have
         GAMES {
             identity game_id PK "auto-incrementing"
             integer fk_season_id FK "season this game occurred in"
@@ -47,8 +47,8 @@ erDiagram
             integer my_poss_pct
             integer my_shots
        }
-    TEAMS }|--|| GAMES : play
-    PLAYERS ||--|{ TEAMS : contracted-to
+    TEAMS ||--|{ GAMES : play
+    PLAYERS }|--|| TEAMS : contracted
         PLAYERS {
             identity player_id PK "auto-incrementing"
             integer fk_team_id FK "the team a player plays for"
@@ -60,7 +60,7 @@ erDiagram
             text secondary_pos
         }
     
-    GAMES }|--|| PLAYER_STATS : belong-to
+    GAMES ||--|{ PLAYER_STATS : have
         PLAYER_STATS {
             identity ovr_id PK "auto-incrementing"
             integer fk_player_id FK "player who started/subbed in a game"
@@ -80,10 +80,10 @@ erDiagram
             integer duels_att
             integer duels_won            
         }
-    PLAYERS }|--|| PLAYER_STATS : have
+    PLAYERS ||--|{ PLAYER_STATS : have
  
 
-    SEASONS }|--|{ STANDINGS_SNAPSHOT: of
+    SEASONS ||--|{ STANDINGS_SNAPSHOT: have
         STANDINGS_SNAPSHOT {
             identity standing_id PK "auto-incrementing"
             integer fk_season_id FK  "the season this standings snapshot is of"
@@ -93,6 +93,6 @@ erDiagram
             integer goal_diff
         }
     
-    TEAMS }|--|{ STANDINGS_SNAPSHOT: has
+    TEAMS }|--|{ STANDINGS_SNAPSHOT: have
 
 ```

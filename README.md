@@ -42,12 +42,10 @@ erDiagram
             numeric opp_xg
             numeric-generated opp_poss_pct
             integer opp_shots
-            integer opp_shots_on_targ
             integer my_goals
             numeric my_xg
             integer my_poss_pct
             integer my_shots
-            integer my_shots_on_targ
        }
     TEAMS }|--|| GAMES : play
     PLAYERS ||--|{ TEAMS : contracted-to
@@ -69,31 +67,18 @@ erDiagram
             integer fk_game_id  FK "the game they played in"
             numeric rating
             integer minutes
-            integer possession_won
-            integer possession_lost
-            integer dribble_beat
+            integer poss_won
+            integer poss_lost
             integer goals
             numeric non_pen_xg
             integer shots
             integer assists
-            numeric xa
-            integer second_assists
             integer key_passes
-            integer players_beat_by_passes
             integer passes_att
             integer passes_compl
-            integer passes_compl_press
-            integer crosses_attempted
-            integer crosses_compl
-            integer tackles_att
-            integer tackles_won
             integer intrcpts_blocks_clears
             integer duels_att
-            integer duels_won
-            integer air_duels_att
-            integer air_duels_won
-            integer beaten_by_opp
-            
+            integer duels_won            
         }
     PLAYERS }|--|| PLAYER_STATS : have
  

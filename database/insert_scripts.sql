@@ -97,27 +97,28 @@ values
 
 
 --------------------------------------------------------------------------------
--- Game Log 34: away vs Vitoria
+-- Game Log 35: home vs Vizela
 INSERT INTO games (fk_season_id, game_num, game_minutes, home_or_away, fk_opp_id,
                    opp_goals, opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots)
 VALUES
-	(1,34,10,'away',17,1,0.4,40,3,1,2.8,11);
-
+	(1,35,10,'home',10,1,1.4,46,7,1,1.7,4)
 
 
 INSERT INTO player_stats (fk_player_id, fk_game_id, rating, minutes, poss_won, poss_lost,
-                          goals, non_pen_xg, shots, assists, key_passes, passes_att, passes_compl, duels_att, duels_won)
+                          goals, non_pen_xg, shots, assists, key_passes, passes_att, passes_compl,
+                          duels_att, duels_won)
 VALUES
-(4,34,6.2,92,0,1,0,0,0,0,0,3,2,3,3),  -- Carmo David
-(6,34,6.5,92,3,0,0,0,0,0,0,4,4,5,2),  -- Pepe Laveran Lima Ferreira
-(8,34,6.4,92,2,2,0,0,0,0,0,11,7,10,2),  -- Zaidu Sanusi
-(10,34,7.5,92,2,1,0,0,0,0,0,10,7,6,4),  -- João Mário
-(14,34,7.1,92,5,1,0,0,0,0,0,14,13,11,7),  -- Marko Grujić
-(15,34,7.4,85,4,5,1,0.2,3,0,0,12,9,8,3),  -- Stephen Eustaquio
-(18,34,7.6,92,3,3,0,1.1,4,0,3,17,16,12,7),  -- Pepê Gabriel Aquino Cossa
-(19,34,6.1,63,0,4,0,0,0,0,1,8,4,4,1),  -- André Franco
-(21,34,6,29,1,0,0,0,0,0,1,3,3,1,1),  -- Gabriel Veron
-(22,34,6.5,63,1,4,0,1.1,2,0,1,4,3,7,5),  -- Gonçalo Borges
-(24,34,7.1,92,1,4,0,0.2,1,0,4,12,11,11,4),  -- Mehdi Taremi
-(28,34,6,7,0,0,0,0,0,0,0,1,1,1,0),  -- Vasco Sousa
-(30,34,6.3,29,0,0,0,0.2,1,0,0,1,1,2,1)  -- Romário Baró
+(5,35,6.9,91,3,0,0,0,0,0,1,8,8,7,4),  -- Fábio Cardoso
+(7,35,6.9,91,5,1,0,0,0,1,1,5,4,7,4),  -- Iván Marcano
+(8,35,6.4,91,2,0,0,0,0,0,0,4,4,6,4),  -- Zaidu Sanusi
+(10,35,6.3,59,3,1,0,0,0,0,0,4,3,2,2),  -- João Mário
+(18,35,6.5,91,0,5,0,0.2,1,0,0,6,3,5,2),  -- Pepê Gabriel Aquino Cossa
+(19,35,6.8,77,2,4,0,0.8,1,0,1,12,10,6,4),  -- André Franco
+(20,35,7.8,77,0,2,1,0.6,2,0,1,7,4,6,2),  -- Wenderson Galeno
+(21,35,5.9,14,1,1,0,0,0,0,0,2,1,1,1),  -- Gabriel Veron
+(24,35,5.9,91,0,4,0,0,0,0,1,7,5,11,4),  -- Mehdi Taremi
+(25,35,5.7,32,0,3,0,0,0,0,0,4,1,3,0),  -- Toni Martínez
+(27,35,6.3,91,6,2,0,0,0,0,1,11,9,14,8),  -- Nico González
+(30,35,6.3,14,3,2,0,0,0,0,0,4,3,3,2),  -- Romário Baró
+(31,35,6.3,91,1,5,0,0.1,1,0,0,10,6,6,5) -- Alan Varela
+

@@ -97,30 +97,27 @@ values
 
 
 --------------------------------------------------------------------------------
--- Game Log 33: home vs Arouca
+-- Game Log 34: away vs Vitoria
 INSERT INTO games (fk_season_id, game_num, game_minutes, home_or_away, fk_opp_id,
                    opp_goals, opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots)
 VALUES
-	(1,33,16,'home',2,0,0,35,0,2,3.6,17)
+	(1,34,10,'away',17,1,0.4,40,3,1,2.8,11);
 
 
 
 INSERT INTO player_stats (fk_player_id, fk_game_id, rating, minutes, poss_won, poss_lost,
-                          goals, non_pen_xg, shots, assists, key_passes, passes_att, passes_compl,
-                          duels_att, duels_won)
+                          goals, non_pen_xg, shots, assists, key_passes, passes_att, passes_compl, duels_att, duels_won)
 VALUES
-(4,33,7.6,93,6,0,0,0,0,0,0,12,11,9,8),  -- Carmo David
-(5,33,6.5,36,3,0,0,0,0,0,0,4,3,5,3),  -- Fábio Cardoso
-(6,33,6.9,93,4,4,0,0,0,0,0,10,5,10,3),  -- Pepe Laveran Lima Ferreira
-(7,33,6.6,57,2,0,0,0,0,0,0,5,5,4,3),  -- Iván Marcano
-(10,33,7.6,93,2,6,0,0.3,1,1,1,15,9,5,2),  -- João Mário
-(15,33,6.7,57,4,2,0,0.2,2,0,3,17,14,10,10),  -- Stephen Eustaquio
-(18,33,7.6,69,1,1,1,1.2,2,0,0,14,13,9,3),  -- Pepê Gabriel Aquino Cossa
-(31,33,6.8,93,8,3,0,0,0,0,1,18,15,10,5),  -- Alan Varela
-(19,33,8.4,93,2,5,1,0.5,3,0,2,24,19,12,8),  -- André Franco
-(20,33,6.4,69,3,10,0,0.8,5,0,3,12,9,19,10),  -- Wenderson Galeno
-(21,33,6,24,0,1,0,0,0,0,0,3,2,3,1),  -- Gabriel Veron
-(22,33,6.3,24,2,1,0,0,0,0,1,4,3,4,2),  -- Gonçalo Borges
-(25,33,6.3,87,0,2,0,0.6,3,0,3,13,12,5,2),  -- Toni Martínez
-(27,33,6.3,36,2,2,0,0,1,0,1,8,5,4,1),  -- Nico González
-(29,33,6,6,0,1,0,0,0,0,0,2,1,0,0)  -- Bernardo Folha
+(4,34,6.2,92,0,1,0,0,0,0,0,3,2,3,3),  -- Carmo David
+(6,34,6.5,92,3,0,0,0,0,0,0,4,4,5,2),  -- Pepe Laveran Lima Ferreira
+(8,34,6.4,92,2,2,0,0,0,0,0,11,7,10,2),  -- Zaidu Sanusi
+(10,34,7.5,92,2,1,0,0,0,0,0,10,7,6,4),  -- João Mário
+(14,34,7.1,92,5,1,0,0,0,0,0,14,13,11,7),  -- Marko Grujić
+(15,34,7.4,85,4,5,1,0.2,3,0,0,12,9,8,3),  -- Stephen Eustaquio
+(18,34,7.6,92,3,3,0,1.1,4,0,3,17,16,12,7),  -- Pepê Gabriel Aquino Cossa
+(19,34,6.1,63,0,4,0,0,0,0,1,8,4,4,1),  -- André Franco
+(21,34,6,29,1,0,0,0,0,0,1,3,3,1,1),  -- Gabriel Veron
+(22,34,6.5,63,1,4,0,1.1,2,0,1,4,3,7,5),  -- Gonçalo Borges
+(24,34,7.1,92,1,4,0,0.2,1,0,4,12,11,11,4),  -- Mehdi Taremi
+(28,34,6,7,0,0,0,0,0,0,0,1,1,1,0),  -- Vasco Sousa
+(30,34,6.3,29,0,0,0,0.2,1,0,0,1,1,2,1)  -- Romário Baró

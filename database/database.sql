@@ -89,10 +89,10 @@ create table player_stats
 			primary key,
 	fk_player_id integer not null
 		constraint player_stats_fk_player_id_fkey
-			references players,
+			references players(player_id),
 	fk_game_id integer not null
 		constraint player_stats_fk_game_id_fkey
-			references games,
+			references games(game_id),
 	-- overall stats
 	rating numeric(3,1) not null,
 	minutes integer not null,

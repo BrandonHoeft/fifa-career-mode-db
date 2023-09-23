@@ -98,29 +98,26 @@ values
 
 
 --------------------------------------------------------------------------------
--- Game Log 37: home vs Estoril
+-- Game Log 38: away vs Sporting CP
 INSERT INTO games (fk_season_id, game_num, game_minutes, home_or_away, fk_opp_id,
                    opp_goals, opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots)
 VALUES
-	(1,37,10,'home',8,0,0.8,47,2,1,1.4,10)
+	(1,38,12,'away',16,0,3.2,48,8,0,0.8,8)
 
 
 
-INSERT INTO player_stats (fk_player_id, fk_game_id, rating, minutes, poss_won, poss_lost,
-                          goals, non_pen_xg, shots, assists, key_passes, passes_att, passes_compl,
-                          duels_att, duels_won)
+INSERT INTO player_stats (fk_player_id, fk_game_id, rating, minutes, poss_won, poss_lost, goals, non_pen_xg,
+                         shots, assists, key_passes, passes_att, passes_compl, duels_att, duels_won)
 VALUES
-(4,37,6.8,91,5,1,0,0,0,0,0,8,7,7,5),  -- Carmo David
-(5,37,6.8,91,4,0,0,0,0,0,0,6,6,7,5),  -- Fábio Cardoso
--- (6,37,,,,,,,,,,,,,),  -- Pepe Laveran Lima Ferreira
--- (7,37,,,,,,,,,,,,,),  -- Iván Marcano
-(8,37,7,91,4,1,0,0,0,0,1,8,7,5,4),  -- Zaidu Sanusi
-(18,37,7.4,91,2,2,0,0,0,1,3,12,9,4,3),  -- Pepê Gabriel Aquino Cossa
-(19,37,6,82,0,2,0,0.4,1,0,0,4,2,1,0),  -- André Franco
-(20,37,7.8,82,1,4,1,0,3,0,4,12,8,4,3),  -- Wenderson Galeno
-(21,37,6,9,0,0,0,0,0,0,0,1,1,0,0),  -- Gabriel Veron
-(23,37,7,91,2,2,0,0,0,0,1,8,7,7,6),  -- Francisco Evanilson
-(24,37,6.3,91,1,4,0,0.6,3,0,0,6,5,9,3),  -- Mehdi Taremi
-(27,37,6.1,91,2,4,0,0.3,3,0,0,10,8,6,3),  -- Nico González
-(30,37,6,9,0,0,0,0,0,0,0,0,0,0,0),  -- Romário Baró
-(31,37,6,91,2,2,0,0,0,0,0,6,5,10,2)  -- Alan Varela
+(6,38,6.9,92,5,1,0,0,0,0,0,12,9,10,5),  -- Pepe Laveran Lima Ferreira
+(7,38,6.2,92,2,3,0,0,0,0,0,5,3,7,4),  -- Iván Marcano
+(8,38,7.7,92,8,3,0,0,0,0,2,12,10,6,3),  -- Zaidu Sanusi
+(10,38,7.5,92,2,2,0,0.2,1,0,1,9,8,5,3),  -- João Mário
+(15,38,5.6,92,0,2,0,0,2,0,0,9,9,5,1),  -- Stephen Eustaquio
+(18,38,6.8,60,2,2,0,0,0,0,0,9,6,6,4),  -- Pepê Gabriel Aquino Cossa
+(19,38,6.10,32,0,1,0,0,0,0,0,4,3,3,2),  -- André Franco
+(20,38,6.5,92,1,4,0,0.1,1,0,1,11,8,5,1),  -- Wenderson Galeno
+(21,38,6.6,32,1,0,0,0,0,0,0,6,5,3,3),  -- Gabriel Veron
+(23,38,6.2,60,1,3,0,0.3,2,0,1,7,6,2,2),  -- Francisco Evanilson
+(24,38,6.4,92,1,7,0,0.1,1,0,1,11,6,7,3),  -- Mehdi Taremi
+(31,38,6.5,92,2,2,0,0.1,1,0,1,9,7,7,3)  -- Alan Varela

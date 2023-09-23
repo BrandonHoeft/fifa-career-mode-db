@@ -98,26 +98,25 @@ values
 
 
 --------------------------------------------------------------------------------
--- Game Log 38: away vs Sporting CP
+-- Game Log 39: away vs Boavista
 INSERT INTO games (fk_season_id, game_num, game_minutes, home_or_away, fk_opp_id,
                    opp_goals, opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots)
 VALUES
-	(1,38,12,'away',16,0,3.2,48,8,0,0.8,8)
+	(1,30,10,'away',7,1,1.8,37,8,2,6.6,14);
 
 
 
-INSERT INTO player_stats (fk_player_id, fk_game_id, rating, minutes, poss_won, poss_lost, goals, non_pen_xg,
-                         shots, assists, key_passes, passes_att, passes_compl, duels_att, duels_won)
+INSERT INTO player_stats (fk_player_id, fk_game_id, rating, minutes, poss_won, poss_lost,
+                          goals, non_pen_xg, shots, assists, key_passes, passes_att, passes_compl, duels_att, duels_won)
 VALUES
-(6,38,6.9,92,5,1,0,0,0,0,0,12,9,10,5),  -- Pepe Laveran Lima Ferreira
-(7,38,6.2,92,2,3,0,0,0,0,0,5,3,7,4),  -- Iván Marcano
-(8,38,7.7,92,8,3,0,0,0,0,2,12,10,6,3),  -- Zaidu Sanusi
-(10,38,7.5,92,2,2,0,0.2,1,0,1,9,8,5,3),  -- João Mário
-(15,38,5.6,92,0,2,0,0,2,0,0,9,9,5,1),  -- Stephen Eustaquio
-(18,38,6.8,60,2,2,0,0,0,0,0,9,6,6,4),  -- Pepê Gabriel Aquino Cossa
-(19,38,6.10,32,0,1,0,0,0,0,0,4,3,3,2),  -- André Franco
-(20,38,6.5,92,1,4,0,0.1,1,0,1,11,8,5,1),  -- Wenderson Galeno
-(21,38,6.6,32,1,0,0,0,0,0,0,6,5,3,3),  -- Gabriel Veron
-(23,38,6.2,60,1,3,0,0.3,2,0,1,7,6,2,2),  -- Francisco Evanilson
-(24,38,6.4,92,1,7,0,0.1,1,0,1,11,6,7,3),  -- Mehdi Taremi
-(31,38,6.5,92,2,2,0,0.1,1,0,1,9,7,7,3)  -- Alan Varela
+(5,39,6.8,93,3,0,0,0,0,0,1,3,3,5,2),  -- Fábio Cardoso
+(6,39,8.4,97,3,0,1,1,1,0,0,4,3,6,5),  -- Pepe Laveran Lima Ferreira
+(7,39,7.1,97,2,1,0,0,0,0,0,8,6,10,5),  -- Iván Marcano
+(14,39,7.9,97,4,3,0,0,0,0,2,14,13,12,7),  -- Marko Grujić
+(18,39,7.8,97,3,3,0,0.5,1,1,4,12,9,4,3),  -- Pepê Gabriel Aquino Cossa
+(19,39,7.5,97,3,2,0,0.2,2,0,1,9,8,11,8),  -- André Franco
+(21,39,6.2,31,0,0,0,0,1,0,0,2,2,0,0),  -- Gabriel Veron
+(22,39,6.8,97,0,3,0,0,0,0,1,9,3,7,1),  -- Gonçalo Borges
+(24,39,7.7,97,0,8,1,4,6,0,1,10,9,15,5),  -- Mehdi Taremi
+(25,39,7.1,66,0,0,0,0.5,1,1,2,9,9,5,1),  -- Toni Martínez
+(27,39,6.8,97,3,4,0,0.3,2,0,2,18,14,13,6)  -- Nico González

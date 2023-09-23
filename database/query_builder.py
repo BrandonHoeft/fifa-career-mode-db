@@ -29,7 +29,7 @@ def gen_game_sql_template(conn, fk_season_id, game_num, game_min, home_or_away, 
 
 def gen_player_stats_sql_template(conn, fk_game_id):
     # Prompt for a list of names
-    #Iván Marcano,Pepe Laveran Lima Ferreira,Zaidu Sanusi,Pepê Gabriel Aquino Cossa,Stephen Eustaquio,Wenderson Galeno,Otávio Edmilson da Silva Monteiro,Mehdi Taremi,Francisco Evanilson,Toni Martínez,Fábio Cardoso,Carmo David,João Mário,Marko Grujić,Nico González,Gabriel Veron,Gonçalo Borges,Daniel Namaso Loader,Wendell Nascimento Borges,Romário Baró,André Franco,Alan Varela,Jorge Sánchez,Vasco Sousa,Bernardo Folha
+    #Iván Marcano,Pepe Laveran Lima Ferreira,Zaidu Sanusi,Pepê Gabriel Aquino Cossa,Stephen Eustaquio,Wenderson Galeno,Mehdi Taremi,Francisco Evanilson,Toni Martínez,Fábio Cardoso,Carmo David,João Mário,Marko Grujić,Nico González,Gabriel Veron,Gonçalo Borges,Daniel Namaso Loader,Wendell Nascimento Borges,Romário Baró,André Franco,Alan Varela,Jorge Sánchez,Vasco Sousa,Bernardo Folha
     player_names = pd.read_sql("select * from public.players", conn).full_name.to_list()
     names = input(f"Enter a list of names (comma-separated,no space b/w names) from:\n{player_names}").split(",")
     player_stats_cols = pd.read_sql("select column_name from information_schema.columns where table_name = 'player_stats' and column_name != 'ovr_id'", conn).column_name.tolist()
@@ -76,16 +76,17 @@ if __name__ == '__main__':
     pg_conn = connect(args.host, args.port, args.database, args.user, args.password)
 
     season_id = input("Enter the season number that will represent the season_id:")
-    game_number = input(f"Enter the game number that represents the game_num/fk_game_id. Query of public.games indicates next game # is likely: {pd.read_sql('select 1+ max(game_num) from public.games', pg_conn)}")
+    season_game_number = input(f"Enter the game number for that season_id. Query of public.games indicates next game # is likely: {pd.read_sql(f'select 1+ max(game_num) from public.games where fk_season_id = {season_id}', pg_conn)}")
+    fk_game_id = input(f"Enter the fk_game_id these player stats will link too. Query of public.games indicates next fk_game_id # is likely: {pd.read_sql('select 1+ max(game_id) from public.games', pg_conn)}")
     game_minutes = input("Enter the game length in minutes played:")
     home_or_away = input("enter home or away:")
     my_opponent_id = input(f"Enter my opponent_id from this table:\n{pd.read_sql('select * from public.teams', pg_conn)}")
 
     warnings.filterwarnings('ignore')
-    game_sql_string = gen_game_sql_template(pg_conn, fk_season_id=season_id, game_num=game_number, game_min=game_minutes, home_or_away=home_or_away, fk_opp_id=my_opponent_id)
+    game_sql_string = gen_game_sql_template(pg_conn, fk_season_id=season_id, game_num=season_game_number, game_min=game_minutes, home_or_away=home_or_away, fk_opp_id=my_opponent_id)
 
     # TODO: before generating this, run the game SQL query to gen proper fk_game_id that gets queried below
     # FIXME: the fk_game_id might return the wrong one. Look into transactions.
-    player_stats_sql_string = gen_player_stats_sql_template(pg_conn, fk_game_id=game_number)
+    player_stats_sql_string = gen_player_stats_sql_template(pg_conn, fk_game_id=fk_game_id)
 
     print("Finished")

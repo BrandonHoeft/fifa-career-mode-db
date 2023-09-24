@@ -103,25 +103,25 @@ values
 
 
 --------------------------------------------------------------------------------
--- Game Log 42: home vs Braga
+-- Game Log 43: away vs Pacos Ferreira
 INSERT INTO games (fk_season_id, game_num, game_minutes, home_or_away, fk_opp_id,
                    opp_goals, opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots)
 VALUES
-	(1,33,10,'home',13,0,0.6,48,3,2,6.6,17)
+	(1,34,8,'away',5,0,0.5,33,3,1,3.2,9)
 
 
 INSERT INTO player_stats (fk_player_id, fk_game_id, rating, minutes, poss_won, poss_lost,
                           goals, non_pen_xg, shots, assists, key_passes, passes_att, passes_compl, duels_att, duels_won)
 VALUES
-(4,42,6.8,92,2,0,0,0,0,0,0,4,3,8,7),  -- Carmo David
-(6,42,7.2,92,2,1,0,0.7,2,0,0,5,4,8,5),  -- Pepe Laveran Lima Ferreira
-(8,42,6.5,58,5,2,0,0,0,0,2,8,5,7,3),  -- Zaidu Sanusi
-(10,42,7.6,34,0,2,1,1.8,3,0,1,4,4,2,1),  -- João Mário
-(14,42,6.8,92,3,2,0,0,0,0,0,7,5,13,8),  -- Marko Grujić
-(18,42,8.4,92,2,1,0,0,0,1,5,15,13,9,5),  -- Pepê Gabriel Aquino Cossa
-(20,42,5.5,58,0,3,0,0.4,2,0,0,8,5,5,4),  -- Wenderson Galeno (RED CARD)
-(22,42,8.6,92,3,2,0,0.6,2,1,3,10,8,7,6),  -- Gonçalo Borges
-(23,42,6.3,58,0,1,0,0.6,1,0,1,3,2,1,1),  -- Francisco Evanilson
-(24,42,7.9,92,1,5,1,2.3,6,0,1,6,6,10,8),  -- Mehdi Taremi
-(30,42,6.9,34,1,0,0,0.1,1,0,0,4,4,2,1),  -- Romário Baró
-(31,42,6.5,92,0,1,0,0,0,0,3,11,9,5,3)  -- Alan Varela
+(26,43,5.9,37,0,0,0,0.1,1,0,0,1,0,2,1),  -- Daniel Namaso Loader
+(22,43,6.3,94,0,4,0,0,0,0,0,8,4,0,0),  -- Gonçalo Borges
+(8,43,7.9,94,3,1,0,0,0,0,0,5,4,9,5),  -- Zaidu Sanusi
+(24,43,7.5,57,0,0,1,1.7,2,0,1,5,5,4,2),  -- Mehdi Taremi
+(28,43,5.7,37,0,2,0,0.5,2,0,0,2,2,1,0),  -- Vasco Sousa
+(10,43,7.9,94,3,3,0,0,0,1,1,9,7,2,1),  -- João Mário
+(6,43,8,94,6,0,0,0,0,0,0,8,8,8,7),  -- Pepe Laveran Lima Ferreira
+(19,43,7,94,2,2,0,0.3,1,0,2,12,10,4,3),  -- André Franco
+(30,43,7.3,94,2,5,0,0.7,3,0,2,14,11,6,4),  -- Romário Baró
+(15,43,7.3,94,3,0,0,0,0,0,3,9,8,7,5),  -- Stephen Eustaquio
+(21,43,6.4,57,0,2,0,0,0,0,0,5,4,3,2),  -- Gabriel Veron
+(7,43,7,94,1,0,0,0,0,0,0,5,4,5,1)  -- Iván Marcano

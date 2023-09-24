@@ -72,6 +72,11 @@ values
     (1, 'Alan', 'Varela', '2001-07-04', 'CM', 'CDM'),
     (1, 'Jorge', 'Sánchez', '1997-12-10', 'RB', 'LB');
 
+insert into players (fk_team_id, first_name, last_name, birthday, primary_pos, second_pos,
+                     start_date, end_date, cost, sale, acquired_rating, current_rating)
+values
+    (1, 'Francisco', 'Conceição', '2002-12-02', 'RM', 'RW', '2023-01-01', NULL, 12000000, NULL, 75, 75)
+
 
 insert into standings_snapshot (fk_season_id, fk_team_id, standings_as_of, points, goal_diff)
 values

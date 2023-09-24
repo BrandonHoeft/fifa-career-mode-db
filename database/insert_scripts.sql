@@ -98,26 +98,25 @@ values
 
 
 --------------------------------------------------------------------------------
--- Game Log 40: home vs Maritimo
+-- Game Log 41: away vs Gil Vicente
 INSERT INTO games (fk_season_id, game_num, game_minutes, home_or_away, fk_opp_id,
                    opp_goals, opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots)
 VALUES
-	(1,31,10,'home',14,1,1.6,44,5,2,2.3,10)
+	(1,32,10,'away',6,1,1.4,41,4,2,4.1,15)
 
 
 INSERT INTO player_stats (fk_player_id, fk_game_id, rating, minutes, poss_won, poss_lost,
-                          goals, non_pen_xg, shots, assists, key_passes,
-                          passes_att, passes_compl, duels_att, duels_won)
+                          goals, non_pen_xg, shots, assists, key_passes, passes_att, passes_compl, duels_att, duels_won)
 VALUES
-(4,40,6.8,92,6,3,0,0,0,0,0,9,7,10,4),  -- Carmo David
-(6,40,6.6,92,5,1,0,0,0,0,0,8,5,5,3),  -- Pepe Laveran Lima Ferreira
-(8,40,7.9,92,4,1,0,0.4,1,0,3,9,7,14,9),  -- Zaidu Sanusi
-(10,40,6.6,92,0,2,0,0,0,0,0,5,3,8,3),  -- João Mário
-(15,40,7.6,92,2,4,1,0.2,2,0,1,14,11,10,5),  -- Stephen Eustaquio
-(18,40,6.4,22,0,0,0,0,0,1,1,2,2,0,0),  -- Pepê Gabriel Aquino Cossa
-(20,40,6.4,70,2,6,0,0.3,4,0,0,7,4,8,5),  -- Wenderson Galeno
-(21,40,7.1,22,0,1,0,0,0,1,2,2,2,4,3),  -- Gabriel Veron
-(23,40,7.7,92,1,0,1,1,1,0,0,6,6,4,2),  -- Francisco Evanilson
-(24,40,6.6,70,1,3,0,0.3,1,0,0,7,5,6,5),  -- Mehdi Taremi
-(30,40,6.3,92,0,4,0,0.2,1,0,3,7,4,7,2),  -- Romário Baró
-(31,40,6.6,92,2,1,0,0,0,0,1,6,5,8,5)  -- Alan Varela
+(5,41,6.3,92,1,0,0,0,0,0,0,1,1,3,3),  -- Fábio Cardoso
+(7,41,6.7,92,4,20,0,0,0,0,0,7,5,4,2),  -- Iván Marcano
+(10,41,7.7,57,1,0,0,0,0,1,3,7,6,2,2),  -- João Mário
+(14,41,6.7,92,4,2,0,0.4,2,0,2,10,10,11,7),  -- Marko Grujić
+(18,41,7.7,92,1,4,0,0.1,2,0,2,13,12,15,5),  -- Pepê Gabriel Aquino Cossa
+(19,41,6.1,92,0,3,0,0.2,1,0,1,10,8,8,5),  -- André Franco
+(20,41,8,92,0,3,1,1.6,2,0,3,10,9,6,3),  -- Wenderson Galeno
+(24,41,6.1,35,0,0,0,0.5,1,0,0,3,2,2,2),  -- Mehdi Taremi
+(25,41,7.6,57,3,3,1,1.3,3,0,0,7,6,9,5),  -- Toni Martínez
+(27,41,6.8,92,2,3,0,0,4,0,1,13,10,8,6),  -- Nico González
+(28,41,6.2,35,2,1,0,0,0,0,0,3,2,2,2),  -- Vasco Sousa
+(30,41,7.2,92,3,2,0,0,0,0,0,10,6,7,4)  -- Romário Baró

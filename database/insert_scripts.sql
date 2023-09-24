@@ -98,25 +98,25 @@ values
 
 
 --------------------------------------------------------------------------------
--- Game Log 41: away vs Gil Vicente
+-- Game Log 42: home vs Braga
 INSERT INTO games (fk_season_id, game_num, game_minutes, home_or_away, fk_opp_id,
                    opp_goals, opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots)
 VALUES
-	(1,32,10,'away',6,1,1.4,41,4,2,4.1,15)
+	(1,33,10,'home',13,0,0.6,48,3,2,6.6,17)
 
 
 INSERT INTO player_stats (fk_player_id, fk_game_id, rating, minutes, poss_won, poss_lost,
                           goals, non_pen_xg, shots, assists, key_passes, passes_att, passes_compl, duels_att, duels_won)
 VALUES
-(5,41,6.3,92,1,0,0,0,0,0,0,1,1,3,3),  -- Fábio Cardoso
-(7,41,6.7,92,4,20,0,0,0,0,0,7,5,4,2),  -- Iván Marcano
-(10,41,7.7,57,1,0,0,0,0,1,3,7,6,2,2),  -- João Mário
-(14,41,6.7,92,4,2,0,0.4,2,0,2,10,10,11,7),  -- Marko Grujić
-(18,41,7.7,92,1,4,0,0.1,2,0,2,13,12,15,5),  -- Pepê Gabriel Aquino Cossa
-(19,41,6.1,92,0,3,0,0.2,1,0,1,10,8,8,5),  -- André Franco
-(20,41,8,92,0,3,1,1.6,2,0,3,10,9,6,3),  -- Wenderson Galeno
-(24,41,6.1,35,0,0,0,0.5,1,0,0,3,2,2,2),  -- Mehdi Taremi
-(25,41,7.6,57,3,3,1,1.3,3,0,0,7,6,9,5),  -- Toni Martínez
-(27,41,6.8,92,2,3,0,0,4,0,1,13,10,8,6),  -- Nico González
-(28,41,6.2,35,2,1,0,0,0,0,0,3,2,2,2),  -- Vasco Sousa
-(30,41,7.2,92,3,2,0,0,0,0,0,10,6,7,4)  -- Romário Baró
+(4,42,6.8,92,2,0,0,0,0,0,0,4,3,8,7),  -- Carmo David
+(6,42,7.2,92,2,1,0,0.7,2,0,0,5,4,8,5),  -- Pepe Laveran Lima Ferreira
+(8,42,6.5,58,5,2,0,0,0,0,2,8,5,7,3),  -- Zaidu Sanusi
+(10,42,7.6,34,0,2,1,1.8,3,0,1,4,4,2,1),  -- João Mário
+(14,42,6.8,92,3,2,0,0,0,0,0,7,5,13,8),  -- Marko Grujić
+(18,42,8.4,92,2,1,0,0,0,1,5,15,13,9,5),  -- Pepê Gabriel Aquino Cossa
+(20,42,5.5,58,0,3,0,0.4,2,0,0,8,5,5,4),  -- Wenderson Galeno (RED CARD)
+(22,42,8.6,92,3,2,0,0.6,2,1,3,10,8,7,6),  -- Gonçalo Borges
+(23,42,6.3,58,0,1,0,0.6,1,0,1,3,2,1,1),  -- Francisco Evanilson
+(24,42,7.9,92,1,5,1,2.3,6,0,1,6,6,10,8),  -- Mehdi Taremi
+(30,42,6.9,34,1,0,0,0.1,1,0,0,4,4,2,1),  -- Romário Baró
+(31,42,6.5,92,0,1,0,0,0,0,3,11,9,5,3)  -- Alan Varela

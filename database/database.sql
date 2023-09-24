@@ -53,7 +53,13 @@ create table if not exists players (
     full_name text generated always as (first_name || ' ' || last_name) stored, -- auto-generated on any new row write
     birthday date not null,
     primary_pos text,
-    second_pos text
+    second_pos text,
+    start_date date,
+    end_date date,
+    cost int,
+    sale int,
+    acquired_rating int,
+    acurrent_rating int
 
 );
 

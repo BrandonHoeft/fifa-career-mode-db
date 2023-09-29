@@ -33,9 +33,9 @@ values ('FC Porto'),
 
 insert into seasons (fk_league_id, fk_team_id, year)
 values
-    (1, 1, 2022),
-    (2, 1, 2022),
-    (4, 1, 2022);
+    (1, 1, 2024), -- 2023-24 Liga Portugal
+    (2, 1, 2024), -- 2023-24 Taca Portugal
+    (5, 1, 2024); -- 2023-24 Europa League
 
 insert into players (fk_team_id, first_name, last_name, birthday, primary_pos, second_pos)
 values

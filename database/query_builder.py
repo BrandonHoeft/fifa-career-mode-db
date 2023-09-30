@@ -29,7 +29,7 @@ def gen_game_sql_template(conn, fk_season_id, game_num, game_min, home_or_away, 
 
 def gen_player_stats_sql_template(conn, fk_game_id):
     # Prompt for a list of names
-    #Iván Marcano,Pepe Laveran Lima Ferreira,Zaidu Sanusi,Pepê Gabriel Aquino Cossa,Stephen Eustaquio,Wenderson Galeno,Mehdi Taremi,Francisco Evanilson,Toni Martínez,Fábio Cardoso,Carmo David,João Mário,Marko Grujić,Nico González,Gabriel Veron,Gonçalo Borges,Daniel Namaso Loader,Wendell Nascimento Borges,Romário Baró,André Franco,Alan Varela,Jorge Sánchez,Vasco Sousa,Bernardo Folha
+    #Pepe Laveran Lima Ferreira,Carmo David,Nacho Fernández,João Mário,Wendell Nascimento Borges,Jorge Sánchez,Stephen Eustaquio,Marko Grujić,Nico González,Romário Baró,André Franco,Alan Varela,Wenderson Galeno,Pepê Gabriel Aquino Cossa,Gonçalo Borges,Francisco Conceição,Mehdi Taremi,Francisco Evanilson,Fran Navarro,Gabriel Veron,Daniel Namaso Loader,Vasco Sousa
     player_names = pd.read_sql("select * from public.players", conn).full_name.to_list()
     names = input(f"Enter a list of names (comma-separated,no space b/w names) from:\n{player_names}").split(",")
     player_stats_cols = pd.read_sql("select column_name from information_schema.columns where table_name = 'player_stats' and column_name != 'ovr_id'", conn).column_name.tolist()

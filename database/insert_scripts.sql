@@ -75,7 +75,9 @@ values
 insert into players (fk_team_id, first_name, last_name, birthday, primary_pos, second_pos,
                      start_date, end_date, cost, sale, acquired_rating, current_rating)
 values
-    (1, 'Francisco', 'Conceição', '2002-12-02', 'RM', 'RW', '2023-01-01', NULL, 12000000, NULL, 75, 75)
+    (1, 'Francisco', 'Conceição', '2002-12-02', 'RM', 'RW', '2023-01-01', NULL, 12000000, NULL, 75, 75),
+    (1, 'Fran', 'Navarro', '1998-02-03', 'ST', NULL, '2023-07-06', NULL, 20000000, NULL, 78, 78),
+    (1, 'Nacho', 'Fernández', '1990-01-18', 'CB', 'LB', '2023-07-09', NULL, 0, NULL, 82, 82);
 
 
 -- FINAL STANDINGS for Liga Portugal 1st season

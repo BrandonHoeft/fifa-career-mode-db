@@ -106,25 +106,28 @@ values
 
 
 --------------------------------------------------------------------------------
--- Game Log 43: away vs Pacos Ferreira
+-- Game Log 44: Start  2nd season Liga Portugal, season_id=4 away vs Pacos Ferreira
 INSERT INTO games (fk_season_id, game_num, game_minutes, home_or_away, fk_opp_id,
                    opp_goals, opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots)
 VALUES
-	(1,34,8,'away',5,0,0.5,33,3,1,3.2,9)
-
+	(4,1,16,'away',5,1,1,37,3,3,3.5,20);
 
 INSERT INTO player_stats (fk_player_id, fk_game_id, rating, minutes, poss_won, poss_lost,
-                          goals, non_pen_xg, shots, assists, key_passes, passes_att, passes_compl, duels_att, duels_won)
+                          goals, non_pen_xg, shots, assists, key_passes, passes_att, passes_compl,
+                           duels_att, duels_won)
 VALUES
-(26,43,5.9,37,0,0,0,0.1,1,0,0,1,0,2,1),  -- Daniel Namaso Loader
-(22,43,6.3,94,0,4,0,0,0,0,0,8,4,0,0),  -- Gonçalo Borges
-(8,43,7.9,94,3,1,0,0,0,0,0,5,4,9,5),  -- Zaidu Sanusi
-(24,43,7.5,57,0,0,1,1.7,2,0,1,5,5,4,2),  -- Mehdi Taremi
-(28,43,5.7,37,0,2,0,0.5,2,0,0,2,2,1,0),  -- Vasco Sousa
-(10,43,7.9,94,3,3,0,0,0,1,1,9,7,2,1),  -- João Mário
-(6,43,8,94,6,0,0,0,0,0,0,8,8,8,7),  -- Pepe Laveran Lima Ferreira
-(19,43,7,94,2,2,0,0.3,1,0,2,12,10,4,3),  -- André Franco
-(30,43,7.3,94,2,5,0,0.7,3,0,2,14,11,6,4),  -- Romário Baró
-(15,43,7.3,94,3,0,0,0,0,0,3,9,8,7,5),  -- Stephen Eustaquio
-(21,43,6.4,57,0,2,0,0,0,0,0,5,4,3,2),  -- Gabriel Veron
-(7,43,7,94,1,0,0,0,0,0,0,5,4,5,1)  -- Iván Marcano
+(19,44,6.1,16,0,0,0,0,0,0,0,3,3,1,1),  -- André Franco
+(10,44,7.2,64,1,1,0,0,0,0,1,8,8,3,2),  -- João Mário
+(32,44,6.1,28,1,0,0,0,0,0,0,3,2,2,2),  -- Jorge Sánchez
+(27,44,5.9,16,0,2,0,0,0,0,0,4,3,2,1),  -- Nico González
+(31,44,6.4,87,4,5,0,0,1,0,2,21,17,17,10),  -- Alan Varela
+(18,44,7.3,92,3,2,0,0.4,5,0,1,15,11,8,3),  -- Pepê Gabriel Aquino Cossa
+(20,44,8.2,76,0,3,1,0.5,3,0,3,12,10,7,3),  -- Wenderson Galeno
+(15,44,7.9,92,7,1,1,0.2,1,0,3,26,23,14,9),  -- Stephen Eustaquio
+(23,44,7.6,92,2,8,1,1.2,4,0,1,16,10,8,6),  -- Francisco Evanilson
+(24,44,7.2,76,2,8,0,1.2,6,0,2,12,10,19,12),  -- Mehdi Taremi
+(9,44,7.6,92,3,5,0,0,0,1,3,17,12,10,3),  -- Wendell Nascimento Borges
+(4,44,5.8,28,1,0,0,0,0,0,0,1,1,2,1),  -- Carmo David
+(35,44,7.2,92,5,0,0,0,0,0,0,12,10,11,7),  -- Nacho Fernández
+(6,44,6.8,64,2,0,0,0,0,0,0,12,11,5,4),  -- Pepe Laveran Lima Ferreira
+(14,44,6,5,0,0,0,0,0,0,0,0,0,0,0)  -- Marko Grujić

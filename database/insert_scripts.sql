@@ -80,27 +80,27 @@ values
     (1, 'Nacho', 'Fernández', '1990-01-18', 'CB', 'LB', '2023-07-09', NULL, 0, NULL, 82, 82);
 
 
--- FINAL STANDINGS for Liga Portugal 1st season
+-- Season 2  Liga Portugal (season_id=4)
 insert into standings_snapshot (fk_season_id, fk_team_id, standings_as_of, points, goal_diff)
 values
-    (1, 1, '2023-05-07', 66, 21), -- FC Porto
-    (1, 2, '2023-05-07', 43, -6), -- Arouca
-    (1, 3, '2023-05-07', 82, 43), -- Benfica
-    (1, 4, '2023-05-07', 33, -17), -- Boavista
-    (1, 5, '2023-05-07', 71, 31), -- Braga
-    (1, 6, '2023-05-07', 34, -12), -- Casa Pia
-    (1, 7, '2023-05-07', 44, -12), -- Chaves
-    (1, 8, '2023-05-07', 30, -15), -- Estoril
-    (1, 9, '2023-05-07', 33, -13), -- Famalicão
-    (1, 10, '2023-05-07', 50, 9), -- Gi Vicente
-    (1, 11, '2023-05-07', 31, -11), -- Marítimo
-    (1, 12, '2023-05-07', 31, -16), -- Paços de Ferreira
-    (1, 13, '2023-05-07', 45, -3), -- Portimonense
-    (1, 14, '2023-05-07', 32, -15), -- Rio Ave
-    (1, 15, '2023-05-07', 50, 3), -- Santa Clara
-    (1, 16, '2023-05-07', 73, 30), -- Sporting CP
-    (1, 17, '2023-05-07', 49, 0), -- Vitória de Guimarães
-    (1, 18, '2023-05-07', 37, -17); -- Vizela
+    (4, 1, '2023-08-01', 0, 0), -- FC Porto
+    (4, 2, '2023-08-01', 0, 0), -- Arouca
+    (4, 3, '2023-08-01', 0, 0), -- Benfica
+    (4, 4, '2023-08-01', 0, 0), -- Boavista
+    (4, 5, '2023-08-01', 0, 0), -- Braga
+    (4, 6, '2023-08-01', 0, 0), -- Casa Pia
+    (4, 7, '2023-08-01', 0, 0), -- Chaves
+    (4, 8, '2023-08-01', 0, 0), -- Estoril
+    (4, 9, '2023-08-01', 0, 0), -- Famalicão
+    (4, 10, '2023-08-01', 0, 0), -- Gi Vicente
+    (4, 11, '2023-08-01', 0, 0), -- Marítimo
+    (4, 12, '2023-08-01', 0, 0), -- Paços de Ferreira
+    (4, 13, '2023-08-01', 0, 0), -- Portimonense
+    (4, 14, '2023-08-01', 0, 0), -- Rio Ave
+    (4, 15, '2023-08-01', 0, 0), -- Santa Clara
+    (4, 16, '2023-08-01', 0, 0), -- Sporting CP
+    (4, 17, '2023-08-01', 0, 0), -- Vitória de Guimarães
+    (4, 18, '2023-08-01', 0, 0); -- Vizela
 
 
 

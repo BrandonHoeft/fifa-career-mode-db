@@ -106,29 +106,27 @@ values
 
 
 --------------------------------------------------------------------------------
--- Game Log 46: away vs Estoril
+-- Game Log 47: home vs Maritimo
 INSERT INTO games (fk_season_id, game_num, game_minutes, home_or_away, fk_opp_id,
                    opp_goals, opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots)
 VALUES
-	(4,3,12,'away',8,0,1,45,6,3,4.1,10)
+	(4,4,12,'home',14,1,2.4,39,8,3,2.5,11)
 
 
 INSERT INTO player_stats (fk_player_id, fk_game_id, rating, minutes, poss_won, poss_lost,
-                          goals, non_pen_xg, shots, assists, key_passes, passes_att, passes_compl,
-                          duels_att, duels_won)
+                          goals, non_pen_xg, shots, assists, key_passes, passes_att, passes_compl, duels_att, duels_won)
 VALUES
-(22,46,6,9,0,0,0,0,0,0,0,1,1,0,0),  -- Gonçalo Borges
-(19,46,7.2,73,2,3,0,0.3,1,0,1,14,11,11,7),  -- André Franco
-(30,46,6,9,0,0,0,0,0,0,0,1,1,1,1),  -- Romário Baró
-(32,46,5.9,19,0,4,0,0,0,0,0,6,1,2,0),  -- Jorge Sánchez
-(33,46,6.2,73,2,4,0,0,1,0,1,7,6,9,5),  -- Francisco Conceição
-(27,46,6.6,19,1,1,0,0,0,1,1,4,3,3,1),  -- Nico González
-(31,46,7.4,92,4,3,0,0,0,0,1,13,11,13,10),  -- Alan Varela
-(18,46,7.8,83,5,2,0,0,0,1,2,11,9,4,4),  -- Pepê Gabriel Aquino Cossa
-(20,46,7.2,92,2,2,0,0.1,1,0,2,10,9,3,1),  -- Wenderson Galeno
-(23,46,7.3,73,0,3,1,1.7,2,0,0,2,1,7,4),  -- Francisco Evanilson
-(24,46,7.6,83,1,4,0,0.1,1,1,2,13,9,7,5),  -- Mehdi Taremi
-(9,46,7,92,3,6,0,0.4,2,0,0,10,5,3,3),  -- Wendell Nascimento Borges
-(34,46,8.2,19,0,0,2,1.5,2,0,0,0,0,0,0),  -- Fran Navarro
-(35,46,7,92,4,0,0,0,0,0,0,5,3,7,3),  -- Nacho Fernández
-(6,46,7.7,92,6,1,0,0,0,0,0,12,11,12,9)  -- Pepe Laveran Lima Ferreira
+(22,47,7,32,0,3,0,0.3,1,1,2,7,5,7,6),  -- Gonçalo Borges
+(30,47,8,93,7,1,0,0,1,0,2,22,20,15,8),  -- Romário Baró
+(10,47,6.9,61,1,2,0,0,0,0,1,7,5,4,3),  -- João Mário
+(32,47,5.9,19,0,0,0,0,0,0,0,0,0,0,0),  -- Jorge Sánchez
+(18,47,7,93,0,5,0,0.2,2,1,1,7,4,5,2),  -- Pepê Gabriel Aquino Cossa
+(20,47,6.8,93,0,2,0,0.1,1,1,1,6,5,10,5),  -- Wenderson Galeno
+(15,47,6,3,1,1,0,0,0,0,0,0,0,2,2),  -- Stephen Eustaquio
+(23,47,6.6,61,0,2,0,0,0,0,1,13,12,6,2),  -- Francisco Evanilson
+(24,47,7.5,32,0,1,1,0.3,1,0,0,3,1,2,1),  -- Mehdi Taremi
+(9,47,6.8,74,3,4,0,0,1,0,0,8,3,5,3),  -- Wendell Nascimento Borges
+(4,47,8.1,93,7,0,0,0,0,0,0,10,10,7,6),  -- Carmo David
+(34,47,8.6,93,0,3,2,1.6,4,0,2,9,8,11,7),  -- Fran Navarro
+(6,47,6.2,93,2,0,0,0,0,0,0,3,2,6,2),  -- Pepe Laveran Lima Ferreira
+(14,47,7.6,90,8,2,0,0,0,0,1,18,16,13,9)  -- Marko Grujić

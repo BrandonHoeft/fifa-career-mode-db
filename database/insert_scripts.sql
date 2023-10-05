@@ -77,7 +77,10 @@ insert into players (fk_team_id, first_name, last_name, birthday, primary_pos, s
 values
     (1, 'Francisco', 'Conceição', '2002-12-02', 'RM', 'RW', '2023-01-01', NULL, 12000000, NULL, 75, 75),
     (1, 'Fran', 'Navarro', '1998-02-03', 'ST', NULL, '2023-07-06', NULL, 20000000, NULL, 78, 78),
-    (1, 'Nacho', 'Fernández', '1990-01-18', 'CB', 'LB', '2023-07-09', NULL, 0, NULL, 82, 82);
+    (1, 'Nacho', 'Fernández', '1990-01-18', 'CB', 'LB', '2023-07-09', NULL, 0, NULL, 82, 82),
+    (1, 'Zé Luís', 'Andrede', '1991-01-24', 'ST', NULL, '2023-08-08', NULL, 4800000, NULL, 75, 75),
+    (1, 'Malang', 'Sarr', '1999-01-23', 'CB', NULL, '2023-08-31', NULL, 0, NULL, 76, 76),
+    (1, 'Iván', 'Jaime', '2000-09-26', 'CAM', 'CM', '2023-08-28', NULL, 18000000, NULL, 76, 76);
 
 
 -- Season 2  Liga Portugal (season_id=4)

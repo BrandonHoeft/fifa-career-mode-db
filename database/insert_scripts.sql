@@ -80,7 +80,8 @@ values
     (1, 'Nacho', 'Fernández', '1990-01-18', 'CB', 'LB', '2023-07-09', NULL, 0, NULL, 82, 82),
     (1, 'Zé Luís', 'Andrede', '1991-01-24', 'ST', NULL, '2023-08-08', NULL, 4800000, NULL, 75, 75),
     (1, 'Malang', 'Sarr', '1999-01-23', 'CB', NULL, '2023-08-31', NULL, 0, NULL, 76, 76),
-    (1, 'Iván', 'Jaime', '2000-09-26', 'CAM', 'CM', '2023-08-28', NULL, 18000000, NULL, 76, 76);
+    (1, 'Iván', 'Jaime', '2000-09-26', 'CAM', 'CM', '2023-08-28', NULL, 18000000, NULL, 76, 76),
+    (1, 'Pedro', 'Gonçalves', '2006-02-23', 'CM', 'CDM', '2023-09-02', NULL, 0, NULL, 68, 68); -- youth team promoted
 
 
 -- Season 2  Liga Portugal (season_id=4)

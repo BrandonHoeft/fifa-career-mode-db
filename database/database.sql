@@ -61,7 +61,8 @@ create table if not exists players (
     cost int,
     sale int,
     acquired_rating int,
-    acurrent_rating int
+    acurrent_rating int,
+    uefa_roster_bool boolean
 
 );
 

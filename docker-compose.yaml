@@ -12,14 +12,16 @@ services:
       - '15432:5432'
     volumes:
       # save the pg filesystem onto my computer after container goes down
-      - "./pg_data_fc_porto:/var/lib/postgresql/data:rw"
+      - "./pg_data_fc_porto-test:/var/lib/postgresql/data:rw"
       # place my database DDL SQL into /docker-entrypoint-initb.d folder, executes when container starts
       - "./database/database.sql:/docker-entrypoint-initdb.d/database.sql"
-  pgadmin:
-    image: dpage/pgadmin4
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
-      - PGADMIN_DEFAULT_PASSWORD=root
+
+  streamlit_app:
+    build:
+      context: .
+      dockerfile: streamlit_app/Dockerfile
     ports:
-      - "8080:80"
+      - "8501:8501"
+    depends_on:
+      - postgres
 

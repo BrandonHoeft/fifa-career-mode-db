@@ -1,0 +1,50 @@
+import streamlit as st
+from queries import display_seasons_data, insert_game_info, get_season_ids, get_max_game_num_plus_one, get_opponents_name, translate_opponent_name_to_id
+import traceback
+
+def game_form():
+
+    st.header("Submit Game Info")
+
+    st.title("Season History")
+
+    # Display the seasons data as a table
+    df_seasons = display_seasons_data()
+    st.dataframe(df_seasons)
+
+    # Fetching season IDs for the dropdown
+    season_ids = get_season_ids()
+    fk_season_id = st.selectbox('Select Season', season_ids)
+
+
+
+    # Other input fields (modify as per your 'games' table fields)
+    opponents = get_opponents_name()
+    opponent = st.selectbox('Opponent Team Name', opponents)
+    fk_opp_id = translate_opponent_name_to_id(opponent)
+
+    # Auto-populating the game number based on the selected season
+    game_num_default = get_max_game_num_plus_one(fk_season_id)
+    # Dropdown for game_num (placeholder, integrate with DB logic for auto-population)
+    game_num = st.number_input('Game Number (pre-filled +1 from prior value for that season)', min_value=1, value=game_num_default)
+
+    # Add other fields as necessary
+    game_minutes = st.number_input('Game Minutes', min_value=4, max_value=20)
+    home_or_away = st.selectbox("Home or Away:", ['home', 'away'])
+    opp_goals = st.number_input('Opponent Goals', min_value=0)
+    opp_xg = st.number_input('Opponent xG (e.g. 2.7, 0.0)', min_value=0.0, step=0.1, format="%.1f")
+    opp_poss_pct = st.number_input('Opponent Possession % (e.g. 56)', min_value=0, max_value=100)
+    opp_shots = st.number_input('Opponent Shots', min_value=0)
+    my_goals = st.number_input('My Goals', min_value=0)
+    my_xg = st.number_input('My xG', min_value=0.0, step=0.1, format="%.1f")
+    my_shots = st.number_input('My Shots', min_value=0)
+
+    # Submit button
+    if st.button('Submit Game Info'):
+        # Logic to insert data into the database
+        try:
+            insert_game_info(fk_season_id, fk_opp_id, game_num, game_minutes, home_or_away, opp_goals, opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots)  # Add other fields as necessary
+        except:
+            traceback.print_exc()
+        else:
+            st.success('Game information submitted successfully!')

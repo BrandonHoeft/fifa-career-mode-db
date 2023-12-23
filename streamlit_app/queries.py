@@ -3,6 +3,67 @@ import pandas as pd
 from db_connect import get_db_connection
 from sqlalchemy import text
 
+# Player Create/Update/Soft Delete Related Queries
+################################################################################
+def insert_player(fk_team_id, first_name, last_name, birthday, primary_pos, second_pos, start_date, player_img_url):
+    # SQL query for inserting game information
+    query = f"""INSERT INTO players (fk_team_id, first_name, last_name, birthday, primary_pos, second_pos, start_date, player_img_url) 
+                VALUES (
+                    {fk_team_id},
+                    '{first_name}', 
+                    '{last_name}', 
+                    '{birthday}',
+                    '{primary_pos}',
+                    '{second_pos}', 
+                    '{start_date}', 
+                    '{player_img_url}'
+                )"""
+    with get_db_connection() as conn:
+        conn.execute(text(query))
+        conn.connection.commit()
+
+def update_player(player_id, updated_field, updated_value):
+    # Mapping of field names to column names in the database
+    field_to_column = { # value is the postgres format
+        'First Name': 'first_name',
+        'Last Name': 'last_name',
+        'Birthday': 'birthday',
+        'Primary Position': 'primary_pos',
+        'Secondary Position': 'second_pos',
+        'Start Date': 'start_date',
+        'End Date': 'end_date',
+        'Player Image URL': 'player_img_url'
+    }
+
+    column_name = field_to_column.get(updated_field)
+
+    if column_name:
+        query = text(f"""
+            UPDATE players
+            SET {column_name} = :updated_value
+            WHERE player_id = :player_id
+        """)
+
+        with get_db_connection() as conn:
+            conn.execute(query, {'updated_value': updated_value,
+                                 'player_id': player_id})
+            conn.connection.commit()
+
+
+def soft_delete_player(player_id, end_date):
+    query = text("""
+        UPDATE players
+        SET end_date = :end_date
+        WHERE player_id = :player_id
+    """)
+
+    with get_db_connection() as conn:
+        conn.execute(query, {'end_date': end_date, 'player_id': player_id})
+        conn.connection.commit()
+
+# Game Related Queries
+################################################################################
+
 def display_seasons_data():
     query = """
         SELECT 
@@ -63,6 +124,7 @@ def translate_opponent_name_to_id(name):
 
 
 # Player Stats Related Queries
+################################################################################
 def display_last_game_data():
     query = """
         SELECT
@@ -94,9 +156,11 @@ def get_max_fk_game_id():
         max_game_num = result.fetchone()[0]
         return max_game_num
 
-# NEED TO EDIT TO BE LIKE UPDATES ABOVE: fetchall(), text(), etc
-def get_active_players():
-    query = "SELECT full_name FROM players WHERE end_date IS NULL ORDER BY full_name"
+def get_players(active=True):
+    if active:
+        query = "SELECT full_name FROM players WHERE end_date IS NULL ORDER BY last_name"
+    else:
+        query = "SELECT full_name FROM players ORDER BY last_name"
     with get_db_connection() as conn:
         result = conn.execute(text(query))
         return [row[0] for row in result.fetchall()]
@@ -107,6 +171,13 @@ def translate_player_name_to_player_id(name):
         result = conn.execute(text(query))
         player_id = result.fetchone()[0]
         return player_id
+
+def get_player_image_url(player_id):
+    query = text(f"SELECT player_img_url FROM players WHERE player_id = {player_id}")
+    with get_db_connection() as conn:
+        result = conn.execute(query)
+        row = result.fetchone()
+        return row[0] if row else None  # Return the URL or None if not found
 
 # Function to insert game information
 def insert_game_info(fk_season_id, fk_opp_id, game_num, game_minutes, home_or_away, opp_goals, opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots):  # Add other parameters as necessary
@@ -131,24 +202,27 @@ def insert_game_info(fk_season_id, fk_opp_id, game_num, game_minutes, home_or_aw
         conn.connection.commit()
 
 # Function to insert player stats
-def insert_player_stats(fk_player_id, fk_game_id, rating, minutes, poss_won, poss_lost, goals, non_pen_xg, shots, assists, key_passes, passes_att, passes_compl, duels_att, duels_won):  # Add other parameters as necessary
-    query = f"""INSERT INTO player_stats (fk_player_id, fk_game_id, rating, minutes, poss_won, poss_lost, goals, non_pen_xg, shots, assists, key_passes, passes_att, passes_compl, duels_att, duels_won)
+def insert_player_stats(fk_player_id, fk_game_id, rating, minutes, poss_lost, goals, non_pen_xg, shots, assists, xa, key_passes, line_brk_passes, passes_att, pass_pct, off_duels, def_duels, tackles, interceptions):  # Add other parameters as necessary
+    query = f"""INSERT INTO player_stats (fk_player_id, fk_game_id, rating, minutes, poss_lost, goals, non_pen_xg, shots, assists, xa, key_passes, line_brk_passes, passes_att, pass_pct, off_duels, def_duels,tackles, interceptions)
                 VALUES (
                     {fk_player_id},
                     {fk_game_id},
                     {rating},
                     {minutes},
-                    {poss_won},
                     {poss_lost},
                     {goals},
                     {non_pen_xg},
                     {shots},
                     {assists},
+                    {xa},
                     {key_passes},
+                    {line_brk_passes},
                     {passes_att},
-                    {passes_compl},
-                    {duels_att},
-                    {duels_won}
+                    {pass_pct},
+                    {off_duels},
+                    {def_duels},
+                    {tackles},
+                    {interceptions}
                 )"""
     with get_db_connection() as conn:
         conn.execute(text(query))

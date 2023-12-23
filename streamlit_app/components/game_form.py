@@ -45,6 +45,7 @@ def game_form():
         try:
             insert_game_info(fk_season_id, fk_opp_id, game_num, game_minutes, home_or_away, opp_goals, opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots)  # Add other fields as necessary
         except:
-            traceback.print_exc()
+            error_traceback = traceback.format_exc()
+            st.error(F'ERROR\n\n{error_traceback}', icon="🚨")
         else:
             st.success('Game information submitted successfully!')

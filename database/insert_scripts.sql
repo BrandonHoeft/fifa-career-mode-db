@@ -75,25 +75,25 @@ values
 
 
 -- Season 1  premier league (season_id=1)
-insert into standings_snapshot (fk_season_id, fk_team_id, standings_as_of, points)
+insert into standings_snapshot (fk_season_id, fk_team_id, standings_as_of, points, goal_diff)
  values
-     (1, 1, '2023-08-01', 0), -- Tottenham
-     (1, 2, '2023-08-01', 0), -- Arsenal
-     (1, 3, '2023-08-01', 0), -- Aston Villa
-     (1, 4, '2023-08-01', 0), -- Bournemouth
-     (1, 5, '2023-08-01', 0), -- Brentford
-     (1, 6, '2023-08-01', 0), -- Brighton & Hove Albion
-     (1, 7, '2023-08-01', 0), -- Chelsea
-     (1, 8, '2023-08-01', 0), -- Crystal Palace
-     (1, 9, '2023-08-01', 0), -- Everton
-     (1, 10, '2023-08-01', 0), -- Fulham
-     (1, 11, '2023-08-01', 0), -- Liverpool
-     (1, 12, '2023-08-01', 0), -- Luton Town
-     (1, 13, '2023-08-01', 0), -- Liverpool
-     (1, 14, '2023-08-01', 0), -- Manchester City
-     (1, 15, '2023-08-01', 0), -- Manchester United
-     (1, 16, '2023-08-01', 0), -- Newcastle United
-     (1, 17, '2023-08-01', 0), -- Nottingham Forest
-     (1, 18, '2023-08-01', 0), -- Southampton
-     (1, 19, '2023-08-01', 0), -- West Ham United
-     (1, 20, '2023-08-01', 0); -- Wolverhampton Wanderers
+     (1, 1, '2023-08-01', 0, 0), -- Tottenham
+     (1, 2, '2023-08-01', 0, 0), -- Arsenal
+     (1, 3, '2023-08-01', 0, 0), -- Aston Villa
+     (1, 4, '2023-08-01', 0, 0), -- Bournemouth
+     (1, 5, '2023-08-01', 0, 0), -- Brentford
+     (1, 6, '2023-08-01', 0, 0), -- Brighton & Hove Albion
+     (1, 7, '2023-08-01', 0, 0), -- Burnley
+     (1, 8, '2023-08-01', 0, 0), -- Chelsea
+     (1, 9, '2023-08-01', 0, 0), -- Crystal Palace
+     (1, 10, '2023-08-01', 0, 0), -- Everton
+     (1, 11, '2023-08-01', 0, 0), -- Fulham
+     (1, 12, '2023-08-01', 0, 0), -- Luton Town
+     (1, 13, '2023-08-01', 0, 0), -- Liverpool
+     (1, 14, '2023-08-01', 0, 0), -- Manchester City
+     (1, 15, '2023-08-01', 0, 0), -- Manchester United
+     (1, 16, '2023-08-01', 0, 0), -- Newcastle United
+     (1, 17, '2023-08-01', 0, 0), -- Nottingham Forest
+     (1, 18, '2023-08-01', 0, 0), -- Southampton
+     (1, 19, '2023-08-01', 0, 0), -- West Ham United
+     (1, 20, '2023-08-01', 0, 0); -- Wolverhampton Wanderers

@@ -1,5 +1,5 @@
 import streamlit as st
-from queries import display_seasons_data, insert_game_info, get_season_ids, get_max_game_num_plus_one, get_opponents_name, translate_opponent_name_to_id
+from queries import display_seasons_data, insert_game_info, get_season_ids, get_max_game_num_plus_one, get_team_names, translate_team_name_to_id
 import traceback
 
 def game_form():
@@ -19,9 +19,9 @@ def game_form():
 
 
     # Other input fields (modify as per your 'games' table fields)
-    opponents = get_opponents_name()
+    opponents = get_team_names()
     opponent = st.selectbox('Opponent Team Name', opponents)
-    fk_opp_id = translate_opponent_name_to_id(opponent)
+    fk_opp_id = translate_team_name_to_id(opponent)
 
     # Auto-populating the game number based on the selected season
     game_num_default = get_max_game_num_plus_one(fk_season_id)

@@ -109,18 +109,26 @@ def get_max_game_num_plus_one(season_id):
         return max_game_num
 
 
-def get_opponents_name():
+def get_team_names():
     query = "SELECT name FROM teams ORDER BY name DESC"
     with get_db_connection() as conn:
         result = conn.execute(text(query))
         return [row[0] for row in result.fetchall()]
 
-def translate_opponent_name_to_id(name):
+def translate_team_name_to_id(name):
     query = f"SELECT team_id FROM teams WHERE name = '{name}'"
     with get_db_connection() as conn:
         result = conn.execute(text(query))
         opponent_id = result.fetchone()[0]
         return opponent_id
+
+def get_team_img_url(team_id):
+    query = text(f"SELECT team_logo_img_url FROM teams WHERE team_id = {team_id}")
+    with get_db_connection() as conn:
+        result = conn.execute(query)
+        row = result.fetchone()
+        return row[0] if row else None  # Return the URL or None if not found
+
 
 
 # Player Stats Related Queries
@@ -224,6 +232,43 @@ def insert_player_stats(fk_player_id, fk_game_id, rating, minutes, poss_lost, go
                     {tackles},
                     {interceptions}
                 )"""
+    with get_db_connection() as conn:
+        conn.execute(text(query))
+        conn.connection.commit()
+
+# Standings Related Queries
+################################################################################
+def get_standings(season_id, snapshot_date):
+    query = text(f"""
+                SELECT
+                    l.name as league,
+                    s.year || '-' || s.year + 1 as year,
+                    t.name as team,
+                    ss.standings_as_of, 
+                    ss.points,
+                    ss.goal_diff
+                FROM standings_snapshot ss
+                LEFT JOIN teams t on ss.fk_team_id = t.team_id
+                LEFT JOIN seasons s on ss.fk_season_id = s.season_id
+                LEFT JOIN leagues l on s.fk_league_id = l.league_id
+                WHERE ss.fk_season_id = :season_id
+                    AND standings_as_of = :snapshot_date
+                ORDER BY points, goal_diff DESC
+                """)
+    with get_db_connection() as conn:
+        return pd.read_sql(query, conn, params={'season_id': season_id, 'snapshot_date': snapshot_date})
+
+
+def insert_standings_snapshot(fk_team_id, fk_season_id, standings_as_of, points, goal_diff):
+    # SQL query for inserting game information
+    query = f"""INSERT INTO standings_snapshot (fk_team_id, fk_season_id, standings_as_of, points, goal_diff) 
+                VALUES (
+                    {fk_team_id},
+                    {fk_season_id}, 
+                    '{standings_as_of}', 
+                    {points},
+                    {goal_diff}
+                    )"""
     with get_db_connection() as conn:
         conn.execute(text(query))
         conn.connection.commit()

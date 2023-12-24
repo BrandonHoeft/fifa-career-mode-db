@@ -1,3 +1,4 @@
+import pandas as pd
 import streamlit as st
 from queries import display_last_game_data, get_max_fk_game_id, get_players, translate_player_name_to_player_id, get_player_image_url, insert_player_stats
 import traceback
@@ -50,7 +51,6 @@ def player_stats_form():
     def_duels = st.number_input('Defensive Duels Won', min_value=0)
 
 
-
     # Submit button
     if st.button('Submit Player Stats'):
         # Logic to insert data into the database
@@ -62,3 +62,24 @@ def player_stats_form():
         else:
             st.success(f"Submitted for {player} in game_id: {fk_game_id}."
                        f"\n<CTRL + R> to reset form")
+            player_stat_dict = {'player': [player],
+                                'fk_player_id': [fk_player_id],
+                                'fk_game_id': [fk_game_id],
+                                'rating': [rating],
+                                'minutes': [minutes],
+                                'poss_lost': [poss_lost],
+                                'goals': [goals],
+                                'non_pen_xg': [non_pen_xg],
+                                'shots': [shots],
+                                'assists': [assists],
+                                'xa': [xa],
+                                'key_passes': [key_passes],
+                                'line_brk_passes': [line_brk_passes],
+                                'passes_att': [passes_att],
+                                'pass_pct': [pass_pct],
+                                'off_duels': [off_duels],
+                                'def_duels': [def_duels],
+                                'tackles': [tackles],
+                                'interceptions': [interceptions]}
+            df_player = pd.DataFrame(data=player_stat_dict)
+            st.dataframe(df_player.transpose(), width=250)

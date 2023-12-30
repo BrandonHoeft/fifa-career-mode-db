@@ -31,19 +31,21 @@ def game_form():
     # Add other fields as necessary
     game_minutes = st.number_input('Game Minutes', min_value=4, max_value=20)
     home_or_away = st.selectbox("Home or Away:", ['home', 'away'])
-    opp_goals = st.number_input('Opponent Goals', min_value=0)
-    opp_xg = st.number_input('Opponent xG (e.g. 2.7, 0.0)', min_value=0.0, step=0.1, format="%.1f")
     opp_poss_pct = st.number_input('Opponent Possession % (e.g. 56)', min_value=0, max_value=100)
+    opp_ball_rcvry_secs = st.number_input('Opponent Ball Recovery Time (Sec)', min_value=0)
     opp_shots = st.number_input('Opponent Shots', min_value=0)
-    my_goals = st.number_input('My Goals', min_value=0)
-    my_xg = st.number_input('My xG', min_value=0.0, step=0.1, format="%.1f")
+    opp_xg = st.number_input('Opponent xG (e.g. 2.7, 0.0)', min_value=0.0, step=0.1, format="%.1f")
+    opp_goals = st.number_input('Opponent Goals', min_value=0)
+    my_ball_rcvry_secs = st.number_input('My Ball Recovery Time (Sec)', min_value=0)
     my_shots = st.number_input('My Shots', min_value=0)
+    my_xg = st.number_input('My xG', min_value=0.0, step=0.1, format="%.1f")
+    my_goals = st.number_input('My Goals', min_value=0)
 
     # Submit button
     if st.button('Submit Game Info'):
         # Logic to insert data into the database
         try:
-            insert_game_info(fk_season_id, fk_opp_id, game_num, game_minutes, home_or_away, opp_goals, opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots)  # Add other fields as necessary
+            insert_game_info(fk_season_id, fk_opp_id, game_num, game_minutes, home_or_away, opp_goals, opp_xg, opp_poss_pct, opp_ball_rcvry_secs, opp_shots, my_goals, my_xg, my_shots, my_ball_rcvry_secs)  # Add other fields as necessary
         except:
             error_traceback = traceback.format_exc()
             st.error(F'ERROR\n\n{error_traceback}', icon="🚨")

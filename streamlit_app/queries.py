@@ -188,9 +188,9 @@ def get_player_image_url(player_id):
         return row[0] if row else None  # Return the URL or None if not found
 
 # Function to insert game information
-def insert_game_info(fk_season_id, fk_opp_id, game_num, game_minutes, home_or_away, opp_goals, opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots):  # Add other parameters as necessary
+def insert_game_info(fk_season_id, fk_opp_id, game_num, game_minutes, home_or_away, opp_goals, opp_xg, opp_poss_pct, opp_ball_rcvry_secs, opp_shots, my_goals, my_xg, my_shots, my_ball_rcvry_secs):  # Add other parameters as necessary
     # SQL query for inserting game information
-    query = f"""INSERT INTO games (fk_season_id, fk_opp_id, game_num, game_minutes, home_or_away, opp_goals, opp_xg, opp_poss_pct, opp_shots, my_goals, my_xg, my_shots) 
+    query = f"""INSERT INTO games (fk_season_id, fk_opp_id, game_num, game_minutes, home_or_away, opp_goals, opp_xg, opp_poss_pct, opp_ball_rcvry_secs, opp_shots, my_goals, my_xg, my_shots, my_ball_rcvry_secs) 
                         VALUES (
                             {fk_season_id},
                             {fk_opp_id}, 
@@ -200,10 +200,12 @@ def insert_game_info(fk_season_id, fk_opp_id, game_num, game_minutes, home_or_aw
                             {opp_goals}, 
                             {opp_xg}, 
                             {opp_poss_pct},
+                            {opp_ball_rcvry_secs},
                             {opp_shots},
                             {my_goals},
                             {my_xg},
-                            {my_shots}
+                            {my_shots},
+                            {my_ball_rcvry_secs}
                         )"""
     with get_db_connection() as conn:
         conn.execute(text(query))

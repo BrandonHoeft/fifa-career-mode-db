@@ -1,49 +1,3 @@
--- game metrics
-select
-    seasons.year,
-    l.name as league_name,
-    g.game_id,
-    -- generic game info
-    g.game_minutes,
-    g.home_or_away as venue,
-    g.my_goals,
-    g.opp_goals,
-    case
-        when g.my_goals > g.opp_goals then 'Win'
-        when g.opp_goals > g.my_goals then 'Loss'
-        else 'Draw'
-        end as result,
-    case
-        when g.my_goals > g.opp_goals then 3
-        when g.opp_goals > g.my_goals then 0
-        else 1
-        end as points,
-    -- my team's info
-    my_team.name as my_team,
-    g.my_xg,
-    g.my_shots,
-    g.my_poss_pct,
-    -- opponent info
-    opp_team.name as opponent,
-    g.opp_xg,
-    g.opp_shots
-from games g
-inner join seasons
-    on g.fk_season_id = seasons.season_id
-inner join leagues l on
-    seasons.fk_league_id = l.league_id
-inner join teams my_team
-    on seasons.fk_team_id = my_team.team_id
-inner join teams opp_team
-    on g.fk_opp_id = opp_team.team_id
-
-
-
-
-
-
-
-
 -- player metrics
 with raw_stats as (
     select full_name,
@@ -51,7 +5,6 @@ with raw_stats as (
            fk_game_id,
            rating,
            minutes,
-           poss_won,
            poss_lost,
            goals,
            /* Giving FIFA's xG a haircut
@@ -59,14 +12,20 @@ with raw_stats as (
             sample FIFA non-penalty xG per shot = 0.22. Derived from player_stats table: round(non_pen_xg / nullif(shots, 0), 2)
             ratio of 0.10 / 0.22 = 45% haircut to get more realistic FIFA xG outputs
             */
-           round(non_pen_xg * 0.45, 2) as non_pen_xg, -- downweight the FIFA engine's xG
+           --round(non_pen_xg * 0.45, 2) as non_pen_xg, -- downweight the FIFA engine's xG
+           non_pen_xg,
            shots,
            assists,
+           xa,
            key_passes,
            passes_att,
-           passes_compl,
-           duels_att,
-           duels_won
+           pass_pct,
+           line_brk_passes,
+           -- defensive/transition
+           tackles,
+           interceptions,
+           off_duels,
+           def_duels
     from player_stats
     inner join players p on player_stats.fk_player_id = p.player_id
     /* below is if I want to pre-filter to a particular tournament */
@@ -85,18 +44,21 @@ with raw_stats as (
         sum(minutes) as total_minutes,
         round(sum(minutes * rating) / sum(minutes), 2) as weighted_rating,
         round(sum(minutes::numeric) / 90, 2) as _90s, -- # of 90 minutes completed
-        sum(poss_won) as poss_won_tot,
         sum(poss_lost) as poss_lost_tot,
         sum(shots) as shots_tot,
         sum(non_pen_xg) as npxg_tot,
         sum(passes_att) as pass_att_tot, -- new
-        sum(passes_compl) as pass_compl_tot, -- new
+        sum(round(passes_att * pass_pct, 0)) as pass_compl_tot, -- new
         sum(goals) as goals_tot,
         sum(assists) as assist_tot,
+        sum(xa) as xa_tot,
         sum(key_passes) as key_pass_tot,
-    -- defensive cumulative stats
-        sum(duels_att) as duels_att_tot,
-        sum(duels_won) as duels_won_tot
+        sum(line_brk_passes) as line_brk_pass_tot,
+    -- defensive/transition cumulative stats
+        sum(tackles) as tkl_won_tot,
+        sum(interceptions) as intrcpt_tot,
+        sum(off_duels) as off_duels_won_tot,
+        sum(def_duels) as def_duels_won_tot
     from raw_stats
     group by full_name, primary_pos
 
@@ -109,9 +71,7 @@ select
     _90s,
     weighted_rating,
     -- possession
-    round(poss_won_tot / _90s, 2) as poss_won_per_90,
     round(poss_lost_tot / _90s, 2) as poss_lost_per_90,
-    round(poss_won_tot / _90s, 2) - round(poss_lost_tot / _90s, 2) as net_poss_per90,
     --shooting
     shots_tot,
     round(shots_tot / _90s, 2) as shots_per90,
@@ -126,13 +86,22 @@ select
     round(pass_compl_tot::numeric / nullif(pass_att_tot,0),2) as pass_compl_pct,
     assist_tot,
     round(assist_tot / _90s, 2) as assists_per90,
+    xa_tot,
+    round(xa_tot / _90s, 2) as xA_per90,
     key_pass_tot,
     round(key_pass_tot / _90s, 2) as key_passes_per90,
+    line_brk_pass_tot,
+    round(line_brk_pass_tot / _90s, 2) as line_brk_passes_per90,
+
     round((goals_tot + assist_tot) / _90s, 2) as goals_plus_assists_per90,
+    round((npxg_tot + xa_tot) / _90s, 2) as xG_plus_xA_per90,
+
     100 * round((assist_tot + key_pass_tot)::numeric / nullif(pass_att_tot, 0), 2) as SCA_per_100_passes,
     -- recovery/challenges
-    round(duels_att_tot / _90s, 2) as duels_att_per90,
-    round(duels_won_tot / _90s, 2) as duels_won_per90,
-    round(duels_won_tot::numeric / nullif(duels_att_tot, 0), 2) as duel_win_pct
+    round((tkl_won_tot + intrcpt_tot + def_duels_won_tot) / _90s, 2) as recovery_per90,
+    round(tkl_won_tot / _90s, 2) as tkl_won_per90,
+    round(intrcpt_tot / _90s, 2) as intrcpt_per90,
+    round(off_duels_won_tot / _90s, 2) as off_duels_won_per90,
+    round(def_duels_won_tot / _90s, 2) as def_duels_won_per90
 from cum_stats
 --where primary_pos like any (array['%B', 'C%M'])

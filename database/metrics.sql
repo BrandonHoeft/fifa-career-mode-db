@@ -47,9 +47,10 @@ with raw_stats as (
         sum(poss_lost) as poss_lost_tot,
         sum(shots) as shots_tot,
         sum(non_pen_xg) as npxg_tot,
+        sum(goals) as goals_tot,
+        -- passing related
         sum(passes_att) as pass_att_tot, -- new
         sum(round(passes_att * pass_pct, 0)) as pass_compl_tot, -- new
-        sum(goals) as goals_tot,
         sum(assists) as assist_tot,
         sum(xa) as xa_tot,
         sum(key_passes) as key_pass_tot,

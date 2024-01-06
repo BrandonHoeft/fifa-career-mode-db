@@ -20,6 +20,7 @@ with raw_stats as (
            key_passes,
            passes_att,
            pass_pct,
+           round(passes_att * (pass_pct / 100), 0) as passes_compl, -- Derived
            line_brk_passes,
            -- defensive/transition
            tackles,
@@ -50,7 +51,7 @@ with raw_stats as (
         sum(goals) as goals_tot,
         -- passing related
         sum(passes_att) as pass_att_tot, -- new
-        sum(round(passes_att * pass_pct, 0)) as pass_compl_tot, -- new
+        sum(passes_compl) as pass_compl_tot, -- new
         sum(assists) as assist_tot,
         sum(xa) as xa_tot,
         sum(key_passes) as key_pass_tot,
@@ -83,7 +84,7 @@ select
     round(npxg_tot / nullif(shots_tot,0), 2) as npxg_per_shot, -- indicator of shot quality
     round(goals_tot - npxg_tot, 2) as goals_minus_npxg, -- luck/skill relative to goals
     --passing / chance creation
-    round(pass_compl_tot * 4.5 / _90s, 2) as pass_compl_per90, --4.5 is extrapolating 20 minutes of real game time
+    round(pass_compl_tot * 4 / _90s, 2) as pass_compl_per90, --4.5 is extrapolating 20 minutes of real game time
     round(pass_compl_tot::numeric / nullif(pass_att_tot,0),2) as pass_compl_pct,
     assist_tot,
     round(assist_tot / _90s, 2) as assists_per90,

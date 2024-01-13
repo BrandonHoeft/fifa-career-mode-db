@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: postgres_fifa_db
+    database: fifa23
+    schema: public
+    tables:
+      - name: player_stats
+      - name: players
+      - name: teams
+      - name: leagues
+      - name: seasons
+      - name: games
+      - name: standings_snapshot

@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: stg_player_gamelog_stats
+    description: initial cleaning of player_stats plus metadata about their names, opponents, game results

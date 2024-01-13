@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: player_metrics
+    description: Advanced analytics on aggregate performance, including per 90 minute metrics

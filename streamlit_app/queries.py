@@ -274,3 +274,13 @@ def insert_standings_snapshot(fk_team_id, fk_season_id, standings_as_of, points,
     with get_db_connection() as conn:
         conn.execute(text(query))
         conn.connection.commit()
+
+# Interactive Plots queries (plotly)
+################################################################################
+def query_player_metrics():
+    # SQL query from dbt model in the analytics schema
+    query = "SELECT * FROM analytics.player_metrics"
+    #TODO: maybe want to factor out from above query and make it parameterized from
+    # querying analytics.stg_player_gamelog_stats instead. see get_standings() example
+    with get_db_connection() as conn:
+        return pd.read_sql(query, conn)

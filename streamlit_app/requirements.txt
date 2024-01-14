@@ -1,4 +1,5 @@
 pandas
+plotly_express
 psycopg2-binary
 sqlalchemy
 streamlit

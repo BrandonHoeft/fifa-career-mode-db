@@ -6,6 +6,7 @@ import traceback
 def player_stats_form():
     st.subheader("Display Last Game Summary", divider="rainbow")
     # Display the seasons data as a table
+    st.text("👀️This last game data should reflect the game you are about to add player stats for")
     last_game = display_last_game_data()
     st.dataframe(last_game)
 

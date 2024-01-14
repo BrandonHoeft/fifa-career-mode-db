@@ -3,15 +3,13 @@ from queries import display_seasons_data, insert_game_info, get_season_ids, get_
 import traceback
 
 def game_form():
-
-    st.header("Submit Game Info")
-
-    st.title("Season History")
+    st.subheader("Display Seasons History", divider="rainbow", key="seasons_history_game_form")
 
     # Display the seasons data as a table
     df_seasons = display_seasons_data()
     st.dataframe(df_seasons)
 
+    st.subheader("Add a Game Summary", divider="rainbow")
     # Fetching season IDs for the dropdown
     season_ids = get_season_ids()
     fk_season_id = st.selectbox('Select Season', season_ids)

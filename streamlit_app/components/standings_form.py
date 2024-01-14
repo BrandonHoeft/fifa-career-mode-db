@@ -3,18 +3,16 @@ from queries import display_seasons_data, get_season_ids, get_team_names, transl
 import traceback
 
 def insert_standings_form():
-    st.title("Insert Standings")
-
-    st.header("Season to Choose From", divider="rainbow")
+    st.subheader("Display Seasons History", divider="rainbow", key="seasons_history_insert_standings_form")
     # Display the seasons data as a table
     df_seasons = display_seasons_data()
     st.dataframe(df_seasons)
 
 
-    st.header("Data Entry", divider="rainbow")
+    st.subheader("Add a Standings Snapshot", divider="rainbow")
     # Fetching season IDs for the dropdown
     season_ids = get_season_ids()
-    fk_season_id = st.selectbox('Select Season', season_ids)
+    fk_season_id = st.selectbox('Select Season to Update Standings', season_ids)
 
     # Dropdown for teams
     teams = get_team_names()
@@ -30,7 +28,7 @@ def insert_standings_form():
     points = st.number_input('Cumulative Points', min_value=0)
     goal_diff = st.number_input('Cumulative Goal Difference', min_value=-500, max_value=500, value=0)
 
-    if st.button('Submit Game Info'):
+    if st.button('Submit Standings Snapshot'):
         # Logic to insert data into the database
         try:
             insert_standings_snapshot(team_id, fk_season_id, snapshot_date,

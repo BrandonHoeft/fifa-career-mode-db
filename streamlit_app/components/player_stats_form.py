@@ -4,14 +4,12 @@ from queries import display_last_game_data, get_max_fk_game_id, get_players, tra
 import traceback
 
 def player_stats_form():
-    st.title("Individual Player Game Stats Form")
-
-    st.header("Display Last Game Data", divider="rainbow")
+    st.subheader("Display Last Game Summary", divider="rainbow")
     # Display the seasons data as a table
     last_game = display_last_game_data()
     st.dataframe(last_game)
 
-    st.header("Player & Game", divider="rainbow")
+    st.subheader("Add Player & Game", divider="rainbow")
     # Dropdown for fk_game_id (placeholder, integrate with DB to auto-populate)
     last_game_id = get_max_fk_game_id()
     fk_game_id = st.number_input('Select Game ID', min_value=1, value=last_game_id)
@@ -26,25 +24,25 @@ def player_stats_form():
         st.image(player_img_url, width=250, caption=f"{player}")
 
     # Other input fields for player stats. Order By Game UI
-    st.header("Summary", divider="rainbow")
+    st.subheader("Summary", divider="rainbow")
     rating = st.number_input('Rating (e.g. 6.7)', min_value=0.0, step=0.1, format="%.1f")
     minutes = st.number_input('Minutes Played', min_value=1, max_value=130)
     passes_att = st.number_input('Passes Attempted', min_value=0)
     pass_pct = st.number_input('Passing %', min_value=0, max_value=100)
     poss_lost = st.number_input('Possessions Lost', min_value=0)
     # Shooting screen
-    st.header("Shooting", divider="rainbow")
+    st.subheader("Shooting", divider="rainbow")
     goals = st.number_input('Goals', min_value=0)
     non_pen_xg = st.number_input('non-pen xGoals', min_value=0.0, step=0.1, format="%.1f")
     shots = st.number_input('Shots', min_value=0)
     # Passing screen
-    st.header("Passing", divider="rainbow")
+    st.subheader("Passing", divider="rainbow")
     assists = st.number_input('Assists', min_value=0)
     xa = st.number_input('xAssists', min_value=0.0, step=0.1, format="%.1f")
     key_passes = st.number_input('Key Passes', min_value=0)
     line_brk_passes = st.number_input('Line Breaking Passes', min_value=0)
     # Defense screen
-    st.header("Defense", divider="rainbow")
+    st.subheader("Defense", divider="rainbow")
     tackles = st.number_input('Tackles Won', min_value=0)
     interceptions = st.number_input('Interceptions', min_value=0)
     off_duels = st.number_input('Offensive Duels Won', min_value=0)

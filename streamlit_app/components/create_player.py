@@ -3,8 +3,6 @@ from queries import get_players, translate_player_name_to_player_id, insert_play
 import traceback
 
 def create_player_form():
-    st.title("Player Operations")
-
     # Form to choose operation type
     operation = st.radio("Choose CRUD", ('Create New Player', 'Update Existing Player', 'Soft Delete Player'))
 

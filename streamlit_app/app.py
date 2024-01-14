@@ -28,4 +28,25 @@ elif form_type == 'Manage Players':
 elif form_type == 'Insert Standings':
     insert_standings_form()
 elif form_type == 'Plots':
-    interactive_scatterplot()
+    st.title("Analytics")
+    tab1, tab2, tab3, tab4 = st.tabs(["✨✨Scatterplot", "📶Dot Plot", "💥Radar Plot", "📈Standings"])
+
+    with tab1:
+        st.header("Scatterplot (x vs. y)")
+        interactive_scatterplot()
+
+    with tab2:
+        #TODO: need to work on plot for this
+
+        st.header("Dot Plot (Rank Order a Metric)")
+        st.image("https://uc-r.github.io/public/images/visual/cleveland-dotplots/unnamed-chunk-9-1.png", width=200)
+
+    with tab3:
+        st.header("Radar Plot")
+        #TODO: need to work on plot for this
+        st.image("https://statsbomb.com/wp-content/uploads/2022/02/Pedri-La-Liga-2020_2021-2.png", width=200)
+
+    with tab4:
+        st.header("Standings History")
+        #TODO: need to work on plot for this
+        st.image("https://pbs.twimg.com/media/FrnUnVmWIAYi7uF.jpg:large", width=200)

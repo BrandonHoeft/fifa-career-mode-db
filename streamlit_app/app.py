@@ -13,23 +13,28 @@ st.title('FIFA Career Mode CRUD App')
 
 # Create Sidebar to main page with radio buttons to go to other forms/pages
 form_type = st.sidebar.radio("Pages:",
-    options=['Insert Game',
-    'Insert Player Stats',
-    'Manage Players',
-    'Insert Standings',
-    'Plots'])
+    options=['CRUD Operations', 'Plots'])
 
-if form_type == 'Insert Game':
-    game_form()
-elif form_type == 'Insert Player Stats':
-    player_stats_form()
-elif form_type == 'Manage Players':
-    create_player_form()
-elif form_type == 'Insert Standings':
-    insert_standings_form()
+if form_type == 'CRUD Operations':
+    st.title("Data Entry Forms")
+    tab1, tab2, tab3, tab4 = st.tabs(["💾🎮Insert Game",
+                                      "💾🎮Insert Player Stats",
+                                      "🗄️🧍Manage Players",
+                                      "💾🏆Insert Standings"])
+
+    with tab1:
+        game_form()
+    with tab2:
+        player_stats_form()
+    with tab3:
+        st.header("Manage Player")
+        create_player_form()
+    with tab4:
+        insert_standings_form()
+
 elif form_type == 'Plots':
     st.title("Analytics")
-    tab1, tab2, tab3, tab4 = st.tabs(["✨✨Scatterplot", "📶Dot Plot", "💥Radar Plot", "📈Standings"])
+    tab1, tab2, tab3, tab4 = st.tabs(["✨✨Scatterplot", "📶Dot Plot", "💥Radar Plot", "📈🏆Standings"])
 
     with tab1:
         # TODO: how to translate the player_metrics view into an OLAP cube for more granular filtering

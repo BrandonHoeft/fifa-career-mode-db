@@ -32,6 +32,7 @@ elif form_type == 'Plots':
     tab1, tab2, tab3, tab4 = st.tabs(["✨✨Scatterplot", "📶Dot Plot", "💥Radar Plot", "📈Standings"])
 
     with tab1:
+        # TODO: how to translate the player_metrics view into an OLAP cube for more granular filtering
         st.header("Scatterplot (x vs. y)")
         interactive_scatterplot()
 

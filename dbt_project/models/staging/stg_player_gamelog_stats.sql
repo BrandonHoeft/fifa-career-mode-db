@@ -43,6 +43,7 @@ with player_stats as (
                 when primary_pos in('ST', 'CF', 'LW', 'LM', 'RW', 'RM')  then 'Attacker'
                 else 'Goalie'
            end as pos_type,
+           player_img_url,
            fk_game_id,
            rating,
            minutes,

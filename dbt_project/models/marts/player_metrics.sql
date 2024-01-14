@@ -8,9 +8,12 @@ with stg_player_gamelog_stats as (
 , cum_stats as (
 
     select
+        -- Dims
         full_name,
         primary_pos,
         pos_type,
+        player_img_url,
+        -- measures
         sum(minutes) as total_minutes,
         round(sum(minutes * rating) / sum(minutes), 2) as weighted_rating,
         round(sum(minutes::numeric) / 90, 2) as _90s, -- # of 90 minutes completed
@@ -31,14 +34,17 @@ with stg_player_gamelog_stats as (
         sum(off_duels) as off_duels_won_tot,
         sum(def_duels) as def_duels_won_tot
     from stg_player_gamelog_stats
-    group by full_name, primary_pos, pos_type
+    group by full_name, primary_pos, pos_type, player_img_url
 
 )
 
 select
+    -- dims
     full_name,
     primary_pos,
     pos_type,
+    player_img_url,
+    -- measures
     total_minutes,
     _90s,
     weighted_rating,

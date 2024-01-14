@@ -9,7 +9,7 @@ def insert_standings_form():
     st.dataframe(df_seasons)
 
 
-    st.subheader("Add a Standings Snapshot", divider="rainbow")
+    st.subheader("Fill Out a Standings Snapshot", divider="rainbow")
     # Fetching season IDs for the dropdown
     season_ids = get_season_ids()
     fk_season_id = st.selectbox('Select Season to Update Standings', season_ids)

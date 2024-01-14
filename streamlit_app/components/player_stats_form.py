@@ -9,7 +9,7 @@ def player_stats_form():
     last_game = display_last_game_data()
     st.dataframe(last_game)
 
-    st.subheader("Add Player & Game", divider="rainbow")
+    st.subheader("Fill Out Player & Game", divider="rainbow")
     # Dropdown for fk_game_id (placeholder, integrate with DB to auto-populate)
     last_game_id = get_max_fk_game_id()
     fk_game_id = st.number_input('Select Game ID', min_value=1, value=last_game_id)

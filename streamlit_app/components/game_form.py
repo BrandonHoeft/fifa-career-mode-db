@@ -9,7 +9,7 @@ def game_form():
     df_seasons = display_seasons_data()
     st.dataframe(df_seasons)
 
-    st.subheader("Add a Game Summary", divider="rainbow")
+    st.subheader("Fill Out a New Game Played in a Season", divider="rainbow")
     # Fetching season IDs for the dropdown
     season_ids = get_season_ids()
     fk_season_id = st.selectbox('Select Season to log a game played for', season_ids)
@@ -40,7 +40,7 @@ def game_form():
     my_goals = st.number_input('My Goals', min_value=0)
 
     # Submit button
-    if st.button('Submit Game Info'):
+    if st.button('Submit Game'):
         # Logic to insert data into the database
         try:
             insert_game_info(fk_season_id, fk_opp_id, game_num, game_minutes, home_or_away, opp_goals, opp_xg, opp_poss_pct, opp_ball_rcvry_secs, opp_shots, my_goals, my_xg, my_shots, my_ball_rcvry_secs)  # Add other fields as necessary

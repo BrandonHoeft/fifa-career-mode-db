@@ -42,7 +42,7 @@ with player_stats as (
                 when primary_pos in('CDM', 'CM', 'CAM')  then 'Midfielder'
                 when primary_pos in('ST', 'CF', 'LW', 'LM', 'RW', 'RM')  then 'Attacker'
                 else 'Goalie'
-           end as player_type,
+           end as pos_type,
            fk_game_id,
            rating,
            minutes,

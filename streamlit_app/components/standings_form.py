@@ -3,7 +3,7 @@ from queries import display_seasons_data, get_season_ids, get_team_names, transl
 import traceback
 
 def insert_standings_form():
-    st.subheader("Display Seasons History", divider="rainbow", key="seasons_history_insert_standings_form")
+    st.subheader("Display Seasons History", divider="rainbow")
     # Display the seasons data as a table
     df_seasons = display_seasons_data()
     st.dataframe(df_seasons)

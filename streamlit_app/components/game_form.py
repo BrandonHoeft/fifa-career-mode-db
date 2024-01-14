@@ -3,7 +3,6 @@ from queries import display_seasons_data, insert_game_info, get_season_ids, get_
 import traceback
 
 def game_form():
-    st.text("⚠️ Make sure to Fill and Submit a Game Played before updating player stats for that same game")
     st.subheader("Display Seasons History", divider="rainbow")
 
     # Display the seasons data as a table

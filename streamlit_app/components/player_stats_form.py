@@ -4,9 +4,11 @@ from queries import display_last_game_data, get_max_fk_game_id, get_players, tra
 import traceback
 
 def player_stats_form():
+    st.text("⚠👀️ Make sure you first submit the 'Insert Game' form before filling out player stats for a game")
+
     st.subheader("Display Last Game Summary", divider="rainbow")
     # Display the seasons data as a table
-    st.text("👀️This last game data should reflect the game you are about to add player stats for")
+    st.text("👀️👀️ These data should reflect the game you are about to add player stats for")
     last_game = display_last_game_data()
     st.dataframe(last_game)
 

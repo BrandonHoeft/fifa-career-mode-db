@@ -38,6 +38,11 @@ with player_stats as (
 , raw_player_stats_preprocessed as (
     select full_name,
            primary_pos,
+           case when primary_pos in('CB', 'LB', 'LWB', 'RB', 'RWB')  then 'Defender'
+                when primary_pos in('CDM', 'CM', 'CAM')  then 'Midfielder'
+                when primary_pos in('ST', 'CF', 'LW', 'LM', 'RW', 'RM')  then 'Attacker'
+                else 'Goalie'
+           end as player_type,
            fk_game_id,
            rating,
            minutes,

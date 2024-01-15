@@ -57,11 +57,26 @@ def interactive_scatterplot():
 
     plot = px.scatter(df, **plot_args)
 
+    # Calculate median, min, and max for x and y
+    median_x, min_x, max_x = df[x_axis_val].median(), df[x_axis_val].min(), df[x_axis_val].max()
+    median_y, min_y, max_y = df[y_axis_val].median(), df[y_axis_val].min(), df[y_axis_val].max()
+
+    # Add vertical line at median of x
+    plot.add_shape(type='line',
+                  x0=median_x, y0=min_y, x1=median_x, y1=max_y,
+                  line=dict(color='Gray', dash='dot'),
+                  xref='x',
+                  yref='y')  # yref='paper' to span the full height
+
+    # Add horizontal line at median of y
+    plot.add_shape(type='line',
+                  x0=min_x, y0=median_y, x1=max_x, y1=median_y,
+                  line=dict(color='Gray', dash='dot'),
+                  xref='x', yref='y')  # xref='paper' to span the full width
+
     # use a default sizing
     if size_val == 'None':
-        plot.update_traces(marker=dict(size=12))
-
-    plot.update_traces(opacity=0.75, selector=dict(mode='markers'))
+        plot.update_traces(marker=dict(size=14))
 
     # Set the size of the plot to be square
     plot.update_layout(
@@ -72,5 +87,8 @@ def interactive_scatterplot():
             size=18,  # up from 12-default
         )
     )
+    plot.update_xaxes(showgrid=False)
+    plot.update_yaxes(showgrid=False)
+    plot.update_traces(opacity=0.75, selector=dict(mode='markers'))
 
     st.plotly_chart(plot, theme='streamlit', use_container_width=True)

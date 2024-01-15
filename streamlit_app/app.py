@@ -3,6 +3,7 @@ from components.game_form import game_form
 from components.player_stats_form import player_stats_form
 from components.create_player import create_player_form
 from components.standings_form import insert_standings_form
+from components.create_team import create_team_form
 from components.plots import interactive_scatterplot
 
 # Configure Page
@@ -17,10 +18,11 @@ form_type = st.sidebar.radio("Pages:",
 
 if form_type == 'CRUD Operations':
     st.title("Data Entry Forms")
-    tab1, tab2, tab3, tab4 = st.tabs(["💾🎮Insert Game",
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["💾🎮Insert Game",
                                       "💾🎮Insert Player Stats",
                                       "🗄️🧍Manage Players",
-                                      "💾🏆Insert Standings"])
+                                      "💾🏆Insert Standings",
+                                      "Add Teams"])
 
     with tab1:
         game_form()
@@ -31,6 +33,8 @@ if form_type == 'CRUD Operations':
         create_player_form()
     with tab4:
         insert_standings_form()
+    with tab5:
+        create_team_form()
 
 elif form_type == 'Plots':
     st.title("Analytics")

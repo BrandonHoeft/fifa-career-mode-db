@@ -18,7 +18,7 @@ def player_stats_form():
     fk_game_id = st.number_input('Select Game ID', min_value=1, value=last_game_id)
     # Dropdown for players (placeholder, integrate with DB)
     active_players = get_players(active=True)
-    player = st.selectbox('Select Active Roster Player', active_players)  # Replace with actual player names
+    player = st.selectbox('Select Active Roster Player', active_players, key="player_stats_form_select_player")  # Replace with actual player names
     fk_player_id = translate_player_name_to_player_id(player)
 
     # Fetch and display player image

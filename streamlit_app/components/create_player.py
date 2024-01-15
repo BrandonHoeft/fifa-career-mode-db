@@ -32,7 +32,7 @@ def create_player_form():
 
         # Dropdown for players (placeholder, integrate with DB)
         active_players = get_players(active=False)
-        player = st.selectbox('Select Active Roster Player', active_players)
+        player = st.selectbox('Select Active Roster Player', active_players, key='create_player_form_select_player')
         player_id = translate_player_name_to_player_id(player)
         updated_field = st.selectbox('Field to Update', ['First Name', 'Last Name', 'Birthday', 'Primary Position', 'Secondary Position', 'Start Date', 'End Date', 'Player Image URL'])
         date_fields = ['Birthday', 'Start Date', 'End Date']

@@ -2,11 +2,12 @@
 import pandas as pd
 from db_connect import get_db_connection
 from sqlalchemy import text
+from sqlalchemy.exc import IntegrityError
+
 
 # Player Create/Update/Soft Delete Related Queries
 ################################################################################
 def insert_player(fk_team_id, first_name, last_name, birthday, primary_pos, second_pos, start_date, player_img_url):
-    # SQL query for inserting game information
     query = f"""INSERT INTO players (fk_team_id, first_name, last_name, birthday, primary_pos, second_pos, start_date, player_img_url) 
                 VALUES (
                     {fk_team_id},
@@ -82,19 +83,25 @@ def display_seasons_data():
         return pd.read_sql(query, conn)
 
 
+# def get_season_ids():
+#     query_any_games_yet = "SELECT COUNT(*) FROM games"
+#     query = "SELECT DISTINCT fk_season_id FROM games ORDER BY fk_season_id"
+#     query_on_fail = "SELECT DISTINCT season_id FROM seasons ORDER BY season_id"
+#     with get_db_connection() as conn:
+#         result = conn.execute(text(query_any_games_yet))
+#         game_cnt_in_db = result.fetchone()[0]
+#         if game_cnt_in_db > 0:
+#             result = conn.execute(text(query))  # for existing season with games recorded
+#         else:
+#             result = conn.execute(text(query_on_fail))  # for brand new season
+#     data = [row[0] for row in result.fetchall()]
+#     return data
+
 def get_season_ids():
-    query_any_games_yet = "SELECT COUNT(*) FROM games"
-    query = "SELECT DISTINCT fk_season_id FROM games ORDER BY fk_season_id"
-    query_on_fail = "SELECT DISTINCT season_id FROM seasons ORDER BY season_id"
+    query = "SELECT season_id FROM seasons ORDER BY season_id"
     with get_db_connection() as conn:
-        result = conn.execute(text(query_any_games_yet))
-        game_cnt_in_db = result.fetchone()[0]
-        if game_cnt_in_db > 0:
-            result = conn.execute(text(query))  # for existing season with games recorded
-        else:
-            result = conn.execute(text(query_on_fail))  # for brand new season
-    data = [row[0] for row in result.fetchall()]
-    return data
+        result = conn.execute(text(query))
+        return [row[0] for row in result.fetchall()]
 
 def get_max_game_num_plus_one(season_id):
     query = f"SELECT MAX(game_num) FROM games WHERE fk_season_id = {season_id}"
@@ -284,3 +291,24 @@ def query_player_metrics():
     # querying analytics.stg_player_gamelog_stats instead. see get_standings() example
     with get_db_connection() as conn:
         return pd.read_sql(query, conn)
+
+# Player Create/Update/Soft Delete Related Queries
+################################################################################
+def insert_team(name, team_logo_img_url):
+    # Check if the team name already exists
+    check_query = f"SELECT * FROM teams WHERE name = '{name}'"
+    with get_db_connection() as conn:
+        result = conn.execute(text(check_query))
+        if result.fetchone():
+            # If a team with the same name is found, raise an error
+            raise IntegrityError(f"Team name '{name}' already exists in the table", "", "")
+
+        # SQL query for inserting team information
+        insert_query = f"""INSERT INTO teams (name, team_logo_img_url) 
+                               VALUES (
+                                   '{name}',
+                                   '{team_logo_img_url}'
+                               )"""
+        conn.execute(text(insert_query))
+        conn.connection.commit()
+

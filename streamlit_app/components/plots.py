@@ -12,13 +12,21 @@ def interactive_scatterplot():
     # Visual Container for Data Filtering Toggles
     with st.container(border=True):
         st.subheader('Data Filters')
+
+        # Dropdown for Year
+        year_of_play_list = sorted(df.year.unique())
+        years_selected = st.multiselect(
+            'Choose Year(s)', options=year_of_play_list,
+            default=year_of_play_list[-1])  # max year default
+        df = df[df['year'].isin(years_selected)]
+
         goalies_button = st.radio("Include Goalies?", ('No', 'Yes'), index=0)
         if goalies_button == 'No':
             df = df[df['primary_pos'] != 'GK']
 
         # Dropdown for position type filter
         position_types_list = list(df.pos_type.unique())
-        position_type_options = st.multiselect('Filter Position Types (Optional)?', options=position_types_list, default=position_types_list)
+        position_type_options = st.multiselect('Filter Position Types (Optional)', options=position_types_list, default=position_types_list)
         if len(position_type_options) < len(position_types_list):
             df = df[df['pos_type'].isin(position_type_options)]
 

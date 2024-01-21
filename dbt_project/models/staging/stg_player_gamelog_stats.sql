@@ -54,11 +54,12 @@ with player_stats as (
             sample FIFA non-penalty xG per shot = 0.22. Derived from player_stats table: round(non_pen_xg / nullif(shots, 0), 2)
             ratio of 0.10 / 0.22 = 45% haircut to get more realistic FIFA xG outputs
             */
-           --round(non_pen_xg * 0.45, 2) as non_pen_xg, -- downweight the FIFA engine's xG
-           non_pen_xg,
+           round(non_pen_xg * 0.45, 2) as non_pen_xg, -- downweight the FIFA engine's xG
+           --non_pen_xg,
            shots,
            assists,
-           xa,
+           round(xa * 0.45, 2) as xa, -- downweight the FIFA engine's xA
+           --xa,
            key_passes,
            passes_att,
            pass_pct,

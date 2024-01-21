@@ -1,7 +1,7 @@
 import pandas as pd
 import plotly_express as px
 import streamlit as st
-from queries import query_player_metrics
+from queries import query_player_metrics, get_players
 
 def interactive_scatterplot():
     # Source Data staging
@@ -100,3 +100,42 @@ def interactive_scatterplot():
     plot.update_traces(opacity=0.75, selector=dict(mode='markers'))
 
     st.plotly_chart(plot, theme='streamlit', use_container_width=True)
+
+#TODO: work on this
+def radar_plot():
+    # # Source Data staging
+    # df = query_player_metrics()
+    #
+    # # Identify field types
+    # dimension_cols = ['full_name', 'primary_pos', 'pos_type', 'player_img_url']
+    # measure_cols = df.copy().drop(columns=dimension_cols).columns
+    #
+    # # Identify Templates
+    # defender_template = [col for col in measure_cols if col in ['weighted_rating', 'recovery_per90', 'tkl_won_per90', 'intrcpt_per90', 'def_duels_won_per90', 'off_duels_won_per90', 'pass_compl_per90', 'line_brk_passes_per90', 'poss_lost_per_90']]
+    # attacker_template = [col for col in measure_cols if col in ['weighted_rating', 'poss_lost_per_90', 'shots_per90','line_brk_passes_per90', 'recovery_per90', 'off_duels_won_per90', 'def_duels_won_per90']]
+    #
+    # # Dropdown for Year
+    # year_of_play_list = sorted(df.year.unique())
+    # years_selected = st.multiselect(
+    #     'Choose Year(s)', options=year_of_play_list,
+    #     default=year_of_play_list[-1])  # max year default
+    # df = df[df['year'].isin(years_selected)]
+    #
+    # # Dropdown for players (placeholder, integrate with DB)
+    # active_players = get_players(active=True)
+    # player1 = st.selectbox('Select Active Roster Player', active_players,
+    #                       key="radar_plot_select_1st_player")  # Replace with actual player names
+    #
+    # # Calculate percentiles and normalize
+    # df_normalized = df.copy()
+    # for col in defender_template:
+    #     df_normalized[col] = df[col].rank(pct=True) * 100
+    #
+    # df = df.loc[df['full_name'] == player1, defender_template]
+
+
+
+
+
+
+

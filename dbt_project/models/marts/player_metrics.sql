@@ -9,6 +9,7 @@ with stg_player_gamelog_stats as (
 
     select
         -- Dims
+        year,
         full_name,
         primary_pos,
         pos_type,
@@ -34,12 +35,13 @@ with stg_player_gamelog_stats as (
         sum(off_duels) as off_duels_won_tot,
         sum(def_duels) as def_duels_won_tot
     from stg_player_gamelog_stats
-    group by full_name, primary_pos, pos_type, player_img_url
+    group by year, full_name, primary_pos, pos_type, player_img_url
 
 )
 
 select
     -- dims
+    year,
     full_name,
     primary_pos,
     pos_type,

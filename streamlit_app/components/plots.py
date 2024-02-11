@@ -102,7 +102,7 @@ def interactive_scatterplot():
     st.plotly_chart(plot, theme='streamlit', use_container_width=True)
 
 #TODO: work on this
-def radar_plot():
+#def radar_plot():
     # # Source Data staging
     # df = query_player_metrics()
     #
